@@ -1,0 +1,31 @@
+{
+  "name": "tocha-telegram",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --open",
+    "bem": "bemtree-from-html",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animate-scss": "^3.2.1",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "bemtree-from-html": "^1.0.10",
+    "include-media": "^2.0.0",
+    "sass": "^1.63.4",
+    "vite": "^4.3.9",
+    "vite-plugin-html-inject": "^1.0.1",
+    "vite-plugin-sass-glob-import": "^2.0.0"
+  },
+  "bemtree": {
+    "from": "./src/**/!(_%temp)*.html",
+    "to": "src/blocks",
+    "js": "src/js/blocks.js",
+    "omit": "@@,js-,active,opened,showed,mt,mb,swiper,desk,focused,button-violet,button-violet-n"
+  }
+}

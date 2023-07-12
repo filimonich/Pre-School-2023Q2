@@ -1,0 +1,49 @@
+@import "layout/layout.scss";
+@include reset();
+
+// вызов показа текущего диапазона
+// body {
+//   @include screen-media();
+// }
+
+// Import media-query helper
+@import "../../node_modules/include-media/dist/_include-media.scss";
+
+$breakpoints: (
+  'xxxs': 360px,
+  'xxs': 480px,
+  'xs': 640px,
+  'sm': 780px,
+  'md': 960px,
+  'lg': 1100px,
+  'xlg': 1280px,
+  'xxlg': 1440px,
+  'xxxlg': 1680px,
+  'xxxxlg': 1920px);
+
+// fonts
+@include font-face("Gilroy-Regular", "GR");
+
+
+// Import BEM blocks scss
+@import "../blocks/**/*.scss";
+
+
+//
+@function rem($px) {
+  @return calc($px / $baseFontSize)+0rem;
+}
+
+body,
+html {
+  box-sizing: border-box;
+  font-size: #{$basesize}px;
+  line-height: 1.2;
+  // font-family: "GR", sans-serif;
+  font-family: sans-serif;
+  background-color: $white;
+  color: #{$text};
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}

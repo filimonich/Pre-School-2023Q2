@@ -22,7 +22,9 @@ $breakpoints: (
   'xxxxlg': 1920px);
 
 // fonts
-@include font-face("Gilroy-Regular", "GR");
+@include font-face("Inter-Regular", "IG");
+@include font-face("Forum-Regular", "FG");
+@include font-face("Inter-Bold", "IB");
 
 
 // Import BEM blocks scss
@@ -39,8 +41,7 @@ html {
   box-sizing: border-box;
   font-size: #{$basesize}px;
   line-height: 1.2;
-  // font-family: "GR", sans-serif;
-  font-family: sans-serif;
+  font-family: "GR", sans-serif;
   background-color: $white;
   color: #{$text};
   min-height: 100vh;

@@ -133,4 +133,4 @@ dist
 .vite
 
 # docs
-docs
+/docs

@@ -1,11 +1,17 @@
 @use 'sass:math';
 
-$basesize: 16;
+$basesize: 16px;
+
+// перевод px в rem
+@function rem($px) {
+  @return calc($px /  $basesize)+0rem;
+}
 
 // colors
 $white: #FFFFFF;
 $grey: #AAAAAA;
 $text: #000000;
+$background-black: #0C0C0E;
 
 /* Утилиты */
 // подключить шрифт

@@ -31,20 +31,15 @@ $breakpoints: (
 @import "../blocks/**/*.scss";
 
 
-//
-@function rem($px) {
-  @return calc($px / $baseFontSize)+0rem;
-}
-
 body,
 html {
-  box-sizing: border-box;
-  font-size: #{$basesize}px;
-  line-height: 1.2;
-  font-family: "GR", sans-serif;
-  background-color: $white;
-  color: #{$text};
-  min-height: 100vh;
   display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
   flex-flow: column nowrap;
+  font-size: $basesize;
+  font-family: "IG", sans-serif;
+  line-height: 1.2;
+  color: $text;
+  background-color: $white;
 }

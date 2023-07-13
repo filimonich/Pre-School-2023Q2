@@ -1,0 +1,25 @@
+.menu {
+  $self: &;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+		flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-right: rem(30px);
+
+    &:last-child {
+      margin-right: rem(40px);
+    }
+  }
+
+  &__link {
+    font-family: "IG", sans-serif;
+    font-size: rem(20px);
+    line-height: rem(50px);
+    color: $white;
+  }
+
+}

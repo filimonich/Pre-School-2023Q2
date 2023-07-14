@@ -2,18 +2,18 @@
   $self: &;
   background-color: $background-black;
 
-  &__container {
+  &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: rem(20px) auto;
+    margin: rem(20px) rem(31px) rem(20px) rem(20px);
   }
-
+  
   &__menu {
     display: flex;
     align-items: center;
   }
-
+  
   &__drop-menu {
     min-width: rem(28px);
     height: rem(28px);

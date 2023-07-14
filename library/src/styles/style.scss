@@ -22,8 +22,8 @@ $breakpoints: (
   'xxxxlg': 1920px);
 
 // fonts
-@include font-face("Inter-Regular", "IG");
-@include font-face("Forum-Regular", "FG");
+@include font-face("Inter-Regular", "IR");
+@include font-face("Forum-Regular", "FR");
 @include font-face("Inter-Bold", "IB");
 
 
@@ -46,14 +46,14 @@ html {
 
 // animation button
 .animation-button {
-  transition: all 0.2s;
+  transition: transform 0.2s;
   border-radius: 50%;
   cursor: pointer;
 
   &:hover {
     border-radius: 50%;
-    opacity: 0.8;
-    box-shadow: 0px 0px 10px $mulberry;
+    // opacity: 0.8;
+    box-shadow: 0px 0px 4px $mulberry;
     transform: scale(1.1);
   }
 

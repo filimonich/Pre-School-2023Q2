@@ -9,9 +9,13 @@ $basesize: 16px;
 
 // colors
 $white: #FFFFFF;
-$grey: #AAAAAA;
+$grey: #8E8E8E;
 $text: #000000;
 $background-black: #0C0C0E;
+$brown: #BB945F;
+$mulberry: #bb5f86;
+$caribbean-green: #5fbb94;
+$steel-blue: #5f86bb;
 
 /* Утилиты */
 // подключить шрифт
@@ -27,7 +31,8 @@ $background-black: #0C0C0E;
 
 // показать текущий диапазон
 @mixin screen-media($color: #777) {
-  $breakpoints: (xxxxlg: 1920,
+  $breakpoints: (
+      xxxxlg: 1920,
       xxxlg: 1680,
       xxlg: 1440,
       xlg: 1280,

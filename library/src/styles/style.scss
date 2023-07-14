@@ -43,3 +43,37 @@ html {
   color: $text;
   background-color: $white;
 }
+
+// animation button
+.animation-button {
+  transition: all 0.2s;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0px 0px 10px $mulberry;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+}
+
+// animation text
+.animation-text {
+  transition: transform 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $steel-blue;
+    box-shadow: 0px 0px 2px $brown;
+  }
+
+  &:active {
+    transform: translateY(6px);
+  }
+}

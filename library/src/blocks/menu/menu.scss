@@ -8,18 +8,18 @@
   }
 
   &__item {
-    margin-right: rem(30px);
+    margin-right: 30px;
 
     &:last-child {
-      margin-right: rem(40px);
+      margin-right: 40px;
     }
   }
 
   &__link {
-    margin: 0 rem(2px);
+    margin: 0 2px;
     font-family: "IG", sans-serif;
-    font-size: rem(20px);
-    line-height: rem(50px);
+    font-size: 20px;
+    line-height: 50px;
     color: $white;
   }
 

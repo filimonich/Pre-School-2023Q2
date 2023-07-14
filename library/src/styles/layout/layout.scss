@@ -1,11 +1,11 @@
 @use 'sass:math';
 
-$basesize: 16px;
+$basesize: 16;
 
-// перевод px в rem
-@function rem($px) {
-  @return calc($px /  $basesize)+0rem;
-}
+// // перевод px в rem // выражение для перевода значений через поиск (\d+(\.\d+)?)px на rem($1px)
+// @function rem($px) {
+//   @return calc($px /  $basesize)+0rem;
+// }
 
 // colors
 $white: #FFFFFF;

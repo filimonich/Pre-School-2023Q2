@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: rem(20px) rem(31px) rem(20px) rem(20px);
+    margin: 20px 31px 20px 20px;
   }
   
   &__menu {
@@ -15,8 +15,8 @@
   }
   
   &__drop-menu {
-    min-width: rem(28px);
-    height: rem(28px);
+    min-width: 28px;
+    height: 28px;
   }
 
   &__image {}

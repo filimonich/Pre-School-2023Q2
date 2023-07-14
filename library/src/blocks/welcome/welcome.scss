@@ -1,18 +1,18 @@
 .welcome {
   $self: &;
+  content: "";
   display: flex;
-  min-height: rem(652px);
-  max-width: rem(1440px);
+  min-height: 652px;
+  max-width: 1440px;
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
   margin: 0 auto;
-  content: "";
   background: url(../images/img/welcome.png) no-repeat;
 
   &__content {
-    width: rem(600px);
-    padding: rem(35px) rem(40px);
+    width: 600px;
+    padding: 35px 40px;
     background-color: $background-black;
   }
 

@@ -8,32 +8,248 @@
   <link rel="icon" href="images/img/favicon.png">
   
   <title>Brooklyn Public Library</title>
-  <script type="module" crossorigin src="./assets/main-a2b67d01.js"></script>
-  <link rel="stylesheet" href="./assets/index-bda32fe8.css">
+  <script type="module" crossorigin src="./assets/main-eb027b99.js"></script>
+  <link rel="stylesheet" href="./assets/index-04b1afef.css">
 </head>
 
 <body class="wrapper">
-  <header class="header">
-    <div class="header__container container">
+  <header class="header container">
+    <div class="header__content">
       <a href="/" class="logo">
-        <span class="logo__title">Brooklyn Public Library</span>
+        <h1 class="logo__title">Brooklyn Public Library</h1>
       </a>
       <div class="header__menu">
         <nav class="menu">
           <ul class="menu__list ">
-            <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
-            <li class="menu__item"><a class="menu__link" href="#favorites">Favorites</a></li>
-            <li class="menu__item"><a class="menu__link" href="#coffee-shop">Coffee shop</a></li>
-            <li class="menu__item"><a class="menu__link" href="#contacts">Contacts</a></li>
-            <li class="menu__item"><a class="menu__link" href="#library-card">Library Card</a></li>
+            <li class="menu__item animation-text"><a class="menu__link" href="#about">About</a></li>
+            <li class="menu__item animation-text"><a class="menu__link" href="#favorites">Favorites</a></li>
+            <li class="menu__item animation-text"><a class="menu__link" href="#coffee-shop">Coffee shop</a></li>
+            <li class="menu__item animation-text"><a class="menu__link" href="#contacts">Contacts</a></li>
+            <li class="menu__item animation-text"><a class="menu__link" href="#library-card">Library Card</a></li>
           </ul>
         </nav>
-        <a class="header__drop-menu">
+        <a class="header__drop-menu animation-button">
           <img src="images/svg/icon-profile.svg" alt="Button drop menu profile" class="header__image">
         </a>
       </div>
     </div>
   </header>
+
+  <main class="main">
+    <section class="welcome container">
+      <div class="welcome__content">
+        <div class="welcome__title">
+          <h2 class="welcome__headline">Welcome<br> to the Brooklyn Library</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="about container" id="about">
+      <div class="about__content">
+        <h2 class="about__headline headline">about</h2>
+        <p class="about__subtitle">The Brooklyn Library is a free workspace,
+          a large number of books and a cozy coffee shop inside</p>
+        <div class="about__slider">
+          <ul class="about__benefits">
+            <li class="about__benefit">
+              <img src="images/img/woman.png" alt="the woman at the bookshelf" class="about__img">
+            </li>
+            <li class="about__benefit">
+              <img src="images/img/busts.png" alt="ancient busts" class="about__img">
+            </li>
+            <li class="about__benefit">
+              <img src="images/img/long-shelves.png" alt="long shelves in the library" class="about__img">
+            </li>
+            <li class="about__benefit" style="display: none;">
+              <img src="images/img/stairs.png" alt="stairs at the bookshelf" class="about__img">
+            </li>
+            <li class="about__benefit" style="display: none;">
+              <img src="images/img/caryatids.png" alt="two columns and caryatids under the roof" class="about__img">
+            </li>
+          </ul>
+        </div>
+        <div class="about__item-dots">
+          <ul class="about__dots">
+            <li class="about__dot"><a class="about__item animation-button active-dot"></a></li>
+            <li class="about__dot"><a class="about__item animation-button"></a></li>
+            <li class="about__dot"><a class="about__item animation-button"></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="favorites container" id="favorites">
+      <div class="favorites__content">
+
+        <h2 class="favorites__headline headline">favorites</h2>
+        <p class="favorites__subtitle">Pick favorites of season</p>
+        <ul class="favorites__radio">
+          <li class="favorites__item">
+            <input type="radio" class="favorites__input-button" id="winter" name="season" checked>
+            <label class="favorites__input-label" for="winter">Winter</label>
+          </li>
+          <li class="favorites__item">
+            <input type="radio" class="favorites__input-button" id="spring" name="season">
+            <label class="favorites__input-label" for="spring">Spring</label>
+          </li>
+          <li class="favorites__item">
+            <input type="radio" class="favorites__input-button" id="summer" name="season">
+            <label class="favorites__input-label" for="summer">Summer</label>
+          </li>
+          <li class="favorites__item">
+            <input type="radio" class="favorites__input-button" id="autumn" name="season">
+            <label class="favorites__input-label" for="autumn">Autumn</label>
+          </li>
+        </ul>
+
+        <div class="favorites__holder">
+          <ul class="favorites__cards">
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name">The Book Eaters</p>
+              <p class="favorites__title-author">By Sunyi Dean</p>
+              <p class="favorites__desc">An unusual sci-fi story about a book eater woman 
+                who tries desperately to save her dangerous mind-eater son from tradition 
+                and certain death. Complete with dysfunctional family values, light Sapphic 
+                romance, and a strong, complex protagonist. Not for the faint of heart.</p>
+              <div class="favorites__icon"><img src="images/img/eaters.png" alt="" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name">Cackle</p>
+              <p class="favorites__title-author">By Rachel Harrison</p>
+              <p class="favorites__desc">Are your Halloween movies of choice The Witches of
+                Eastwick and Practical Magic? Look no further than here - where a woman
+                recovering from a breakup moves to a quaint town in upstate New York and
+                befriends a beautiful witch.</p>
+              <div class="favorites__icon"><img src="images/img/cackle.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name">Dante: Poet of the Secular World</p>
+              <p class="favorites__title-author">By Erich Auerbach</p>
+              <p class="favorites__desc">Auerbach's engaging book places the 'Comedy' within the 
+                tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness 
+                as one who raised the individual and his drama of soul into something of divine 
+                significance—an inspired introduction to Dante's main themes.</p>
+              <div class="favorites__icon"><img src="images/img/auerbach.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/queen.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Own</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/body.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/carry.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/distraction.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/dominicana.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/crude.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/surfing.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/octopus.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/kiana.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/casual.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/great.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/rickey.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+            <li class="favorites__card">
+              <h3 class="favorites__title">Staff Picks</h3>
+              <p class="favorites__title-name"></p>
+              <p class="favorites__title-author"></p>
+              <p class="favorites__desc"></p>
+              <div class="favorites__icon"><img src="images/img/slug.png" alt="book cover" class="favorites__img"></div>
+              <button class="favorites__button"><span class="favorites__text">Buy</span></button>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
 
 </body>
 

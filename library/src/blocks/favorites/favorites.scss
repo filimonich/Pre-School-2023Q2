@@ -1,0 +1,53 @@
+.favorites {
+  $self: &;
+
+  &__content {
+    margin: 0 20px;
+  }
+
+  &__headline {}
+
+  &__subtitle {}
+
+  &__radio {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 90px;
+  }
+
+  &__input-button {
+    margin-right: 20px;
+  }
+
+  &__input-label {}
+
+  &__holder {}
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 220px;
+    grid-row-gap: 40px;
+  }
+
+  &__card {}
+
+  &__title {}
+
+  &__title-name {}
+
+  &__title-author {}
+
+  &__desc {}
+
+  &__icon {}
+
+  &__img {}
+
+  &__button {}
+
+  &__text {}
+
+}

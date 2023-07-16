@@ -1,5 +1,6 @@
 .header {
   $self: &;
+  margin-bottom: 0;
   background-color: $background-black;
 
   &__content {

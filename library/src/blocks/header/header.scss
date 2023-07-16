@@ -1,0 +1,25 @@
+.header {
+  $self: &;
+  margin-bottom: 0;
+  background-color: $background-black;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 31px 20px 20px;
+  }
+  
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__drop-menu {
+    min-width: 28px;
+    height: 28px;
+  }
+
+  &__image {}
+
+}

@@ -7,46 +7,120 @@
 
   &__headline {}
 
-  &__subtitle {}
+  &__subtitle {
+    margin-bottom: 40px;
+    text-align: left;
+    font-family: "IB";
+    font-size: 20px;
+    color: $text;
+  }
 
   &__radio {
     display: flex;
+    margin-bottom: 40px;
   }
 
   &__item {
+    position: relative;
     margin-right: 90px;
   }
 
   &__input-button {
     margin-right: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -15px;
+      width: 140px;
+      height: 30px;
+      cursor: pointer;
+    }
   }
 
-  &__input-label {}
+  &__input-label {
+    font-family: "IB";
+    font-size: 20px;
+    color: $text;
+  }
 
   &__holder {}
 
   &__cards {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 220px;
     grid-row-gap: 40px;
   }
 
-  &__card {}
+  &__card {
+    position: relative;
+    width: 550px;
+    padding: 15px 20px;
+    border: 1px solid $text;
+  }
 
-  &__title {}
+  &__title.headline {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 20px;
 
-  &__title-name {}
+    &::after {
+      width: 60px;
+      margin: 5px 0;
+      background-color: $brown;
+    }
+  }
 
-  &__title-author {}
+  &__title-name {
+    font-family: "IB";
+    font-size: 15px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text;
+  }
 
-  &__desc {}
+  &__title-author {
+    margin-bottom: 20px;
+    font-family: "IB";
+    font-size: 15px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: $text;
+  }
 
-  &__icon {}
+  &__desc {
+    width: 355px;
+    margin-bottom: 60px;
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__icon {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    left: 380px;
+    bottom: -1px;
+  }
 
   &__img {}
 
-  &__button {}
+  &__button.button {
+    width: 75px;
+    height: 30px;
+		position: absolute;
+		bottom: 15px;
+		left: 20px;
+  }
 
   &__text {}
 

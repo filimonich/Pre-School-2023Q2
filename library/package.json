@@ -26,6 +26,6 @@
     "from": "./src/**/!(_%temp)*.html",
     "to": "src/blocks",
     "js": "src/js/blocks.js",
-    "omit": "@@,js-,active,opened,showed,mt,mb,swiper,desk,focused,animation-text,animation-button"
+    "omit": "@@,js-,active,opened,showed,mt,mb,swiper,desk,focused,animation-text,animation-button,button"
   }
 }

@@ -131,3 +131,6 @@ dist
 
 # vite
 .vite
+
+# build docs
+docs

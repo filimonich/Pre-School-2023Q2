@@ -1,48 +1,123 @@
 .coffeeshop {
-	$self: &;
+  $self: &;
 
-	&__contents {
+  &__contents {
+    margin: 0 20px;
+  }
 
+  &__headline {}
+
+  &__subtitle {
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    color: $text;
+  }
+
+  &__content {}
+
+  &__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__benefit {
+
+		&-left {}
+
+		&-right {
+			text-align: right;
+		}
 	}
 
-	&__headline {
+  &__title {
+    margin-bottom: 40px;
+    font-family: "FR";
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: $brown;
+  }
 
-	}
+  &__items {}
 
-	&__subtitle {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    line-height: 40px;
+    font-size: 20px;
+    color: $text;
 
-	}
+    &-left {
+      text-align: left;
+      justify-content: flex-start;
 
-	&__content {
+			& p.coffeeshop__name {
+				width: 200px;
+				margin-right: 220px;
+	
+				&:after {
+					content: "";
+					display: block;
+					position: relative;
+					top: -20px;
+					left: 260px;
+					width: 100px;
+					height: 1px;
+					background-color: $brown;
+				}
+			}
+    }
 
-	}
 
-	&__benefits {
+    &-right {
+      text-align: right;
+      justify-content: flex-end;
 
-	}
+			& p.coffeeshop__name {
+				width: 212px;
+				margin-right: 220px;
+	
+				&:after {
+					content: "";
+					display: block;
+					position: relative;
+					top: -20px;
+					left: 260px;
+					width: 100px;
+					height: 1px;
+					background-color: $brown;
+				}
+			}
+    }
+  }
 
-	&__benefit {
+  &__name {
+    font-family: "IR";
 
-	}
+    // &:after {
+    //   content: "";
+    //   // margin: 20px auto 0;
+    //   display: block;
+		// 	position: relative;
+    //   top: -20px;
+    //   left: 260px;
+    //   width: 100px;
+    //   height: 1px;
+    //   background-color: $brown;
+    // }
+  }
 
-	&__title {
-
-	}
-
-	&__items {
-
-	}
-
-	&__item {
-
-	}
-
-	&__name {
-
-	}
-
-	&__price {
-
-	}
+  &__price {
+    font-family: "FR";
+  }
 
 }

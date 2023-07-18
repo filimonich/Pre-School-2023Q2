@@ -389,7 +389,38 @@
             <div class="contacts__inner"><img src="images/img/map.png" alt="map" class="contacts__img"></div>
           </li>
         </ul>
+      </div>
 
+    </section>
+
+    <section class="librarycard container" id="library-card">
+      <div class="librarycard__contents">
+        <h2 class="librarycard__headline headline">digital library cards</h2>
+        <div class="librarycard__content">
+          <div class="librarycard__inner">
+            <h3 class="librarycard__title">Find your Library card</h3>
+            <div class="librarycard__benefits">
+              <div class="librarycard__box">
+                <h3 class="librarycard__subtitle">brooklyn public library</h3>
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Reader's name">
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
+              </div>
+              <button class="librarycard__button librarycard__button-check button">Check the card</button>
+            </div>
+          </div>
+
+          <div class="librarycard__get">
+            <h3 class="librarycard__caption">Get a reader card</h3>
+            <p class="librarycard__text">You will be able to see a reader card after
+              logging into account or you can register a new account</p>
+            <div class="librarycard__buttons">
+              <button class="librarycard__button librarycard__button-get button">Sign Up</button>
+              <button class="librarycard__button librarycard__button-get button">Log in</button>
+            </div>
+          </div>
+        </div>
       </div>
 
     </section>

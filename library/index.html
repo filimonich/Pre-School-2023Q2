@@ -8,29 +8,31 @@
   <link rel="icon" href="images/img/favicon.png">
   
   <title>Brooklyn Public Library</title>
-  <script type="module" crossorigin src="./assets/main-24b51d1a.js"></script>
-  <link rel="stylesheet" href="./assets/index-dc422f6f.css">
+  <script type="module" crossorigin src="./assets/main-6e2d7dcb.js"></script>
+  <link rel="stylesheet" href="./assets/index-f9146284.css">
 </head>
 
 <body class="wrapper">
-  <header class="header container">
-    <div class="header__contents">
-      <a href="/" class="logo">
-        <h1 class="logo__title">Brooklyn Public Library</h1>
-      </a>
-      <div class="header__menu">
-        <nav class="menu">
-          <ul class="menu__list ">
-            <li class="menu__item"><a class="menu__link animation-text" href="#about">About</a></li>
-            <li class="menu__item"><a class="menu__link animation-text" href="#favorites">Favorites</a></li>
-            <li class="menu__item"><a class="menu__link animation-text" href="#coffee-shop">Coffee shop</a></li>
-            <li class="menu__item"><a class="menu__link animation-text" href="#contacts">Contacts</a></li>
-            <li class="menu__item"><a class="menu__link animation-text" href="#library-card">Library Card</a></li>
-          </ul>
-        </nav>
-        <a class="header__drop-menu animation-button">
-          <img src="images/svg/icon-profile.svg" alt="Button drop menu profile" class="header__image">
+  <header class="header">
+    <div class="header__contents container">
+      <div class="header__content">
+        <a href="/" class="logo">
+          <h1 class="logo__title">Brooklyn Public Library</h1>
         </a>
+        <div class="header__menu">
+          <nav class="menu">
+            <ul class="menu__list">
+              <li class="menu__item"><a class="menu__link animation-text" href="#about">About</a></li>
+              <li class="menu__item"><a class="menu__link animation-text" href="#favorites">Favorites</a></li>
+              <li class="menu__item"><a class="menu__link animation-text" href="#coffee-shop">Coffee shop</a></li>
+              <li class="menu__item"><a class="menu__link animation-text" href="#contacts">Contacts</a></li>
+              <li class="menu__item"><a class="menu__link animation-text" href="#library-card">Library Card</a></li>
+            </ul>
+          </nav>
+          <a class="header__drop-menu animation-button">
+            <img src="images/svg/icon-profile.svg" alt="Button drop menu profile" class="header__image">
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -39,7 +41,7 @@
     <section class="welcome container">
       <div class="welcome__contents">
         <div class="welcome__title">
-          <h2 class="welcome__headline">Welcome<br> to the Brooklyn Library</h2>
+          <h2 class="welcome__headline">Welcome to&nbsp;the&nbsp;Brooklyn Library</h2>
         </div>
       </div>
     </section>
@@ -354,6 +356,72 @@
               </ul>
             </li>
           </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="contacts container" id="contacts">
+      <div class="contacts__contents">
+        <h2 class="contacts__headline headline">our contacts</h2>
+        <ul class="contacts__benefits">
+          <li class="contacts__benefit">
+            <ul class="contacts__items">
+              <li class="contacts__item">
+                <h3 class="contacts__title">for all library inquiries:</h3>
+                <p class="contacts__name">Please call
+                  <a href="tel:+6177302370" class="contacts__contact animation-text">(617) 730-2370</a>
+                </p>
+                <p class="contacts__name">For TTY service, please call
+                  <a href="tel:+6177302370" class="contacts__contact animation-text">(617) 730-2370</a>
+                </p>
+                <p class="contacts__name">Putterham Library:
+                  <a href="tel:+6177302385" class="contacts__contact animation-text">(617) 730-2385</a>
+                </p>
+              </li>
+              <li class="contacts__item">
+                <h3 class="contacts__title contacts__title-m">senior staff</h3>
+                <p class="contacts__name">Library Director:
+                  <a href="mailto:AmandaHirst@gmail.com" class="contacts__mail animation-text">Amanda Hirst</a>
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li class="contacts__benefit">
+            <div class="contacts__inner"><img src="images/img/map.png" alt="map" class="contacts__img"></div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="librarycard container" id="library-card">
+      <div class="librarycard__contents">
+        <h2 class="librarycard__headline headline">digital library cards</h2>
+        <div class="librarycard__content">
+          <div class="librarycard__inner">
+            <h3 class="librarycard__title">Find your Library card</h3>
+            <div class="librarycard__benefits">
+              <div class="librarycard__box">
+                <h3 class="librarycard__subtitle">brooklyn public library</h3>
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Reader's name">
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
+              </div>
+              <button class="librarycard__button librarycard__button-check button">Check the card</button>
+            </div>
+          </div>
+
+          <div class="librarycard__get">
+            <h3 class="librarycard__caption">Get a reader card</h3>
+            <p class="librarycard__text">You will be able to see a reader card after
+              logging into account or you can register a new account</p>
+            <div class="librarycard__buttons">
+              <button class="librarycard__button librarycard__button-get button">Sign Up</button>
+              <button class="librarycard__button librarycard__button-get button">Log in</button>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,68 @@
+.contacts {
+  $self: &;
+
+  &__contents {
+    margin: 0 20px;
+  }
+
+  &__headline {}
+
+  &__content {}
+
+  &__benefits {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__benefit {
+    width: 50%;
+  }
+
+  &__inner {}
+
+  &__items {}
+
+  &__item {
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    line-height: 40px;
+    font-family: "IB";
+  }
+
+  &__title-m {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    margin-bottom: 20px;
+    line-height: 40px;
+    font-family: "IR";
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+	&__contact {
+		color: $text;
+	}
+
+  &__mail {
+    font-family: "IB";
+		color: $text;
+  }
+
+  &__img {
+    width: 696px;
+    height: 414px;
+  }
+
+}

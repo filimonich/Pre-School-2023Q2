@@ -7,8 +7,6 @@
 
   &__headline {}
 
-  &__content {}
-
   &__benefits {
     display: flex;
     justify-content: space-between;
@@ -51,13 +49,13 @@
     }
   }
 
-	&__contact {
-		color: $text;
-	}
+  &__contact {
+    color: $text;
+  }
 
   &__mail {
     font-family: "IB";
-		color: $text;
+    color: $text;
   }
 
   &__img {

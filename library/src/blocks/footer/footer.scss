@@ -1,0 +1,102 @@
+.footer {
+  $self: &;
+  margin-bottom: 0;
+  background-color: $background-black;
+  color: $white;
+
+  &__contents {
+    margin-bottom: 0;
+  }
+
+  &__content {
+
+    &::after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 1400px;
+      height: 1px;
+      background-color: $white;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px 30px;
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  &__container {}
+
+  &__adress {}
+
+  &__place {
+    margin-bottom: 10px;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  &__item {}
+
+  &__icon {
+		display: block;
+		width: 24px;
+    height: 24px;
+		margin: 8px 15px 8px 0;
+    // margin-right: 15px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__img {}
+
+  &__inner {
+		text-align: right;
+	}
+
+  &__working {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__day {}
+
+  &__hour {}
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 44px 20px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 2px;
+  }
+
+  &__text {}
+
+  &__link {
+    color: $white;
+  }
+
+}

@@ -8,7 +8,7 @@
   &__subtitle {
     margin-bottom: 20px;
     text-align: center;
-    font-family: Inter;
+    font-family: "IR";
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -17,7 +17,7 @@
   }
 
   &__slider {
-    margin: 0 20px 40px;
+    margin: 0 20px 36px;
   }
 
   &__benefits {
@@ -40,20 +40,22 @@
     justify-content: center;
   }
 
-  &__dot {}
+  &__dot {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 
   &__item {
     display: block;
     position: relative;
     width: 16px;
     height: 16px;
-    margin-right: 10px;
+    // margin-right: 10px;
     border-radius: 50%;
     background-color: $background-black;
-    
-    &:last-child {
-      margin-right: 0;
-    }
 
     &::before {
       content: "";

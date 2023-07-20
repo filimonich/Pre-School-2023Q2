@@ -8,7 +8,7 @@
   &__headline {}
 
   &__subtitle {
-    margin-bottom: 40px;
+    margin-bottom: 43px;
     text-align: left;
     font-family: "IB";
     font-size: 20px;
@@ -17,32 +17,67 @@
 
   &__radio {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 39px;
   }
 
   &__item {
     position: relative;
-    margin-right: 90px;
+    margin-right: 88px;
   }
 
   &__input-button {
-    margin-right: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color: $white;
+    margin-right: 15px;
+    // margin: 0;
+    padding: 0;
+    // vertical-align: middle;
+    cursor: pointer;
 
     &::before {
       content: "";
       position: absolute;
-      top: -3px;
-      left: -15px;
+      // top: -3px;
+      // left: -15px;
       width: 140px;
       height: 30px;
       cursor: pointer;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: black;
+      top: 5.5px;
+      left: 5px;
+      display: none;
     }
+
+    &[type="radio"]:checked::before {
+      display: block;
+    }
+
   }
 
   &__input-label {
     font-family: "IB";
     font-size: 20px;
+    line-height: 22px;
     color: $text;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -15px;
+      width: 140px;
+      height: 30px;
+    }
   }
 
   &__holder {}
@@ -58,18 +93,18 @@
   &__card {
     position: relative;
     width: 550px;
-    padding: 15px 20px;
+    padding: 15px 18px;
     border: 1px solid $text;
   }
 
   &__title.headline {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     text-align: left;
     font-size: 20px;
 
     &::after {
       width: 60px;
-      margin: 5px 0;
+      margin: -2px 0;
       background-color: $brown;
     }
   }
@@ -95,7 +130,7 @@
 
   &__desc {
     width: 355px;
-    margin-bottom: 60px;
+    margin-bottom: 45px;
     font-family: "IR";
     font-size: 15px;
     line-height: 40px;
@@ -108,7 +143,7 @@
     position: absolute;
     width: 200px;
     height: 300px;
-    left: 380px;
+    left: 389px;
     bottom: -1px;
   }
 
@@ -117,9 +152,9 @@
   &__button.button {
     width: 75px;
     height: 30px;
-		position: absolute;
-		bottom: 15px;
-		left: 20px;
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
   }
 
   &__text {}

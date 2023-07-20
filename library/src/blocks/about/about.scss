@@ -50,6 +50,10 @@
     margin-right: 10px;
     border-radius: 50%;
     background-color: $background-black;
+    
+    &:last-child {
+      margin-right: 0;
+    }
 
     &::before {
       content: "";

@@ -37,6 +37,7 @@
 
   <main class="main">
     <section class="welcome container">
+      <h3 style="display: none;">Welcome</h3>
       <div class="welcome__contents">
         <div class="welcome__title">
           <p class="welcome__headline">Welcome to&nbsp;the&nbsp;Brooklyn Library</p>
@@ -401,7 +402,7 @@
             <h3 class="librarycard__title">Find your Library card</h3>
             <div class="librarycard__benefits">
               <div class="librarycard__box">
-                <h3 class="librarycard__subtitle">brooklyn public library</h3>
+                <h4 class="librarycard__subtitle">brooklyn public library</h4>
                 <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
                   oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Reader's name">
                 <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
@@ -432,7 +433,11 @@
         <div class="footer__contacts">
           <div class="footer__container">
             <address class="footer__adress">
-              <p class="footer__place">286 Cadman Plaza, New York,<br> NY 11238, United States</p>
+              <p class="footer__place">
+                <a class="footer__link animation-text" href="https://goo.su/dXXt9" target="_blank">
+                  286 Cadman Plaza, New York,<br> NY 11238, United States
+                </a>
+              </p>
             </address>
             <ul class="footer__socials">
               <li class="footer__item">

@@ -27,12 +27,12 @@
 
   &__benefit {
 
-		&-left {}
+    &-left {}
 
-		&-right {
-			text-align: right;
-		}
-	}
+    &-right {
+      text-align: right;
+    }
+  }
 
   &__title {
     margin-bottom: 40px;
@@ -49,7 +49,7 @@
   &__item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 39px;
     text-transform: capitalize;
     letter-spacing: 2px;
     line-height: 40px;
@@ -60,21 +60,21 @@
       text-align: left;
       justify-content: flex-start;
 
-			& p.coffeeshop__name {
-				width: 200px;
-				margin-right: 220px;
-	
-				&:after {
-					content: "";
-					display: block;
-					position: relative;
-					top: -20px;
-					left: 260px;
-					width: 100px;
-					height: 1px;
-					background-color: $brown;
-				}
-			}
+      & p.coffeeshop__name {
+        width: 200px;
+        margin-right: 215px;
+
+        &:after {
+          content: "";
+          display: block;
+          position: relative;
+          top: -21px;
+          left: 254px;
+          width: 100px;
+          height: 1px;
+          background-color: $brown;
+        }
+      }
     }
 
 
@@ -82,21 +82,21 @@
       text-align: right;
       justify-content: flex-end;
 
-			& p.coffeeshop__name {
-				width: 212px;
-				margin-right: 220px;
-	
-				&:after {
-					content: "";
-					display: block;
-					position: relative;
-					top: -20px;
-					left: 260px;
-					width: 100px;
-					height: 1px;
-					background-color: $brown;
-				}
-			}
+      & p.coffeeshop__name {
+        width: 212px;
+        margin-right: 220px;
+
+        &:after {
+          content: "";
+          display: block;
+          position: relative;
+          top: -21px;
+          left: 272px;
+          width: 100px;
+          height: 1px;
+          background-color: $brown;
+        }
+      }
     }
   }
 
@@ -107,7 +107,7 @@
     //   content: "";
     //   // margin: 20px auto 0;
     //   display: block;
-		// 	position: relative;
+    // 	position: relative;
     //   top: -20px;
     //   left: 260px;
     //   width: 100px;

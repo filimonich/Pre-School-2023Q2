@@ -38,6 +38,13 @@
     margin-bottom: 10px;
   }
 
+  &__adress-link {
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 20px;
+    color: $white;
+  }
+
   &__socials {
     display: flex;
     align-items: center;
@@ -47,10 +54,10 @@
   &__item {}
 
   &__icon {
-		display: block;
-		width: 24px;
+    display: block;
+    width: 24px;
     height: 24px;
-		margin: 8px 15px 8px 0;
+    margin: 8px 15px 8px 0;
     // margin-right: 15px;
     transition: transform 0.2s ease-in-out;
 
@@ -66,8 +73,8 @@
   &__img {}
 
   &__inner {
-		text-align: right;
-	}
+    text-align: right;
+  }
 
   &__working {
     margin-bottom: 10px;
@@ -96,7 +103,17 @@
   &__text {}
 
   &__link {
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
     color: $white;
   }
-
+  
+  &__link-ml {
+    margin-left: 52px;
+  }  
 }

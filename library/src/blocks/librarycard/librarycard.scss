@@ -18,7 +18,7 @@
     margin-bottom: 30px;
     font-family: "IR";
     font-size: 30px;
-    line-height: normal;
+    line-height: 34px;
     letter-spacing: 0.6px;
     color: $text;
   }
@@ -29,7 +29,7 @@
     align-items: center;
     width: 600px;
     // height: 386px;
-    padding: 20px 20px 30px;
+    padding: 19px 18px 27px;
     border: 3px solid $brown;
 		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     // background: $white;
@@ -41,15 +41,15 @@
     width: 560px;
     height: 272px;
     padding: 20px 20px 25px;
-    margin-bottom: 30px;
+    margin-bottom: 19px;
     background: $brown;
   }
 
   &__subtitle {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     font-family: "FR";
     font-size: 30px;
-    line-height: 50px;
+    line-height: 46px;
     letter-spacing: 0.6px;
     text-transform: capitalize;
     color: $text;
@@ -58,8 +58,8 @@
   &__input {
     width: 520px;
     height: 66px;
-    padding: 12px 20px 8px;
-    margin-bottom: 20px;
+    padding: 12px 19px 12px;
+    margin-bottom: 25px;
     border-radius: 10px;
     border: $brown;
     font-family: "FR";
@@ -90,7 +90,7 @@
   &__button-check.button {
     font-family: "IB";
     width: 242px;
-    padding: 10px 20px;
+    padding: 9px 20px;
     font-size: 20px;
     letter-spacing: 1px;
   }
@@ -100,7 +100,7 @@
     width: 75px;
     height: 30px;
     // padding: 7px 15px 9px;
-    margin-right: 20px;
+    margin-right: 16px;
 		font-family: "IB";
     letter-spacing: 1px;
     border-radius: 2px;
@@ -128,7 +128,7 @@
   &__text {
     width: 460px;
     text-align: right;
-		margin-bottom: 35px;
+		margin-bottom: 34px;
     font-family: "IR";
     font-size: 20px;
     line-height: 40px;

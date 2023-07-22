@@ -9,8 +9,7 @@
 // Import media-query helper
 @import "../../node_modules/include-media/dist/_include-media.scss";
 
-$breakpoints: (
-  'xxxs': 360px,
+$breakpoints: ('xxxs': 360px,
   'xxs': 480px,
   'xs': 640px,
   'sm': 780px,
@@ -50,7 +49,7 @@ html {
   border-radius: 2px;
   border: 1px solid $background-black;
   background-color: $white;
-  transition: background-color 0.6s ease, border 2s ease;
+  transition: background-color 0.6s ease, border 2s ease, transform 0.6s ease;
 
   &:hover {
     border: 1px solid $brown;
@@ -67,13 +66,28 @@ html {
       color: $brown;
     }
   }
-
+  
   & span {
     text-align: center;
     font-family: "IB";
     font-size: 10px;
     letter-spacing: 1px;
     color: $background-black;
+  }
+}
+
+.transform-button {
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  .transform-button:disabled {
+    transform: none;
   }
 }
 
@@ -85,7 +99,7 @@ html {
 
   &:hover {
     border-radius: 50%;
-    box-shadow:  0 0 2px 4px $mulberry;
+    box-shadow: 0 0 2px 4px $mulberry;
     transform: scale(1.1);
   }
 

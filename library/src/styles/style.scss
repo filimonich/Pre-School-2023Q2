@@ -86,7 +86,7 @@ html {
     transform: scale(0.9);
   }
 
-  .transform-button:disabled {
+  &:disabled {
     transform: none;
   }
 }

@@ -1,6 +1,11 @@
 .about {
   $self: &;
 
+  &.container {
+    margin-bottom: 40px;
+    padding-top: 20px
+  }
+
   &__contents {}
 
   &__headline {}

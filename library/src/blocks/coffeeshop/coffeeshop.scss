@@ -1,8 +1,9 @@
 .coffeeshop {
   $self: &;
 
-  &.container{
-    margin-bottom: 58px;
+  &.container {
+    margin-bottom: 39px;
+    padding-top: 20px
   }
 
   &__contents {

@@ -59,6 +59,18 @@
       display: block;
     }
 
+    &::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      opacity: 0;
+      cursor: pointer;
+  }
+
   }
 
   &__input-label {

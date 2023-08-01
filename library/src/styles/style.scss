@@ -42,6 +42,7 @@ html {
   color: $text;
   background-color: $white;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .button {

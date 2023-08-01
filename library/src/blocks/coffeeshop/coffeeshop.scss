@@ -10,9 +10,7 @@
     margin: 0 20px;
   }
 
-  &__headline {
-
-  }
+  &__headline {}
 
   &__subtitle {
     margin-bottom: 42px;
@@ -30,13 +28,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @include media('<=lg') {
+      justify-content: space-between;
+      flex-direction: column;
+    }
   }
 
   &__benefit {
 
-    &-left {}
+    &:first-child {
 
-    &-right {
+      @include media('<=lg') {
+        padding-bottom: 40px;
+      }
+    }
+
+    &:last-child {
       text-align: right;
     }
   }

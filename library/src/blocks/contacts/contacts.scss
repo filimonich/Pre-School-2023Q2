@@ -18,7 +18,22 @@
     flex-wrap: wrap;
   }
 
-  &__benefit {}
+  &__benefit {
+
+    &:first-child {
+
+      @include media('<=lg') {
+        padding-bottom: 59px;
+      }
+    }
+
+    &:last-child {
+
+      @include media('<=lg') {
+        margin: auto;
+      }
+    }
+  }
 
   &__inner {}
 

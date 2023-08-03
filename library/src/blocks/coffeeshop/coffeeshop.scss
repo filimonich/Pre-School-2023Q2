@@ -3,8 +3,13 @@
 
   &.container {
     margin-bottom: 39px;
-    padding-top: 20px
+    padding-top: 20px;
+
+    @include media('<=sm') {
+      margin-bottom: 38px;
+    }
   }
+
 
   &__contents {
     margin: 0 20px;
@@ -20,6 +25,11 @@
     line-height: 40px;
     letter-spacing: 2px;
     color: $text;
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+      letter-spacing: 1.9px;
+    }
   }
 
   &__content {}

@@ -23,6 +23,10 @@
   &__radio {
     display: flex;
     margin-bottom: 42px;
+    
+    @include media('<=sm') {
+      margin-bottom: 41px;
+    }
   }
 
   &__item {
@@ -120,6 +124,10 @@
     @include media('<=lg') {
       justify-items: center;
     }
+
+    @include media('<=sm') {
+      padding-right: 41px;
+    }
   }
 
   &__card {
@@ -130,6 +138,10 @@
 
     @include media('<=lg') {
       grid-column: span 3;
+    }
+
+    @include media('<=sm') {
+      height: 555px;      
     }
   }
 

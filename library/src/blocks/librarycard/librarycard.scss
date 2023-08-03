@@ -3,8 +3,14 @@
 
   &.container {
     margin-bottom: 42px;
-    padding-top: 20px
+    padding-top: 20px;
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+      padding-top: 23px
+    }
   }
+
 
   &__contents {}
 
@@ -36,6 +42,10 @@
     line-height: 34px;
     letter-spacing: 0.6px;
     color: $text;
+    
+    @include media('<=sm') {
+      margin-bottom: 32px;      
+    }
   }
 
   &__benefits {
@@ -43,11 +53,9 @@
     flex-direction: column;
     align-items: center;
     width: 600px;
-    // height: 386px;
     padding: 19px 18px 27px;
     border: 3px solid $brown;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    // background: $white;
   }
 
   &__box {
@@ -81,6 +89,10 @@
     font-size: 30px;
     letter-spacing: 0.6px;
     color: $brown;
+
+    @include media('<=sm') {
+      padding: 11px 21px 12px;
+    }
 
     &:focus {
       outline: none;
@@ -129,7 +141,7 @@
 
   &__get {
     text-align: right;
-    
+
     @include media('<=lg') {
       text-align: center;
     }
@@ -142,6 +154,10 @@
     letter-spacing: 0.6px;
     margin-bottom: 34px;
     color: $text;
+
+    @include media('<=sm') {
+      margin-bottom: 41px;      
+    }
   }
 
   &__text {
@@ -158,7 +174,10 @@
       width: 600px;
       text-align: center;
     }
-  }
 
+    @include media('<=sm') {
+      margin-bottom: 40px;      
+    }
+  }
 
 }

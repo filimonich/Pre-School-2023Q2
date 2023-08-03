@@ -28,6 +28,10 @@
     font-family: "IR";
     font-size: 15px;
     line-height: 20px;
+
+    @include media('<=sm') {
+      margin: 19px 19px 29px;
+    }
   }
 
   &__container {}
@@ -98,6 +102,10 @@
     font-size: 20px;
     line-height: 20px;
     letter-spacing: 2px;
+
+    @include media('<=sm') {
+      margin: 47px 20px;
+    }
   }
 
   &__text {}
@@ -112,8 +120,12 @@
     letter-spacing: 2px;
     color: $white;
   }
-  
+
   &__link-ml {
     margin-left: 52px;
-  }  
+
+    @include media('<=sm') {
+     margin-left: 0;
+    }
+  }
 }

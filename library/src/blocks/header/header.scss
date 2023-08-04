@@ -23,6 +23,13 @@
   &__drop-menu {
     min-width: 28px;
     height: 28px;
+
+    @include media('<=lg') {
+      margin-right: 85px;
+    }
+    // @include media('<=sm') {
+    //   margin-right: 85px;
+    // }
   }
 
   &__image {}

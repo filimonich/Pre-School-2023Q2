@@ -1,22 +1,24 @@
-let hamburger = document.querySelector('.hamburger');
-let overlay = document.querySelector('.overlay');
+(() => {
+  let hamburger = document.querySelector('.hamburger-js');
+  let menuOverlay = document.querySelector('.menu');
+  let links = document.querySelectorAll('.menu__link');
 
-let links = document.querySelectorAll('.menu__link');
-
-links.forEach(function (element) {
-  element.addEventListener('click', toggleMenu);
-})
-
-function toggleMenu() {
-  hamburger.classList.toggle('hamburger--active');
-  overlay.classList.toggle('overlay--active');
-}
-
-hamburger.addEventListener('click', toggleMenu);
-
-document.addEventListener('click', (event) => {
-  if (!overlay.contains(event.target) && event.target !== hamburger) {
-    hamburger.classList.remove('hamburger--active');
-    overlay.classList.remove('overlay--active');
+  function toggleMenu(e) {
+    hamburger.classList.toggle('hamburger--active');
+    menuOverlay.classList.toggle('menu--active');
+    console.info('Клик', e.target)
   }
-});
+
+  links.forEach(function (element) {
+    element.addEventListener('click', toggleMenu);
+  });
+
+  hamburger.addEventListener('click', toggleMenu);
+
+  document.addEventListener('click', e => {
+    if (!menuOverlay.contains(e.target) && e.target !== hamburger) {
+      hamburger.classList.remove('hamburger--active');
+      menuOverlay.classList.remove('menu--active');
+    }
+  });
+})();

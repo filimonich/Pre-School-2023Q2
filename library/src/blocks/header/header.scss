@@ -25,6 +25,7 @@
     height: 28px;
 
     @include media('<=lg') {
+      z-index: 1;
       margin-right: 85px;
     }
     // @include media('<=sm') {

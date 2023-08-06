@@ -9,12 +9,15 @@
 // Import media-query helper
 @import "../../node_modules/include-media/dist/_include-media.scss";
 
-$breakpoints: ('xxxs': 360px,
+$breakpoints: (
+  'xxxs': 360px,
   'xxs': 480px,
   'xs': 640px,
-  'sm': 780px,
+  'sm': 768px,
+  // 'sm': 780px,
   'md': 960px,
-  'lg': 1100px,
+  'lg': 1024px,
+  // 'lg': 1100px,
   'xlg': 1280px,
   'xxlg': 1440px,
   'xxxlg': 1680px,
@@ -42,6 +45,11 @@ html {
   color: $text;
   background-color: $white;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.preload * {
+  transition: none;
 }
 
 .button {
@@ -66,7 +74,7 @@ html {
       color: $brown;
     }
   }
-  
+
   & span {
     text-align: center;
     font-family: "IB";

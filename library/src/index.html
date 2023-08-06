@@ -10,7 +10,7 @@
   <title>Brooklyn Public Library</title>
 </head>
 
-<body class="wrapper">
+<body class="wrapper preload">
   <header class="header">
     <div class="header__contents container">
       <div class="header__content">
@@ -30,6 +30,11 @@
           <a class="header__drop-menu animation-button">
             <img src="images/svg/icon-profile.svg" alt="Button drop menu profile" class="header__image">
           </a>
+          <div class="hamburger hamburger-js">
+            <span class="hamburger__plank"></span>
+            <span class="hamburger__plank"></span>
+            <span class="hamburger__plank"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -51,6 +56,9 @@
         <p class="about__subtitle">The Brooklyn Library is a free workspace,
           a large number of books and a cozy coffee shop inside</p>
         <div class="about__slider">
+          <a class="about__control">
+            <img class="about__img-control" src="images/svg/C_L.svg" alt="left arrow">
+          </a>
           <ul class="about__benefits">
             <li class="about__benefit">
               <img src="images/img/woman.png" alt="the woman at the bookshelf" class="about__img">
@@ -68,10 +76,15 @@
               <img src="images/img/caryatids.png" alt="two columns and caryatids under the roof" class="about__img">
             </li>
           </ul>
+          <a class="about__control">
+            <img class="about__img-control" src="images/svg/C_R.svg" alt="left arrow">
+          </a>
         </div>
         <div class="about__item-dots">
           <ul class="about__dots">
             <li class="about__dot"><a class="about__item animation-button active-dot"></a></li>
+            <li class="about__dot"><a class="about__item animation-button"></a></li>
+            <li class="about__dot"><a class="about__item animation-button"></a></li>
             <li class="about__dot"><a class="about__item animation-button"></a></li>
             <li class="about__dot"><a class="about__item animation-button"></a></li>
           </ul>
@@ -296,7 +309,7 @@
           Our barista to cook you best coffee, and also you can try desserts from bakery.</p>
         <div class="coffeeshop__content">
           <ul class="coffeeshop__benefits">
-            <li class="coffeeshop__benefit coffeeshop__benefit-left">
+            <li class="coffeeshop__benefit">
               <h3 class="coffeeshop__title">Coffee & Tea</h3>
               <ul class="coffeeshop__items">
                 <li class="coffeeshop__item coffeeshop__item-left">
@@ -325,7 +338,7 @@
                 </li>
               </ul>
             </li>
-            <li class="coffeeshop__benefit coffeeshop__benefit-right">
+            <li class="coffeeshop__benefit">
               <h3 class="coffeeshop__title">Desserts & Cakes</h3>
               <ul class="coffeeshop__items">
                 <li class="coffeeshop__item coffeeshop__item-right">
@@ -414,8 +427,8 @@
 
           <div class="librarycard__get">
             <h3 class="librarycard__caption">Get a reader card</h3>
-            <p class="librarycard__text">You will be able to see a reader card after
-              logging into account or you can register a new account</p>
+            <p class="librarycard__text">You will be able to see a reader card after logging into account or you can
+              register a new account</p>
             <div class="librarycard__buttons">
               <button class="librarycard__button librarycard__button-get button">Sign Up</button>
               <button class="librarycard__button librarycard__button-get button">Log in</button>
@@ -484,8 +497,6 @@
     </div>
 
   </footer>
-
-
 </body>
 
 </html>

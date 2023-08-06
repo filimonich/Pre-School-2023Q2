@@ -3,8 +3,14 @@
 
   &.container {
     margin-bottom: 42px;
-    padding-top: 20px
+    padding-top: 20px;
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+      padding-top: 23px
+    }
   }
+
 
   &__contents {}
 
@@ -14,9 +20,19 @@
     display: flex;
     justify-content: space-between;
     margin: 0 20px;
+
+    @include media('<=lg') {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
-  &__inner {}
+  &__inner {
+
+    @include media('<=lg') {
+      padding-bottom: 21px;
+    }
+  }
 
   &__title {
     text-align: center;
@@ -26,6 +42,10 @@
     line-height: 34px;
     letter-spacing: 0.6px;
     color: $text;
+    
+    @include media('<=sm') {
+      margin-bottom: 32px;      
+    }
   }
 
   &__benefits {
@@ -33,11 +53,9 @@
     flex-direction: column;
     align-items: center;
     width: 600px;
-    // height: 386px;
     padding: 19px 18px 27px;
     border: 3px solid $brown;
-		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    // background: $white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   &__box {
@@ -71,6 +89,10 @@
     font-size: 30px;
     letter-spacing: 0.6px;
     color: $brown;
+
+    @include media('<=sm') {
+      padding: 11px 21px 12px;
+    }
 
     &:focus {
       outline: none;
@@ -106,7 +128,7 @@
     height: 30px;
     // padding: 7px 15px 9px;
     margin-right: 16px;
-		font-family: "IB";
+    font-family: "IB";
     letter-spacing: 1px;
     border-radius: 2px;
     font-size: 10px;
@@ -119,6 +141,10 @@
 
   &__get {
     text-align: right;
+
+    @include media('<=lg') {
+      text-align: center;
+    }
   }
 
   &__caption {
@@ -128,18 +154,30 @@
     letter-spacing: 0.6px;
     margin-bottom: 34px;
     color: $text;
+
+    @include media('<=sm') {
+      margin-bottom: 41px;      
+    }
   }
 
   &__text {
     width: 460px;
     text-align: right;
-		margin-bottom: 36px;
+    margin-bottom: 36px;
     font-family: "IR";
     font-size: 20px;
     line-height: 40px;
     letter-spacing: 0.4px;
-		color: $text;
-  }
+    color: $text;
 
+    @include media('<=lg') {
+      width: 600px;
+      text-align: center;
+    }
+
+    @include media('<=sm') {
+      margin-bottom: 40px;      
+    }
+  }
 
 }

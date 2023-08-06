@@ -3,16 +3,19 @@
 
   &.container {
     margin-bottom: 39px;
-    padding-top: 20px
+    padding-top: 20px;
+
+    @include media('<=sm') {
+      margin-bottom: 38px;
+    }
   }
+
 
   &__contents {
     margin: 0 20px;
   }
 
-  &__headline {
-
-  }
+  &__headline {}
 
   &__subtitle {
     margin-bottom: 42px;
@@ -22,6 +25,11 @@
     line-height: 40px;
     letter-spacing: 2px;
     color: $text;
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+      letter-spacing: 1.9px;
+    }
   }
 
   &__content {}
@@ -30,13 +38,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @include media('<=lg') {
+      justify-content: space-between;
+      flex-direction: column;
+    }
   }
 
   &__benefit {
 
-    &-left {}
+    &:first-child {
 
-    &-right {
+      @include media('<=lg') {
+        padding-bottom: 40px;
+      }
+    }
+
+    &:last-child {
       text-align: right;
     }
   }

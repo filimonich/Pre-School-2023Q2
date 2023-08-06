@@ -23,6 +23,10 @@
   &__radio {
     display: flex;
     margin-bottom: 42px;
+    
+    @include media('<=sm') {
+      margin-bottom: 41px;
+    }
   }
 
   &__item {
@@ -115,8 +119,15 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 220px;
-    grid-row-gap: 40px;
+    gap: 40px 220px;
+
+    @include media('<=lg') {
+      justify-items: center;
+    }
+
+    @include media('<=sm') {
+      padding-right: 41px;
+    }
   }
 
   &__card {
@@ -124,6 +135,14 @@
     width: 550px;
     padding: 15px 18px;
     border: 1px solid $text;
+
+    @include media('<=lg') {
+      grid-column: span 3;
+    }
+
+    @include media('<=sm') {
+      height: 555px;      
+    }
   }
 
   &__title.headline {

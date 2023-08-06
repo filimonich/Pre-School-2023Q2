@@ -36,9 +36,11 @@ $steel-blue: #5f86bb;
       xxxlg: 1680,
       xxlg: 1440,
       xlg: 1280,
-      lg: 1100,
+      lg: 1024,
+      // lg: 1100,
       md: 960,
-      sm: 780,
+      sm: 768,
+      // sm: 780,
       xs: 640,
       xxs: 480,
       xxxs: 360);
@@ -52,7 +54,8 @@ $steel-blue: #5f86bb;
       text-align: center;
       position: fixed;
       top: 30px;
-      right: 5px;
+      // right: 5px;
+      left: 5px;
       z-index: 9999;
       min-height: 16px;
       min-width: 40px;

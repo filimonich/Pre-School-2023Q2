@@ -6,7 +6,6 @@
   function toggleMenu(e) {
     hamburger.classList.toggle('hamburger--active');
     menuOverlay.classList.toggle('menu--active');
-    console.info('Клик', e.target)
   }
 
   links.forEach(function (element) {

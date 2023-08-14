@@ -23,9 +23,14 @@
   &__radio {
     display: flex;
     margin-bottom: 42px;
-    
+
     @include media('<=sm') {
       margin-bottom: 41px;
+    }
+
+    @include media('<sm') {
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
   }
 
@@ -33,16 +38,38 @@
     position: relative;
     margin-right: 156px;
 
+    @include media('<sm') {
+      min-width: 100px;
+      margin-right: 1%;
+      margin-bottom: 10px;
+    }
+    
+    @include media('<xs') {
+      flex-basis: 40%;
+    }
+
     &:last-child {
       margin-right: 0;
+
+      @include media('<sm') {
+        margin-right: 1%;
+      }
     }
 
     &:nth-child(2) {
       margin-right: 154px;
+
+      @include media('<sm') {
+        margin-right: 1%;
+      }
     }
 
     &:nth-child(3) {
       margin-right: 166px;
+
+      @include media('<sm') {
+        margin-right: 1%;
+      }
     }
   }
 
@@ -121,9 +148,21 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 220px;
 
-    @include media('<=lg') {
+    @include media('<=xxlg') {
+      gap: 40px 2%;
+    }
+
+    @include media('<=xxlg') {
       justify-items: center;
     }
+
+    // @include media('<=xlg') {
+    //   row-gap: 2%;
+    // }
+
+    // @include media('<=lg') {
+    //   justify-items: center;
+    // }
 
     @include media('<=sm') {
       padding-right: 41px;
@@ -136,12 +175,12 @@
     padding: 15px 18px;
     border: 1px solid $text;
 
-    @include media('<=lg') {
+    @include media('<=xlg') {
       grid-column: span 3;
     }
 
     @include media('<=sm') {
-      height: 555px;      
+      height: 555px;
     }
   }
 

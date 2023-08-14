@@ -79,6 +79,10 @@
   &__img {
     width: 698px;
     height: 414px;
+
+    @include media('<sm') {
+      height: auto;
+    }
   }
 
 }

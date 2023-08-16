@@ -49,7 +49,12 @@
   }
 
   &__benefits {
+    // display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
+    overflow: hidden;
 
     @include media('<=sm') {
       justify-content: center;
@@ -58,19 +63,26 @@
 
   &__benefit {
 
-    &:nth-child(-n + 2) {
-      margin-right: 25px;
+    flex: 0 0 34.0333%;
+    transition: transform 0.5s ease-in-out;
 
-      @include media('<=sm') {
-        margin-right: 0;
-      }
-    }
+    // &:nth-child(-n + 2) {
+    //   margin-right: 25px;
 
-    &:not(:first-child) {
+    //   @include media('<=sm') {
+    //     margin-right: 0;
+    //   }
+    // }
 
-      @include media('<=sm') {
-        display: none;
-      }
+    // &:not(:first-child) {
+
+    //   @include media('<=sm') {
+    //     display: none;
+    //   }
+    // }
+
+    &.active-slide {
+      display: block;
     }
   }
 
@@ -85,6 +97,10 @@
 
   &__dot {
     margin-right: 10px;
+
+    & a.active-dot {
+      background-color: $brown;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -119,9 +135,9 @@
       cursor: pointer;
     }
 
-    &.active-dot {
-      background-color: $brown;
-    }
+    // &.active-dot {
+    //   background-color: $brown;
+    // }
   }
 
   &__dot-img {}

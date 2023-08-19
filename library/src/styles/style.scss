@@ -32,6 +32,18 @@ $breakpoints: (
 // Import BEM blocks scss
 @import "../blocks/**/*.scss";
 
+// Определяем анимацию затухания  
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+// Определяем анимацию проявления 
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 
 body,
 html {
@@ -45,7 +57,7 @@ html {
   color: $text;
   background-color: $white;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 .preload * {

@@ -40,8 +40,6 @@
 
     // обновить индецс текущего слайда
     currentSlideIndex = index;
-    // console.log(currentSlideIndex, index)
-    console.dir(currentSlideIndex, index);
   };
 
   // флаг для отслеживания анимации

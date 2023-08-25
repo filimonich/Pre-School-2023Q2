@@ -1,27 +1,38 @@
 .favorites {
   $self: &;
+  // min-height: 1400px;
+
+  // @include media('<=sm') {
+  //   min-height: 1400px;
+  // }
+
+  // display: block;
+  // position: relative;
 
   &.container {
+    // display: block;
+    // position: relative;
     margin-bottom: 40px;
     padding-top: 20px
   }
 
   &__contents {
-    // height: 100%;
-    min-height: 1150px;
-    height: auto;
+    height: 100%;
+    // height: calc(100% + 10px);
+    // height: auto;
     margin: 0 20px;
     z-index: 1;
 
-    // @include media('<=sm') {
-    //   min-height: 2340px;
-    // }
+    @include media('<=sm') {
+      // height: calc(100% + 10px);
+      height: 100%;
+    }
   }
 
   &__headline {}
 
   &__subtitle {
-    margin-bottom: 41px;
+    // margin-bottom: 41px;
     text-align: left;
     font-family: "IB";
     font-size: 20px;
@@ -29,17 +40,20 @@
   }
 
   &__radio {
-    display: flex;
-    padding-bottom: 42px;
     z-index: 2;
+    display: flex;
+    padding: 40px 0 43px;
+    // padding-bottom: 42px;
 
     @include media('<=sm') {
-      position:-webkit-sticky; 
-      position:sticky; 
-      top:0;
-      height:100px;
-      padding-bottom: 41px;
+      position: sticky;
+      top: 0;
+      // height:100px;
+      height: 62px;
+      padding: 40px 0 63px;
+      // padding-bottom: 41px;
       text-align: center;
+      background-color: $white;
     }
 
     @include media('<sm') {

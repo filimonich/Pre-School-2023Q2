@@ -161,7 +161,13 @@
                 and thrived as the modern world has changed around them.</p>
               <div class="favorites__icon"><img src="images/img/queen.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button" disabled><span class="favorites__text">Own</span></button>
+              <button class="favorites__button button" style="display: none;" disabled>
+                <span class="favorites__text" style="display: none;">Own</span>
+              </button>
+              <button class="favorites__button button" >
+                <span class="favorites__text" style="display: none;">Own</span>
+                <span class="favorites__text">Buy</span>
+              </button>
             </li>
           </ul>
         </div>
@@ -433,7 +439,8 @@
                 <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
                   oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
               </div>
-              <button class="librarycard__button librarycard__button-check button">Check the card</button>
+              <button class="librarycard__button librarycard__button-check button" onclick="return false;">Check the
+                card</button>
             </form>
           </div>
 

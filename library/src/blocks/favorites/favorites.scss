@@ -57,8 +57,11 @@
     }
 
     @include media('<sm') {
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
+      max-width: 728px;
+      width: 100%;
+      margin: 0 auto 0 .5%;
     }
   }
 
@@ -68,7 +71,7 @@
 
     @include media('<sm') {
       min-width: 100px;
-      margin-right: 1%;
+      margin-right: 5%;
       margin-bottom: 10px;
     }
 
@@ -80,7 +83,7 @@
       margin-right: 0;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
 
@@ -88,7 +91,7 @@
       margin-right: 154px;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
 
@@ -96,7 +99,7 @@
       margin-right: 166px;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
   }

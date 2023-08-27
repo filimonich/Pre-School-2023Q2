@@ -1,4 +1,5 @@
 (() => {
+  // открытие и закрытие меню и меню-профиля
   const hamburgerButton = document.querySelector('.hamburger-js');
   const menuElement = document.querySelector('.menu');
   const dropMenuProfile = document.querySelector('.header__menu-drop');

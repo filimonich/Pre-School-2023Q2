@@ -1,0 +1,178 @@
+.modal {
+  $self: &;
+
+  z-index: 10;
+  // display: none;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($text, 0.2);
+  backdrop-filter: blur(10px);
+
+  &__content {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 382px;
+    padding: 20px 25px;
+    // border-radius: 5px;
+    background-color: $white;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.07);
+    transform: translate(-50%, -50%);
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &__headline {
+    margin-bottom: 20px;
+    font-family: "FR";
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: $text;
+    text-transform: uppercase;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &>* {
+      margin-bottom: 10px;
+    }
+
+    &>*:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    margin-bottom: 11px;
+    text-align: left;
+    font-family: 'IR';
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: $text;
+  }
+
+  &__input {
+    padding: 2.1px 4px;
+    font-size: 11px;
+    border-radius: .2px;
+    border: 1px solid $brown;
+    background-color: $white;
+    color: $text;
+    outline: none;
+
+    &:hover {
+      border: 1px solid rgba($brown, 0.2);
+    }
+
+    &:focus {
+      border: 1px solid rgba($brown, 0.8);
+    }
+
+    &::placeholder {
+      color: $text;
+    }
+
+    &[type='tel'] {
+      // Добавьте здесь стили для валидации поля телефона
+    }
+
+    &[type='password'] {
+      // Добавьте здесь стили для валидации поля пароля
+    }
+  }
+
+  &__toggle-password {
+    position: absolute;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    text-indent: -99999px;
+
+    // .modal__input+&::before {
+    //   content: "";
+    //   top: 52px;
+    //   right: -310px;
+    //   position: absolute;
+    //   width: 24px;
+    //   height: 24px;
+    //   background: url(/images/eye-close.svg)
+    // }
+
+    // .modal__input[type="text"]+&::before {
+    //   background: url(/images/eye-open.svg)
+    // }
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 75px;
+    margin-top: 11px;
+    padding: 9px 14px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-family: "IB";
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  &__forgot {
+    display: flex;
+  }
+
+  &__text {
+    margin-right: 9px;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+    font-family: "IR";
+    font-size: 10px;
+    color: $text;
+  }
+
+  &__login-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0 2px;
+
+    // text-decoration: underline;
+    text-align: center;
+    font-family: "IB";
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 1px;
+    color: $text;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 97.2%;
+      max-width: 40px;
+      height: 0.5px;
+      margin: .7px auto;
+      background-color: $text;
+    }
+  }
+}

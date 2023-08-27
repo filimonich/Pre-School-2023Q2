@@ -35,8 +35,12 @@
                 <p class="header__title">Profile</p>
               </div>
               <ul class="header__list">
-                <li class="header__item"><button class="header__link animation-text">Log In</button></li>
-                <li class="header__item"><button class="header__link animation-text">Register</button></li>
+                <li class="header__item">
+                  <button class="header__link header__button-login animation-text">Log In</button>
+                </li>
+                <li class="header__item">
+                  <button class="header__link animation-text">Register</button>
+                </li>
               </ul>
             </div>
           </a>
@@ -525,6 +529,35 @@
     </div>
 
   </footer>
+
+  <div class="modal modal-js">
+    <div class="modal__content">
+      <button class="modal__close-button">
+        <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+      </button>
+      <h3 class="modal__headline">register</h3>
+      <form class="modal__form">
+        <label class="modal__label" for="firstName">First name</label>
+        <input class="modal__input" id="firstName" type="text" required>
+        <label class="modal__label" for="lastName">Last name</label>
+        <input class="modal__input" id="lastName" type="text" required>
+        <label class="modal__label" for="email">E-mail</label>
+        <input class="modal__input" id="email" type="email" required>
+        <label class="modal__label" for="password">Password</label>
+        <input class="modal__input" id="password" type="password" required>
+        <button class="modal__toggle-password">toggle-password</button>
+        <!-- <button class="button button-violet modal__button">
+          <span class="button__text">Войти</span>
+        </button> -->
+        <!-- <button class="modal__button button librarycard__button librarycard__button-get">Sign Up</button> -->
+        <button class="modal__button button">Sign Up</button>
+        <div class="modal__forgot">
+          <p class="modal__text" href="#">Already have an account?</p>
+          <button class="modal__login-button animation-text">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 
 </html>

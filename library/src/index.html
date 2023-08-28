@@ -544,12 +544,9 @@
         <label class="modal__label" for="email">E-mail</label>
         <input class="modal__input" id="email" type="email" required>
         <label class="modal__label" for="password">Password</label>
-        <input class="modal__input" id="password" type="password" required>
+        <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
+          title="Пароль должен содержать не менее 8 символов" required>
         <button class="modal__toggle-password">toggle-password</button>
-        <!-- <button class="button button-violet modal__button">
-          <span class="button__text">Войти</span>
-        </button> -->
-        <!-- <button class="modal__button button librarycard__button librarycard__button-get">Sign Up</button> -->
         <button class="modal__button button">Sign Up</button>
         <div class="modal__forgot">
           <p class="modal__text" href="#">Already have an account?</p>

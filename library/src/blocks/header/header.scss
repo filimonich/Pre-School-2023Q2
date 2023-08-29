@@ -1,11 +1,11 @@
 .header {
   $self: &;
-  z-index: 10;
   width: 100%;
   margin-bottom: 0;
   background-color: $background-black;
 
   &__contents {
+    z-index: 3;
     margin-bottom: 0;
   }
 
@@ -36,11 +36,47 @@
     // }
   }
 
-  &__image {}
+  &__image {
+    display: none;
+    position: relative;
+    z-index: -10;
+    opacity: 0;
+
+    &.active {
+      display: block;
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+
+  &__user-icon {
+    display: none;
+    z-index: -10;
+    opacity: 0;
+
+    &.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: $white;
+
+      z-index: 10;
+      opacity: 1;
+
+      color: $brown;
+      font-family: "IR";
+      font-size: 15px;
+      font-style: normal;
+      line-height: 20px;
+    }
+  }
 
   &__menu-profile {
-    z-index: -1;
     position: absolute;
+    z-index: -1;
     top: 100%;
     right: 0;
     min-width: 80px;
@@ -53,12 +89,18 @@
 
     background-color: $white;
     color: $text;
+    
     opacity: 0;
     transition: opacity 1s;
 
+    pointer-events: none;
+
+
     &--active {
-      z-index: 1;
+      z-index: 10;
       opacity: 1;
+
+      pointer-events: auto;
     }
 
     // @include media('<=lg') {
@@ -93,15 +135,15 @@
     gap: 10px;
     font-family: "IR";
   }
-	
+
   &__item {}
-	
+
   &__link {
-		padding: 0 2px;
-		color: $text;
-		background: none;
-		border: none;
-		cursor: pointer;
+    padding: 0 2px;
+    color: $text;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
 }

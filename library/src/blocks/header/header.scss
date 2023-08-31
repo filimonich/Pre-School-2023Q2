@@ -89,7 +89,7 @@
 
     background-color: $white;
     color: $text;
-    
+
     opacity: 0;
     transition: opacity 1s;
 
@@ -117,16 +117,31 @@
   &__menu-profile-contents {}
 
   &__title {
-    font-family: "IB";
+    display: none;
 
-    &::after {
-      content: "";
+    &.active {
       display: block;
-      width: 97.2%;
-      max-width: 40px;
-      height: .5px;
-      margin: 5px auto 15px;
-      background-color: $brown;
+      font-family: "IB";
+      font-size: 15px;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 97.2%;
+        max-width: 40px;
+        height: .5px;
+        margin: 5px auto 15px;
+        background-color: $brown;
+      }
+    }
+  }
+
+  &__card-number {
+    display: none;
+
+    &.header__title.active {
+      display: block;
+      font-size: 12px;
     }
   }
 
@@ -139,11 +154,16 @@
   &__item {}
 
   &__link {
+    display: none;
     padding: 0 2px;
     color: $text;
     background: none;
     border: none;
     cursor: pointer;
+
+    &.active {
+      display: initial;
+    }
   }
 
 }

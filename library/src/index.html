@@ -29,18 +29,21 @@
           </nav>
           <a class="header__menu-drop">
             <img src="images/svg/icon-profile.svg" alt="Button drop menu profile"
-            class="header__image animation-button active">
+              class="header__image animation-button active">
             <div class="header__user-icon animation-button" id="userIcon"></div>
-              <div class="header__menu-profile">
+            <div class="header__menu-profile">
               <div class="header__menu-profile-contents">
-                <p class="header__title">Profile</p>
+                <p class="header__profile-title header__title active">Profile</p>
+                <p class="header__card-number header__title"></p>
               </div>
               <ul class="header__list">
                 <li class="header__item">
-                  <button class="header__link button-login animation-text">Log In</button>
+                  <button class="header__link button-login animation-text active">Log In</button>
+                  <button class="header__link button-my-profile animation-text">My profile</button>
                 </li>
                 <li class="header__item">
-                  <button class="header__link button-register animation-text">Register</button>
+                  <button class="header__link button-register animation-text active">Register</button>
+                  <button class="header__link button-log-out animation-text">Log Out</button>
                 </li>
               </ul>
             </div>
@@ -464,7 +467,7 @@
               register a new account</p>
             <div class="librarycard__buttons">
               <button class="librarycard__button librarycard__button-get button-register button">Sign Up</button>
-              <button class="librarycard__button librarycard__button-get button">Log in</button>
+              <button class="librarycard__button librarycard__button-get button-login button">Log in</button>
             </div>
           </div>
         </div>
@@ -532,28 +535,52 @@
   </footer>
 
   <div class="modal modal-js">
-    <div class="modal__content">
-      <button class="modal__close-button">
-        <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
-      </button>
-      <h3 class="modal__headline">register</h3>
-      <form class="modal__form">
-        <label class="modal__label" for="firstName">First name</label>
-        <input class="modal__input" id="firstName" type="text" required>
-        <label class="modal__label" for="lastName">Last name</label>
-        <input class="modal__input" id="lastName" type="text" required>
-        <label class="modal__label" for="email">E-mail</label>
-        <input class="modal__input" id="email" type="email" required>
-        <label class="modal__label" for="password">Password</label>
-        <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
-          title="Пароль должен содержать не менее 8 символов" required>
-        <button class="modal__toggle-password">toggle-password</button>
-        <button class="modal__button button">Sign Up</button>
-        <div class="modal__forgot">
-          <p class="modal__text" href="#">Already have an account?</p>
-          <button class="modal__login-button animation-text">Login</button>
-        </div>
-      </form>
+    <div class="modal__register modal__main">
+      <div class="modal__content">
+        <button class="modal__close-button">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <h3 class="modal__headline">register</h3>
+        <form class="modal__form">
+          <label class="modal__label" for="firstName">First name</label>
+          <input class="modal__input" id="firstName" type="text" required>
+          <label class="modal__label" for="lastName">Last name</label>
+          <input class="modal__input" id="lastName" type="text" required>
+          <label class="modal__label" for="email">E-mail</label>
+          <input class="modal__input" id="email" type="email" required>
+          <label class="modal__label" for="password">Password</label>
+          <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
+            title="Пароль должен содержать не менее 8 символов" required>
+          <button class="modal__toggle-password">toggle-password</button>
+          <button class="modal__button modal__sign-up-button button">Sign Up</button>
+          <div class="modal__forgot">
+            <p class="modal__text">Already have an account?</p>
+            <button class="modal__login-button modal__style-button animation-text">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal__login modal__main">
+      <div class="modal__content">
+        <button class="modal__close-button">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <h3 class="modal__headline">login</h3>
+        <form class="modal__form">
+          <label class="modal__label" for="emailOrCard">E-mail or readers card</label>
+          <input class="modal__input" id="emailOrCard" type="text" required>
+          <label class="modal__label" for="passwordLogin">Password</label>
+          <input class="modal__input" id="passwordLogin" type="password" name="password" pattern=".{8,}"
+            title="Пароль должен содержать не менее 8 символов" required>
+          <button class="modal__toggle-password">toggle-password</button>
+          <button class="modal__button modal__log-in-button button">Log In</button>
+          <div class="modal__forgot">
+            <p class="modal__text">Don’t have an account?</p>
+            <button class="modal__register-button modal__style-button animation-text">Register</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </body>

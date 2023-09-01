@@ -30,6 +30,10 @@
     background-color: $white;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.07);
     transform: translate(-50%, -50%);
+
+    &-login {
+      height: 262px;
+    }
   }
 
   &__close-button {

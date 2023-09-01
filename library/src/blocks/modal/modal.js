@@ -8,10 +8,28 @@
   const modalLogin = document.querySelector('.modal__login');
   const openModalLogin = document.querySelector('.header__button-login');
   const closeButton = document.querySelector('.modal__close-button');
-  // const modalContent = document.querySelector('.modal__content');
   const modalContent = document.querySelector('.modal__login .modal__content');
   const passwordInput = document.querySelector('#password');
   const signUpButton = document.querySelector('.modal__button');
+
+  const cardNumberElement = document.querySelector('.header__card-number');
+  const cardNumber = localStorage.getItem('cardNumber');
+  const cardProfileTitle = document.querySelector('.header__profile-title');
+  const myProfileButton = document.querySelector('.button-my-profile');
+  const logOutButton = document.querySelector('.button-log-out');
+  const loginButton = document.querySelector('.button-login');
+  const registerButton = document.querySelector('.button-register');
+  const storedEmail = localStorage.getItem('email');
+  const storedCard = localStorage.getItem('cardNumber');
+  const storedPassword = localStorage.getItem('password');
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const icon = document.getElementById('userIcon');
+  const modalLogInButton = document.querySelector('.modal__log-in-button');
+  const form = document.querySelector('.modal__form');
+
+  const fields = ['firstName', 'lastName', 'email', 'password'];
+
   const togglePasswordButton = document.querySelector(
     '.modal__toggle-password'
   );
@@ -20,9 +38,8 @@
     '.modal__login .modal__close-button'
   );
 
-  // функция переключения модального окна регистрации
+  // функция закрытия модального окна регистрации
   const toggleModal = modalSelector => {
-    // Закрыть другое модальное окно
     if (
       modalSelector === '.modal__register' &&
       modalLogin.style.display === 'block'
@@ -36,29 +53,12 @@
       toggleModal('.modal__register');
     }
 
-    // Открыть или закрыть выбранное модальное окно
+    // открыть или закрыть выбранное модальное окно
     const modalElement = document.querySelector(modalSelector);
     const isModalOpen = modalElement.style.display === 'block';
     modalElement.style.display = isModalOpen ? 'none' : 'block';
     document.body.style.overflow = isModalOpen ? '' : 'hidden';
   };
-
-  // const toggleModal = modalSelector => {
-  //   const modalElement = document.querySelector(modalSelector);
-  //   const isModalOpen = modalElement.style.display === 'block';
-  //   modalElement.style.display = isModalOpen ? 'none' : 'block';
-  //   document.body.style.overflow = isModalOpen ? '' : 'hidden';
-  // };
-  // const toggleModal = () => {
-  //   const isModalOpen = modal.style.display === 'block';
-  //   modal.style.display = isModalOpen ? 'none' : 'block';
-  //   document.body.style.overflow = isModalOpen ? '' : 'hidden';
-  // };
-
-  // добовляем обработчик событий при клике
-  // openModalRegisterButtons.forEach(button => {
-  //   button.addEventListener('click', toggleModal);
-  // });
 
   openModalRegisterButtons.forEach(button => {
     button.addEventListener('click', () => toggleModal('.modal__register'));
@@ -66,9 +66,6 @@
   openModalLoginButtons.forEach(button => {
     button.addEventListener('click', () => toggleModal('.modal__login'));
   });
-  // openModalLogin.addEventListener('click', () => toggleModal('.modal__login'));
-
-  // closeButton.addEventListener('click', toggleModal);
 
   function closeModal() {
     if (modalRegister.style.display === 'block') {
@@ -85,23 +82,12 @@
     toggleModal('.modal__login');
   });
 
-  // closeButton.addEventListener('click', () => {
-  //   toggleModal('.modal__register');
-  //   toggleModal('.modal__login');
-  // });
-
-  // Добавляем обработчик событий click к элементу модального окна
+  // добавить обработчик событий click к элементу модального окна
   modal.addEventListener('click', e => {
-    // Проверяем, было ли нажатие вне элемента modal__content
-    if (!modalContent.contains(e.target)) {
-      // Метод contains возвращает true, если узел является потомком указанного узла,
-      // иначе - false. В данном случае, если элемент,
-      // на который было нажатие (event.target),
-      // не является потомком элемента modalContent, то метод вернет false,
-      // и условие !modalContent.contains(event.target) будет истинным.
-      // Скрываем модальное окно, устанавливая свойство display в none
-      // modal.style.display = 'none';
-      // closeModal();
+    const currentModalContent = document.querySelector(
+      '.modal__main[style*="block"] .modal__content'
+    );
+    if (currentModalContent && !currentModalContent.contains(e.target)) {
       if (modalRegister.style.display === 'block') {
         toggleModal('.modal__register');
       }
@@ -114,16 +100,10 @@
   //////////
 
   document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.modal__form');
-    // const modal = document.querySelector('.modal');
-
-    const fields = ['firstName', 'lastName', 'email', 'password'];
-
     // проверяет стутс входа
     function checkLoginStatus() {
       if (localStorage.getItem('loggedIn') === 'true') {
         updateIcon();
-        // activateIcon();
         updateMenuAndIcon();
       }
     }
@@ -147,9 +127,6 @@
 
     // обновления иконки пользователя
     function updateIcon() {
-      const firstName = localStorage.getItem('firstName');
-      const lastName = localStorage.getItem('lastName');
-      const icon = document.getElementById('userIcon');
       icon.textContent =
         firstName && lastName
           ? firstName[0].toUpperCase() + lastName[0].toUpperCase()
@@ -157,50 +134,32 @@
       localStorage.setItem('loggedIn', 'true'); // сохранение входа
     }
 
-    // смена иконки пользователя
-    // function activateIcon() {
-    //   document.querySelector('.header__image').classList.remove('active');
-    //   document.getElementById('userIcon').classList.add('active');
-    // }
-
+    // смена иконки и меню пользователя
     function updateMenuAndIcon() {
       // смена иконки пользователя
       document.querySelector('.header__image').classList.remove('active');
       document.getElementById('userIcon').classList.add('active');
 
       // обновление меню
-      const cardNumberElement = document.querySelector('.header__card-number');
-      const cardNumber = localStorage.getItem('cardNumber');
       cardNumberElement.textContent = cardNumber;
+
       cardNumberElement.classList.add('active');
-
-      const myProfileButton = document.querySelector('.button-my-profile');
       myProfileButton.classList.add('active');
-
-      const logOutButton = document.querySelector('.button-log-out');
       logOutButton.classList.add('active');
 
-      const loginButton = document.querySelector('.button-login');
       loginButton.classList.remove('active');
-
-      const registerButton = document.querySelector('.button-register');
       registerButton.classList.remove('active');
-
-      const cardProfileTitle = document.querySelector('.header__profile-title');
       cardProfileTitle.classList.remove('active');
     }
 
-    // вызов функций, если форма валидна
+    // вызов функций, если форма валидна, происходит логин
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (form.checkValidity()) {
         saveData();
         updateIcon();
         generateCardNumber();
-        // activateIcon();
         localStorage.setItem('loggedIn', 'true'); // сохранение входа
-        // modal.classList.remove('active'); // закрытие формы
-        // modal.style.display = 'none';
         updateMenuAndIcon(); // обновление иконки и меню
         closeModal();
       }
@@ -209,7 +168,6 @@
     // закрыть, если нажать signUpButton
     signUpButton.addEventListener('click', function () {
       if (form.checkValidity()) {
-        // modal.style.display = 'none';
         closeModal();
       }
     });
@@ -226,15 +184,39 @@
       });
     });
 
-    //////////
+    modalLogInButton.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      if (storedEmail || storedCard || storedPassword) {
+        const emailOrCardInput = document.getElementById('emailOrCard').value;
+        const passwordInput = document.getElementById('passwordLogin').value;
+
+        if (
+          (emailOrCardInput === storedEmail ||
+            emailOrCardInput === storedCard) &&
+          passwordInput === storedPassword
+        ) {
+          // если данные совпадают с данными из localStorage
+          updateIcon();
+          generateCardNumber();
+          localStorage.setItem('loggedIn', 'true'); // Сохранение входа
+          updateMenuAndIcon(); // Обновление иконки и меню
+          closeModal();
+        } else {
+          // если данные не соответствуют данным из localStorage
+          alert(
+            'Invalid credentials. Please check your email address or card number and password.'
+          );
+        }
+      } else {
+        alert('You need to register before logging in.');
+      }
+    });
   });
 
   // выхода из учетной записи
-  const logOutButton = document.querySelector('.button-log-out');
   logOutButton.addEventListener('click', () => {
     localStorage.setItem('loggedIn', 'false');
     // нужно дописать поведение при выходе
   });
-
-  ///////
 })();

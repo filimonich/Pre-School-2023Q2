@@ -217,6 +217,6 @@
   // выхода из учетной записи
   logOutButton.addEventListener('click', () => {
     localStorage.setItem('loggedIn', 'false');
-    // нужно дописать поведение при выходе
+    location.reload(); // перезагрузить страницу
   });
 })();

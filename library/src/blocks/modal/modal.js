@@ -127,11 +127,11 @@
 
     // обновления иконки пользователя
     function updateIcon() {
-      icon.textContent =
-        firstName && lastName
-          ? firstName[0].toUpperCase() + lastName[0].toUpperCase()
-          : '??';
-      localStorage.setItem('loggedIn', 'true'); // сохранение входа
+      if (firstName && lastName) {
+        icon.textContent =
+          firstName[0].toUpperCase() + lastName[0].toUpperCase();
+      }
+      localStorage.setItem('loggedIn', 'true'); // Сохранение входа
     }
 
     // смена иконки и меню пользователя

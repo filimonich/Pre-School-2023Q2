@@ -11,7 +11,6 @@
     }
   }
 
-
   &__contents {}
 
   &__headline {}
@@ -42,9 +41,9 @@
     line-height: 34px;
     letter-spacing: 0.6px;
     color: $text;
-    
+
     @include media('<=sm') {
-      margin-bottom: 32px;      
+      margin-bottom: 32px;
     }
   }
 
@@ -110,18 +109,47 @@
     }
   }
 
-  &__buttons {}
+  &__buttons {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
 
   &__button {}
 
   &__button-check.button {
+    display: none;
     font-family: "IB";
     width: 242px;
     padding: 9px 20px;
     font-size: 20px;
     letter-spacing: 1px;
+
+    &.active {
+      display: block;
+    }
   }
 
+  &__cards-profile {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+
+  &__item {
+    display: grid;
+    justify-items: center;
+  }
 
   &__button-get.button {
     width: 75px;
@@ -146,8 +174,9 @@
       text-align: center;
     }
   }
-
+  
   &__caption {
+    display: none;
     font-family: "FR";
     font-size: 30px;
     line-height: normal;
@@ -155,12 +184,17 @@
     margin-bottom: 34px;
     color: $text;
 
+    &.active {
+      display: block;
+    }
+
     @include media('<=sm') {
-      margin-bottom: 41px;      
+      margin-bottom: 41px;
     }
   }
 
   &__text {
+    display: none;
     width: 460px;
     text-align: right;
     margin-bottom: 36px;
@@ -170,13 +204,17 @@
     letter-spacing: 0.4px;
     color: $text;
 
+    &.active {
+      display: block;
+    }
+
     @include media('<=lg') {
       width: 600px;
       text-align: center;
     }
 
     @include media('<=sm') {
-      margin-bottom: 40px;      
+      margin-bottom: 40px;
     }
   }
 

@@ -4,3 +4,4 @@ import "../blocks/about/about.js";
 import "../blocks/favorites/favorites.js";
 import "../blocks/header/header.js";
 import "../blocks/modal/modal.js";
+import "../blocks/librarycard/librarycard.js";

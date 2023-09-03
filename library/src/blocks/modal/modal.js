@@ -28,6 +28,12 @@
   const modalLogInButton = document.querySelector('.modal__log-in-button');
   const form = document.querySelector('.modal__form');
 
+  const checkCardButton = document.querySelector('.librarycard__button-check');
+  const profileSection = document.querySelector('.librarycard__cards-profile');
+  const getCardCaptions = document.querySelectorAll('.librarycard__caption');
+  const getCardTexts = document.querySelectorAll('.librarycard__text');
+  const getCardButtons = document.querySelectorAll('.librarycard__buttons');
+
   const fields = ['firstName', 'lastName', 'email', 'password'];
 
   const togglePasswordButton = document.querySelector(
@@ -99,6 +105,25 @@
 
   //////////
 
+  function toggleActiveClasstoggleActiveClass() {
+    checkCardButton.classList.toggle('active');
+    profileSection.classList.toggle('active');
+
+    getCardCaptions.forEach(caption => {
+      caption.classList.toggle('active');
+    });
+
+    getCardTexts.forEach(text => {
+      text.classList.toggle('active');
+    });
+
+    getCardButtons.forEach(button => {
+      button.classList.toggle('active');
+    });
+  }
+
+  //////////
+
   document.addEventListener('DOMContentLoaded', function () {
     // проверяет стутс входа
     function checkLoginStatus() {
@@ -162,6 +187,7 @@
         localStorage.setItem('loggedIn', 'true'); // сохранение входа
         updateMenuAndIcon(); // обновление иконки и меню
         closeModal();
+        toggleActiveClasstoggleActiveClass()
       }
     });
 
@@ -202,6 +228,7 @@
           localStorage.setItem('loggedIn', 'true'); // Сохранение входа
           updateMenuAndIcon(); // Обновление иконки и меню
           closeModal();
+          toggleActiveClasstoggleActiveClass()
         } else {
           // если данные не соответствуют данным из localStorage
           alert(

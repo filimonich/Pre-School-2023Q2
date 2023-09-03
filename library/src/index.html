@@ -442,7 +442,7 @@
 
     </section>
 
-    <section class="librarycard container" id="library-card">
+    <section class="librarycard container librarycard-js" id="library-card">
       <div class="librarycard__contents">
         <h2 class="librarycard__headline headline">digital library cards</h2>
         <div class="librarycard__content">
@@ -456,18 +456,50 @@
                 <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
                   oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
               </div>
-              <button class="librarycard__button librarycard__button-check button" onclick="return false;">Check the
-                card</button>
+              <button class="librarycard__button librarycard__button-check button active" onclick="return false;">
+                Check the card
+              </button>
+              <div class="librarycard__cards-profile">
+                <ul class="librarycard__items">
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">visits</p>
+                    <div class="librarycard__icon"><img src="images/svg/Union.svg" alt="" class="librarycard__img">
+                    </div>
+                    <p class="librarycard__amount">23</p>
+                  </li>
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">bonuses</p>
+                    <div class="librarycard__icon"><img src="images/svg/Star.svg" alt="" class="librarycard__img"></div>
+                    <p class="librarycard__amount">1240</p>
+                  </li>
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">Books</p>
+                    <div class="librarycard__icon"><img src="images/svg/book.svg" alt="" class="librarycard__img"></div>
+                    <p class="librarycard__amount">2</p>
+                  </li>
+                </ul>
+              </div>
             </form>
           </div>
 
           <div class="librarycard__get">
+            <h3 class="librarycard__caption active">Get a reader card</h3>
             <h3 class="librarycard__caption">Get a reader card</h3>
-            <p class="librarycard__text">You will be able to see a reader card after logging into account or you can
-              register a new account</p>
-            <div class="librarycard__buttons">
+            <p class="librarycard__text active">
+              You will be able to see a reader card after
+              logging into account or you can register a new account
+            </p>
+            <p class="librarycard__text">
+              With a digital library card you get free access to the Library’s
+              wide array of digital resources including e-books,
+              databases, educational resources, and more.
+            </p>
+            <div class="librarycard__buttons active">
               <button class="librarycard__button librarycard__button-get button-register button">Sign Up</button>
               <button class="librarycard__button librarycard__button-get button-login button">Log in</button>
+            </div>
+            <div class="librarycard__buttons">
+              <button class="librarycard__button librarycard__button-get button-Profile button">Profile</button>
             </div>
           </div>
         </div>

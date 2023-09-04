@@ -11,7 +11,6 @@
   const modalContent = document.querySelector('.modal__login .modal__content');
   const passwordInput = document.querySelector('#password');
   const signUpButton = document.querySelector('.modal__button');
-
   const cardNumberElement = document.querySelector('.header__card-number');
   const cardNumber = localStorage.getItem('cardNumber');
   const cardProfileTitle = document.querySelector('.header__profile-title');
@@ -27,21 +26,25 @@
   const icon = document.getElementById('userIcon');
   const modalLogInButton = document.querySelector('.modal__log-in-button');
   const form = document.querySelector('.modal__form');
-
   const checkCardButton = document.querySelector('.librarycard__button-check');
   const profileSection = document.querySelector('.librarycard__cards-profile');
   const getCardCaptions = document.querySelectorAll('.librarycard__caption');
   const getCardTexts = document.querySelectorAll('.librarycard__text');
   const getCardButtons = document.querySelectorAll('.librarycard__buttons');
-
+  const getCardTitle = document.querySelectorAll('.librarycard__title');
   const fields = ['firstName', 'lastName', 'email', 'password'];
-
   const togglePasswordButton = document.querySelector(
     '.modal__toggle-password'
   );
-
   const loginCloseButton = document.querySelector(
     '.modal__login .modal__close-button'
+  );
+  // Находим элементы для имени и номера карты
+  const nameInput = document.querySelector(
+    '.librarycard__input[placeholder="Reader\'s name"]'
+  );
+  const cardNumberInput = document.querySelector(
+    '.librarycard__input[placeholder="Card number"]'
   );
 
   // функция закрытия модального окна регистрации
@@ -105,6 +108,7 @@
 
   //////////
 
+  // обновление класов в librarycard
   function toggleActiveClasstoggleActiveClass() {
     checkCardButton.classList.toggle('active');
     profileSection.classList.toggle('active');
@@ -115,6 +119,10 @@
 
     getCardTexts.forEach(text => {
       text.classList.toggle('active');
+    });
+
+    getCardTitle.forEach(title => {
+      title.classList.toggle('active');
     });
 
     getCardButtons.forEach(button => {
@@ -130,6 +138,7 @@
       if (localStorage.getItem('loggedIn') === 'true') {
         updateIcon();
         updateMenuAndIcon();
+        toggleActiveClasstoggleActiveClass();
       }
     }
 
@@ -156,7 +165,7 @@
         icon.textContent =
           firstName[0].toUpperCase() + lastName[0].toUpperCase();
       }
-      localStorage.setItem('loggedIn', 'true'); // Сохранение входа
+      localStorage.setItem('loggedIn', 'true'); // сохранение входа
     }
 
     // смена иконки и меню пользователя
@@ -187,7 +196,7 @@
         localStorage.setItem('loggedIn', 'true'); // сохранение входа
         updateMenuAndIcon(); // обновление иконки и меню
         closeModal();
-        toggleActiveClasstoggleActiveClass()
+        toggleActiveClasstoggleActiveClass();
       }
     });
 
@@ -225,10 +234,10 @@
           // если данные совпадают с данными из localStorage
           updateIcon();
           generateCardNumber();
-          localStorage.setItem('loggedIn', 'true'); // Сохранение входа
-          updateMenuAndIcon(); // Обновление иконки и меню
+          localStorage.setItem('loggedIn', 'true'); // сохранение входа
+          updateMenuAndIcon(); // обновление иконки и меню
           closeModal();
-          toggleActiveClasstoggleActiveClass()
+          toggleActiveClasstoggleActiveClass();
         } else {
           // если данные не соответствуют данным из localStorage
           alert(
@@ -245,5 +254,41 @@
   logOutButton.addEventListener('click', () => {
     localStorage.setItem('loggedIn', 'false');
     location.reload(); // перезагрузить страницу
+  });
+
+  // функция для обработки нажатия кнопки "Check the card"
+  checkCardButton.addEventListener('click', function () {
+    // получить данные из полей ввода
+    const enteredName = nameInput.value;
+    const enteredCardNumber = cardNumberInput.value;
+    const informationDisplayTimer = 10000; // 10 секунд в миллисекундах
+
+    // проверка совпадение данных
+    if (
+      (enteredName === firstName ||
+        enteredName === firstName + ' ' + lastName) &&
+      enteredCardNumber === cardNumber
+    ) {
+      // скрыть кнопку "Check the card" и отображаем панель с информацией
+      checkCardButton.style.display = 'none';
+      profileSection.style.display = 'block';
+
+      // таймер на 10 секунд для возврата кнопки и скрытия панели
+      setTimeout(function () {
+        checkCardButton.style.display = 'block';
+        profileSection.style.display = 'none';
+      }, informationDisplayTimer); // 10 секунд в миллисекундах
+
+      // через 10 секунд сбрасываем значения полей ввода
+      setTimeout(function () {
+        enteredName = '';
+        enteredCardNumber = '';
+      }, informationDisplayTimer);
+    } else {
+      // если данные не совпадают
+      alert(
+        'Invalid credentials. Please check your name and card number once.'
+      );
+    }
   });
 })();

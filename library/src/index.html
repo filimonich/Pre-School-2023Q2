@@ -447,13 +447,14 @@
         <h2 class="librarycard__headline headline">digital library cards</h2>
         <div class="librarycard__content">
           <div class="librarycard__inner">
-            <h3 class="librarycard__title">Find your Library card</h3>
+            <h3 class="librarycard__title active">Find your Library card</h3>
+            <h3 class="librarycard__title">Your Library card</h3>
             <form class="librarycard__benefits">
               <div class="librarycard__box">
                 <h4 class="librarycard__subtitle">brooklyn public library</h4>
-                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
-                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Reader's name">
-                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9\- ]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9\- ]/g, '')" placeholder="Reader's name">
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9]+"
                   oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
               </div>
               <button class="librarycard__button librarycard__button-check button active" onclick="return false;">
@@ -484,7 +485,7 @@
 
           <div class="librarycard__get">
             <h3 class="librarycard__caption active">Get a reader card</h3>
-            <h3 class="librarycard__caption">Get a reader card</h3>
+            <h3 class="librarycard__caption">Visit your profile</h3>
             <p class="librarycard__text active">
               You will be able to see a reader card after
               logging into account or you can register a new account
@@ -587,7 +588,7 @@
           <button class="modal__button modal__sign-up-button button">Sign Up</button>
           <div class="modal__forgot">
             <p class="modal__text">Already have an account?</p>
-            <button class="modal__login-button modal__style-button animation-text">Login</button>
+            <button class="modal__login-button modal__style-button button-login animation-text">Login</button>
           </div>
         </form>
       </div>
@@ -609,7 +610,7 @@
           <button class="modal__button modal__log-in-button button">Log In</button>
           <div class="modal__forgot">
             <p class="modal__text">Don’t have an account?</p>
-            <button class="modal__register-button modal__style-button animation-text">Register</button>
+            <button class="modal__register-button modal__style-button button-register animation-text">Register</button>
           </div>
         </form>
       </div>

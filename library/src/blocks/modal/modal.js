@@ -23,7 +23,11 @@
   const storedPassword = localStorage.getItem('password');
   const firstName = localStorage.getItem('firstName');
   const lastName = localStorage.getItem('lastName');
-  const icon = document.getElementById('userIcon');
+  // const icon = document.getElementById('userIcon');
+  const icon = document.querySelectorAll('.user-icon');
+  const userIcon = document.querySelector('.user-icon');
+  const userIcons = document.querySelectorAll('.user-icon');
+  const icons = document.querySelectorAll('.user-icon');
   const modalLogInButton = document.querySelector('.modal__log-in-button');
   const form = document.querySelector('.modal__form');
   const checkCardButton = document.querySelector('.librarycard__button-check');
@@ -32,7 +36,6 @@
   const getCardTexts = document.querySelectorAll('.librarycard__text');
   const getCardButtons = document.querySelectorAll('.librarycard__buttons');
   const getCardTitle = document.querySelectorAll('.librarycard__title');
-  const userIcon = document.querySelector('.user-icon');
   const fields = ['firstName', 'lastName', 'email', 'password'];
   const togglePasswordButton = document.querySelector(
     '.modal__toggle-password'
@@ -162,19 +165,21 @@
 
     // обновления иконки пользователя и атрибута title
     function updateIcon() {
-      const userIcon = document.getElementById('userIcon'); // получение элемента userIcon
-      if (firstName && lastName && userIcon) {
+      const userIcons = document.querySelectorAll('.user-icon');
+      if (firstName && lastName && userIcons.length > 0) {
         const fullName = `${firstName} ${lastName}`;
-        userIcon.title = fullName;
-        icon.textContent =
-          fullName[0].toUpperCase() +
-          fullName[fullName.indexOf(' ') + 1].toUpperCase();
+        userIcons.forEach(icon => {
+          icon.title = fullName;
+          icon.textContent =
+            fullName[0].toUpperCase() +
+            fullName[fullName.indexOf(' ') + 1].toUpperCase();
+        });
       } else if (firstName || lastName) {
         const name = firstName || lastName;
-        if (userIcon) {
-          userIcon.title = name;
-        }
-        icon.textContent = name[0].toUpperCase();
+        userIcons.forEach(icon => {
+          icon.title = name;
+          icon.textContent = name[0].toUpperCase();
+        });
       }
       localStorage.setItem('loggedIn', 'true');
     }
@@ -183,7 +188,9 @@
     function updateMenuAndIcon() {
       // смена иконки пользователя
       document.querySelector('.header__image').classList.remove('active');
-      document.getElementById('userIcon').classList.add('active');
+      icons.forEach(icon => {
+        icon.classList.add('active');
+      });
 
       // обновление меню
       cardNumberElement.textContent = cardNumber;
@@ -196,6 +203,27 @@
       registerButton.classList.remove('active');
       cardProfileTitle.classList.remove('active');
     }
+
+    // получите элемент с классом .modal__name
+    const modalName = document.querySelector('.modal__name');
+
+    function updateFullName() {
+      if (firstName && lastName) {
+        const fullName = `${firstName[0].toUpperCase()}${firstName.slice(
+          1
+        )} ${lastName[0].toUpperCase()}${lastName.slice(1)}`;
+        modalName.textContent = fullName;
+      } else if (firstName || lastName) {
+        const name = firstName ? firstName : lastName;
+        const formattedName = `${name[0].toUpperCase()}${name.slice(1)}`;
+        modalName.textContent = formattedName;
+      } else {
+        modalName.textContent = ''; // Очистите содержимое, если нет имени
+      }
+    }
+
+    // Вызовите функцию для обновления полного имени
+    updateFullName();
 
     // вызов функций, если форма валидна, происходит логин
     form.addEventListener('submit', function (e) {

@@ -30,7 +30,7 @@
           <a class="header__menu-drop">
             <img src="images/svg/icon-profile.svg" alt="Button drop menu profile"
               class="header__image animation-button active">
-            <div class="header__user-icon animation-button" id="userIcon"></div>
+            <div class="header__user-icon animation-button user-icon"></div>
             <div class="header__menu-profile">
               <div class="header__menu-profile-contents">
                 <p class="header__profile-title header__title active">Profile</p>
@@ -613,6 +613,63 @@
             <div class="modal__register-button modal__style-button button-register-in animation-text">Register</div>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- <div class="modal__my-profile modal__main" style="display: none;"> -->
+    <div class="modal__my-profile modal__main" style="display: block;">
+      <div class="modal__content modal__content-my-profile">
+        <div class="modal__sidebar">
+          <div class="modal__user-icon user-icon active"></div>
+          <div class="modal__aside-name">
+            <p class="modal__name">John Doe</p>
+          </div>
+        </div>
+        <div class="modal__inner">
+          <button class="modal__close-button">
+            <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+          </button>
+          <h4 class="modal__title">My profile</h4>
+          <div class="librarycard">
+            <div class="librarycard__cards-profile modal__cards-profile active">
+              <ul class="librarycard__items modal__items">
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">visits</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/Union.svg" alt=""
+                      class="librarycard__img">
+                  </div>
+                  <p class="librarycard__amount">23</p>
+                </li>
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">bonuses</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/Star.svg" alt=""
+                      class="librarycard__img"></div>
+                  <p class="librarycard__amount">1240</p>
+                </li>
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">Books</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/book.svg" alt=""
+                      class="librarycard__img"></div>
+                  <p class="librarycard__amount">2</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="modal__subtitle">Rented books</p>
+          <div class="modal__items-book-container">
+            <ul class="modal__items-book">
+              <li class="modal__item-book">The Last Queen, Clive Irving</li>
+              <li class="modal__item-book">Dominicana, Angie Cruz</li>
+              <li class="modal__item-book">Dominicana, Angie Cruz</li>
+            </ul>
+          </div>
+          <div class="modal__box">
+            <p class="modal__subject">Card number</p>
+            <p class="modal__number">F00234030</p>
+            <a class="modal__icon-copy"><img src="images/svg/icon-copy.svg" alt="" class="modal__img"></a>
+          </div>
+          <span class="modal__copy-message" style="display: none;"></span>
+        </div>
       </div>
     </div>
   </div>

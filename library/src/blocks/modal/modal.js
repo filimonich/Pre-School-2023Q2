@@ -277,7 +277,7 @@
       setTimeout(function () {
         checkCardButton.style.display = 'block';
         profileSection.style.display = 'none';
-      }, informationDisplayTimer); // 10 секунд в миллисекундах
+      }, informationDisplayTimer);
 
       // через 10 секунд сбрасываем значения полей ввода
       setTimeout(function () {
@@ -290,5 +290,44 @@
         'Invalid credentials. Please check your name and card number once.'
       );
     }
+  });
+})();
+
+(() => {
+  // реализация открытие модального окна при нажатии на кнопку внутри модального окна
+  const loginButtonIn = document.querySelector('.button-login-in');
+  const registerButtonIn = document.querySelector('.button-register-in');
+  const closeModalButtons = document.querySelectorAll('.modal__close-button');
+
+  const openModal = modal => {
+    if (getComputedStyle(modal).display !== 'block') {
+      modal.style.display = 'block';
+      setTimeout(() => openModal(modal), 100); // рекурсивный вызов с задержкой
+    }
+  };
+
+  const closeModal = modal => {
+    if (getComputedStyle(modal).display === 'block') {
+      modal.style.display = 'none';
+      setTimeout(() => closeModal(modal), 100); // рекурсивный вызов с задержкой
+    }
+  };
+
+  loginButtonIn.addEventListener('click', () => {
+    closeModal(modalRegister);
+    openModal(modalLogin);
+  });
+
+  registerButtonIn.addEventListener('click', () => {
+    closeModal(modalLogin);
+    openModal(modalRegister);
+  });
+
+  // добавить обработчики для закрытия модальных окон по кнопке "Закрыть"
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      closeModal(modalLogin);
+      closeModal(modalRegister);
+    });
   });
 })();

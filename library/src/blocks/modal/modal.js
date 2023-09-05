@@ -297,6 +297,8 @@
   // реализация открытие модального окна при нажатии на кнопку внутри модального окна
   const loginButtonIn = document.querySelector('.button-login-in');
   const registerButtonIn = document.querySelector('.button-register-in');
+  const modalLogin = document.querySelector('.modal__login');
+  const modalRegister = document.querySelector('.modal__register');
   const closeModalButtons = document.querySelectorAll('.modal__close-button');
 
   const openModal = modal => {

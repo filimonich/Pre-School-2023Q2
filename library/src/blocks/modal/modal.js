@@ -32,6 +32,7 @@
   const getCardTexts = document.querySelectorAll('.librarycard__text');
   const getCardButtons = document.querySelectorAll('.librarycard__buttons');
   const getCardTitle = document.querySelectorAll('.librarycard__title');
+  const userIcon = document.querySelector('.user-icon');
   const fields = ['firstName', 'lastName', 'email', 'password'];
   const togglePasswordButton = document.querySelector(
     '.modal__toggle-password'
@@ -159,13 +160,23 @@
       );
     }
 
-    // обновления иконки пользователя
+    // обновления иконки пользователя и атрибута title
     function updateIcon() {
-      if (firstName && lastName) {
+      const userIcon = document.getElementById('userIcon'); // получение элемента userIcon
+      if (firstName && lastName && userIcon) {
+        const fullName = `${firstName} ${lastName}`;
+        userIcon.title = fullName;
         icon.textContent =
-          firstName[0].toUpperCase() + lastName[0].toUpperCase();
+          fullName[0].toUpperCase() +
+          fullName[fullName.indexOf(' ') + 1].toUpperCase();
+      } else if (firstName || lastName) {
+        const name = firstName || lastName;
+        if (userIcon) {
+          userIcon.title = name;
+        }
+        icon.textContent = name[0].toUpperCase();
       }
-      localStorage.setItem('loggedIn', 'true'); // сохранение входа
+      localStorage.setItem('loggedIn', 'true');
     }
 
     // смена иконки и меню пользователя

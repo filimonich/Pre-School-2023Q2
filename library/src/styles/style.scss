@@ -156,6 +156,12 @@ html {
   }
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 // button:disabled {
 //   opacity: 0.5;
 //   cursor: not-allowed;

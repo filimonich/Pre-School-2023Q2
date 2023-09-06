@@ -595,7 +595,7 @@
     </div>
 
     <div class="modal__login modal__main">
-      <div class="modal__content modal__content-login">
+      <div class="modal__content modal__content--login">
         <button class="modal__close-button">
           <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
         </button>
@@ -617,8 +617,8 @@
     </div>
 
     <div class="modal__my-profile modal__main">
-    <!-- <div class="modal__my-profile modal__main" style="display: block;"> -->
-      <div class="modal__content modal__content-my-profile">
+      <!-- <div class="modal__my-profile modal__main" style="display: block;"> -->
+      <div class="modal__content modal__content--my-profile">
         <div class="modal__sidebar">
           <div class="modal__user-icon user-icon active"></div>
           <div class="modal__aside-name">
@@ -670,6 +670,59 @@
           <span class="modal__copy-message" style="display: none;"></span>
         </div>
       </div>
+    </div>
+
+    <!-- <div class="modal__buy-card modal__main"> -->
+    <div class="modal__buy-card modal__main" style="display: block;">
+      <div class="modal__content modal__content--buy-card">
+        <div class="modal__section-header">
+          <div class="modal__block-header">
+            <h3 class="modal__headline--buy-card">buy a library card</h3>
+          </div>
+          <button class="modal__close-button modal__close-button--location modal__close-button--white">
+            <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+          </button>
+        </div>
+        <ul class="modal__sections">
+          <li class="modal__section modal__section-form">
+            <form action="" class="modal__form modal__form--buy-card">
+              <label class="modal__label" for="bankCardNumber">Bank card number</label>
+              <input class="modal__input" id="bankCardNumber" type="number" name="bankCardNumber" required>
+              <label class="modal__label" for="expirationCodeMonth">Expiration code</label>
+              <div class="modal__input-box">
+                <input class="modal__input modal__input--buy-card" id="expirationCodeMonth" type="number" name="Month"
+                  required>
+                <input class="modal__input modal__input--buy-card" id="expirationCodeYear" type="number" name="Year"
+                  required>
+              </div>
+              <label class="modal__label" for="CVC">CVC</label>
+              <input class="modal__input modal__input--buy-card" id="CVC" type="number" name="CVC" required>
+              <label class="modal__label modal__label--mt" for="cardholderName">Cardholder name</label>
+              <input class="modal__input" id="cardholderName" type="text" name="cardholderName" required>
+              <label class="modal__label" for="PostalCode">Postal code</label>
+              <input class="modal__input" id="PostalCode" type="number" name="PostalCode" required>
+              <label class="modal__label" for="cityTown">City / Town</label>
+              <input class="modal__input" id="cityTown" type="text" name="cityTown" required>
+              <div class="modal__button-box">
+                <button class="modal__button modal__button--buy-card button">
+                  <span class="modal__text--buy-card">Buy</span>
+                </button>
+                <p class="modal__price--buy-card">$ 25.00</p>
+              </div>
+            </form>
+          </li>
+          <li class="modal__section modal__section-desc">
+            <p class="modal__desc">
+              If you are live, work, attend school, or pay property taxes
+              in New York State, you can get a $25 digital library card right now
+              using this online form. Visitors to New York State can also use
+              this form to apply for a temporary card.
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
     </div>
   </div>
 </body>

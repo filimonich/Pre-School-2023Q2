@@ -31,8 +31,24 @@
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.07);
     transform: translate(-50%, -50%);
 
-    &-login {
+    &--login {
       height: 262px;
+    }
+
+    &--my-profile {
+      display: flex;
+      // align-items: center;
+      // justify-content: flex-start;
+      width: 600px;
+      height: 400px;
+      padding: 0;
+    }
+
+    &--buy-card {
+      // display: flex;
+      width: 650px;
+      height: 540px;
+      padding: 0;
     }
   }
 
@@ -105,14 +121,6 @@
     &::placeholder {
       color: $text;
     }
-
-    &[type='tel'] {
-      // Добавьте здесь стили для валидации поля телефона
-    }
-
-    &[type='password'] {
-      // Добавьте здесь стили для валидации поля пароля
-    }
   }
 
   &__toggle-password {
@@ -175,15 +183,6 @@
       margin: .7px auto;
       background-color: $text;
     }
-  }
-
-  &__content-my-profile {
-    display: flex;
-    // align-items: center;
-    // justify-content: flex-start;
-    width: 600px;
-    height: 400px;
-    padding: 0;
   }
 
   &__sidebar {
@@ -371,4 +370,114 @@
     bottom: 6%;
     right: 18%;
   }
+
+  &__buy-card {}
+
+  &__content--buy-card {
+    width: 650px;
+    height: 540px;
+  }
+
+  &__section-header {}
+
+  &__block-header {
+    height: 60px;
+    padding: 20px 0;
+    text-align: center;
+
+    text-align: center;
+    font-family: "FR";
+    font-size: 40px;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $text;
+  }
+
+  &__headline--buy-card {}
+
+  &__sections {
+    display: flex;
+  }
+
+  &__section-header {}
+
+  &__block-header {}
+
+  &__headline--buy-card {}
+
+  &__close-button--white {
+    filter: invert(1);
+  }
+
+  &__sections {}
+
+  &__section {
+    margin-right: 40px;
+    padding-top: 30px;
+
+    &:first-child {
+      margin-left: 40px;
+    }
+  }
+
+  &__section-form {}
+
+  &__form--buy-card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+
+  &__input-box {}
+
+  &__input--buy-card {
+    width: 22.7%;
+    margin-right: 5px;
+  }
+
+  &__label--mt {
+    margin-top: 12px;
+  }
+
+  &__button-box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button--buy-card {
+    margin-right: 25px;
+    padding: 3.8px;
+    margin-top: 13px;
+
+    font-size: 10px;
+  }
+
+  &__text--buy-card {
+    margin-top: 11px;
+    line-height: 20px;
+    color: $text;
+  }
+
+  &__price--buy-card {
+		margin-top: 21px;
+    font-family: "IB";
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text;
+  }
+
+  &__section-desc {}
+
+  &__desc {
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: $grey;
+  }
+
 }

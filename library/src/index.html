@@ -31,7 +31,7 @@
             <img src="images/svg/icon-profile.svg" alt="Button drop menu profile"
               class="header__image animation-button active">
             <div class="header__user-icon animation-button user-icon"></div>
-            <div class="header__menu-profile header__menu-profile--active">
+            <div class="header__menu-profile">
               <div class="header__menu-profile-contents">
                 <p class="header__profile-title header__title active">Profile</p>
                 <p class="header__card-number header__title"></p>
@@ -616,7 +616,7 @@
       </div>
     </div>
 
-    <div class="modal__my-profile modal__main" style="display: none;">
+    <div class="modal__my-profile modal__main">
     <!-- <div class="modal__my-profile modal__main" style="display: block;"> -->
       <div class="modal__content modal__content-my-profile">
         <div class="modal__sidebar">
@@ -626,7 +626,7 @@
           </div>
         </div>
         <div class="modal__inner">
-          <button class="modal__close-button">
+          <button class="modal__close-button modal__close-button--location">
             <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
           </button>
           <h4 class="modal__title">My profile</h4>
@@ -660,11 +660,10 @@
             <ul class="modal__items-book">
               <li class="modal__item-book">The Last Queen, Clive Irving</li>
               <li class="modal__item-book">Dominicana, Angie Cruz</li>
-              <li class="modal__item-book">Dominicana, Angie Cruz</li>
             </ul>
           </div>
           <div class="modal__box">
-            <p class="modal__subject">Card number</p>
+            <p class="modal__text-item">Card number</p>
             <p class="modal__number">F00234030</p>
             <a class="modal__icon-copy"><img src="images/svg/icon-copy.svg" alt="" class="modal__img"></a>
           </div>

@@ -44,6 +44,11 @@
     border: none;
     cursor: pointer;
     padding: 0;
+
+    &--location {
+      top: 23px;
+      right: 23px;
+    }
   }
 
   &__headline {
@@ -239,7 +244,7 @@
 
   &__title {
     // text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 41px;
     font-family: "FR";
     font-size: 40px;
     font-style: normal;
@@ -253,16 +258,17 @@
   &__cards-profile {
     padding: 0;
     margin-bottom: 20px;
+    max-width: 260px;
   }
 
   &__items {
-    gap: 20px;
+    gap: 12px;
   }
 
   &__item {
     gap: 10px;
-    width: 100%;
-    height: 100%;
+    width: 51px;
+    // height: 100%;
     display: grid;
     justify-content: center;
   }
@@ -273,7 +279,6 @@
     font-size: 20px;
     line-height: 20px;
     letter-spacing: 0.4px;
-    text-transform: capitalize;
     color: $text;
   }
 
@@ -293,17 +298,25 @@
 
   &__items-book-container {
     max-height: 3.6em;
+    height: 100%;
     overflow-y: auto;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
 
   &__items-book {
-    padding-left: 25px;
+    padding-left: 30px;
   }
 
   &__item-book {
     list-style-type: disc;
     padding-bottom: 10px;
+
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: $text;
 
     &:last-child {
       padding-bottom: 0;
@@ -314,11 +327,32 @@
     display: flex;
   }
 
+  &__text-item {
+    margin-right: 13px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: $text;
+  }
+
+  &__number {
+    margin-right: 15px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    color: $brown;
+  }
+
   &__icon-copy {
     display: block;
     width: 24px;
     height: 24px;
-    margin: 8px 15px 8px 0;
+    // margin: 8px 15px 8px 0;
     transition: transform 0.2s ease-in-out;
 
     &:hover {
@@ -334,7 +368,7 @@
 
   &__copy-message {
     position: absolute;
-    bottom: 4%;
-    right: 26%;
+    bottom: 6%;
+    right: 18%;
   }
 }

@@ -84,7 +84,6 @@
     padding: 5px 5px 20px;
 
     text-align: center;
-    font-size: 15px;
     line-height: 20px;
 
     background-color: $white;
@@ -122,7 +121,6 @@
     &.active {
       display: block;
       font-family: "IB";
-      font-size: 15px;
 
       &::after {
         content: "";
@@ -141,7 +139,6 @@
 
     &.header__title.active {
       display: block;
-      font-size: 12px;
     }
   }
 
@@ -156,6 +153,7 @@
   &__link {
     display: none;
     padding: 0 2px;
+    font-size: 14px;
     color: $text;
     background: none;
     border: none;

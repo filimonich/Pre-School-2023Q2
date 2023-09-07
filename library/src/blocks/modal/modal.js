@@ -29,6 +29,9 @@
   const getCardTexts = document.querySelectorAll('.librarycard__text');
   const getCardButtons = document.querySelectorAll('.librarycard__buttons');
   const getCardTitle = document.querySelectorAll('.librarycard__title');
+  const modalIcon = document.querySelector('.modal__icon-copy');
+  const modalNumber = document.querySelector('.modal__number');
+  const copyMessage = document.querySelector('.modal__copy-message');
   const fields = ['firstName', 'lastName', 'email', 'password'];
   const loginCloseButton = document.querySelector(
     '.modal__login .modal__close-button'
@@ -319,6 +322,24 @@
         'Invalid credentials. Please check your name and card number once.'
       );
     }
+  });
+
+  // копирование текста
+  modalIcon.addEventListener('click', async () => {
+    const subjectText = modalNumber.textContent;
+
+    try {
+      await navigator.clipboard.writeText(subjectText);
+      copyMessage.textContent = 'Copied';
+    } catch (err) {
+      console.error(`Couldn't copy text: `, err);
+      copyMessage.textContent = 'Copy error';
+    }
+
+    copyMessage.style.display = 'inline'; // показать сообщение
+    setTimeout(() => {
+      copyMessage.style.display = 'none'; // cкрыть сообщение
+    }, 500);
   });
 })();
 

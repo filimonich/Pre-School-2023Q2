@@ -6,10 +6,7 @@
   const modal = document.querySelector('.modal');
   const modalRegister = document.querySelector('.modal__register');
   const modalLogin = document.querySelector('.modal__login');
-  const openModalLogin = document.querySelector('.header__button-login');
   const closeButton = document.querySelector('.modal__close-button');
-  const modalContent = document.querySelector('.modal__login .modal__content');
-  const passwordInput = document.querySelector('#password');
   const signUpButton = document.querySelector('.modal__button');
   const cardNumberElement = document.querySelector('.header__card-number');
   const cardNumber = localStorage.getItem('cardNumber');
@@ -23,10 +20,6 @@
   const storedPassword = localStorage.getItem('password');
   const firstName = localStorage.getItem('firstName');
   const lastName = localStorage.getItem('lastName');
-  // const icon = document.getElementById('userIcon');
-  const icon = document.querySelectorAll('.user-icon');
-  const userIcon = document.querySelector('.user-icon');
-  const userIcons = document.querySelectorAll('.user-icon');
   const icons = document.querySelectorAll('.user-icon');
   const modalLogInButton = document.querySelector('.modal__log-in-button');
   const form = document.querySelector('.modal__form');
@@ -37,9 +30,6 @@
   const getCardButtons = document.querySelectorAll('.librarycard__buttons');
   const getCardTitle = document.querySelectorAll('.librarycard__title');
   const fields = ['firstName', 'lastName', 'email', 'password'];
-  const togglePasswordButton = document.querySelector(
-    '.modal__toggle-password'
-  );
   const loginCloseButton = document.querySelector(
     '.modal__login .modal__close-button'
   );

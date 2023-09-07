@@ -12,6 +12,7 @@
   const cardNumber = localStorage.getItem('cardNumber');
   const cardProfileTitle = document.querySelector('.header__profile-title');
   const myProfileButton = document.querySelector('.button-my-profile');
+  const myProfileButtons = document.querySelectorAll('.button-my-profile');
   const logOutButton = document.querySelector('.button-log-out');
   const loginButton = document.querySelector('.button-login');
   const registerButton = document.querySelector('.button-register');
@@ -44,22 +45,33 @@
     '.librarycard__input[placeholder="Card number"]'
   );
 
+  const modalBuyCard = document.querySelector('.modal__buy-card');
+  const modalMyProfile = document.querySelector('.modal__my-profile');
+  // Находите кнопку с классом .button-buy-card
+  const buyCardButtons = document.querySelectorAll('.button-buy-card');
+
+  //////////////////
+
   // функция закрытия модального окна регистрации
   const toggleModal = modalSelector => {
+    // закрыть открытые модальные окна, если такие есть
     if (
-      modalSelector === '.modal__register' &&
-      modalLogin.style.display === 'block'
+      (modalSelector === '.modal__register' &&
+        modalLogin.style.display === 'block') ||
+      (modalSelector === '.modal__login' &&
+        modalRegister.style.display === 'block') ||
+      (modalSelector === '.modal__my-profile' &&
+        modalBuyCard.style.display === 'block') ||
+      (modalSelector === '.modal__buy-card' &&
+        modalMyProfile.style.display === 'block')
     ) {
       toggleModal('.modal__login');
-    }
-    if (
-      modalSelector === '.modal__login' &&
-      modalRegister.style.display === 'block'
-    ) {
       toggleModal('.modal__register');
+      toggleModal('.modal__my-profile');
+      toggleModal('.modal__buy-card');
     }
 
-    // открыть или закрыть выбранное модальное окно
+    // Открываем или закрываем выбранное модальное окно
     const modalElement = document.querySelector(modalSelector);
     const isModalOpen = modalElement.style.display === 'block';
     modalElement.style.display = isModalOpen ? 'none' : 'block';
@@ -71,6 +83,18 @@
   });
   openModalLoginButtons.forEach(button => {
     button.addEventListener('click', () => toggleModal('.modal__login'));
+  });
+  myProfileButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      toggleModal('.modal__my-profile');
+    });
+  });
+
+  // Добавляйте обработчик события на нажатие кнопки
+  buyCardButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      toggleModal('.modal__buy-card'); // Здесь используйте правильный селектор для вашего модального окна
+    });
   });
 
   function closeModal() {
@@ -84,8 +108,19 @@
 
   closeButton.addEventListener('click', closeModal);
 
-  loginCloseButton.addEventListener('click', () => {
-    toggleModal('.modal__login');
+  // закрытие окон
+  const buyCardCloseButton = document.querySelector(
+    '.modal__buy-card .modal__close-button'
+  );
+  buyCardCloseButton.addEventListener('click', () => {
+    toggleModal('.modal__buy-card');
+  });
+
+  const myProfileCloseButton = document.querySelector(
+    '.modal__my-profile .modal__close-button'
+  );
+  myProfileCloseButton.addEventListener('click', () => {
+    toggleModal('.modal__my-profile');
   });
 
   // добавить обработчик событий click к элементу модального окна
@@ -99,6 +134,12 @@
       }
       if (modalLogin.style.display === 'block') {
         toggleModal('.modal__login');
+      }
+      if (modalMyProfile.style.display === 'block') {
+        toggleModal('.modal__my-profile');
+      }
+      if (modalBuyCard.style.display === 'block') {
+        toggleModal('.modal__buy-card');
       }
     }
   });

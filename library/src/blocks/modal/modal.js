@@ -370,6 +370,54 @@
       copyMessage.style.display = 'none'; // cкрыть сообщение
     }, 500);
   });
+
+  // Функция для увеличения счетчика "Visits" в Local Storage и обновления отображения
+  function increaseVisitsCounter() {
+    // Получаем текущее значение счетчика "Visits" из Local Storage
+    const visitsCount = getVisitsCount();
+
+    // Увеличиваем счетчик на 1
+    const newVisitsCount = incrementCount(visitsCount);
+
+    // Обновляем значение счетчика в Local Storage
+    updateVisitsCountInStorage(newVisitsCount);
+
+    // Обновляем отображение счетчика на странице
+    updateVisitsCountDisplay(newVisitsCount);
+  }
+
+  function getVisitsCount() {
+    return localStorage.getItem('Visits') || 0;
+  }
+
+  function incrementCount(count) {
+    return parseInt(count) + 1;
+  }
+
+  function updateVisitsCountInStorage(count) {
+    localStorage.setItem('Visits', count);
+  }
+
+  function updateVisitsCountDisplay(count) {
+    const visitsElements = document.querySelectorAll(
+      '.librarycard__amount--visits'
+    );
+    visitsElements.forEach(element => {
+      element.textContent = count;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Проверяем, был ли пользователь зарегистрирован или вошел
+    if (isUserLoggedIn()) {
+      // Если пользователь вошел, увеличиваем счетчик "Visits"
+      increaseVisitsCounter();
+    }
+  });
+
+  function isUserLoggedIn() {
+    return localStorage.getItem('loggedIn') === 'true';
+  }
 })();
 
 (() => {

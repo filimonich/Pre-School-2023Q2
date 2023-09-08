@@ -34,23 +34,15 @@
   const modalNumber = document.querySelector('.modal__number');
   const copyMessage = document.querySelector('.modal__copy-message');
   const fields = ['firstName', 'lastName', 'email', 'password'];
-  const loginCloseButton = document.querySelector(
-    '.modal__login .modal__close-button'
-  );
-  // Находим элементы для имени и номера карты
   const nameInput = document.querySelector(
     '.librarycard__input[placeholder="Reader\'s name"]'
   );
   const cardNumberInput = document.querySelector(
     '.librarycard__input[placeholder="Card number"]'
   );
-
   const modalBuyCard = document.querySelector('.modal__buy-card');
   const modalMyProfile = document.querySelector('.modal__my-profile');
-  // Находите кнопку с классом .button-buy-card
   const buyCardButtons = document.querySelectorAll('.button-buy-card');
-
-  //////////////////
 
   // функция закрытия модального окна регистрации
   const toggleModal = modalSelector => {
@@ -144,8 +136,6 @@
     }
   });
 
-  //////////
-
   // обновление класов в librarycard
   function toggleActiveClasstoggleActiveClass() {
     checkCardButton.classList.toggle('active');
@@ -167,8 +157,6 @@
       button.classList.toggle('active');
     });
   }
-
-  //////////
 
   document.addEventListener('DOMContentLoaded', function () {
     // проверяет стутс входа

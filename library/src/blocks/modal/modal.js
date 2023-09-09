@@ -595,6 +595,7 @@
     button.addEventListener('click', () => {
       closeModal(modalLogin);
       closeModal(modalRegister);
+      document.body.style.overflow = ''; // возврат прокрутки
     });
   });
 })();

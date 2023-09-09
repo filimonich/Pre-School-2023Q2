@@ -463,7 +463,7 @@
                     <p class="librarycard__subject">visits</p>
                     <div class="librarycard__icon"><img src="images/svg/Union.svg" alt="" class="librarycard__img">
                     </div>
-                    <p class="librarycard__amount librarycard__amount--visits">0</p>
+                    <p class="librarycard__amount librarycard__amount--visits">1</p>
                   </li>
                   <li class="librarycard__item">
                     <p class="librarycard__subject">bonuses</p>
@@ -579,8 +579,10 @@
           <label class="modal__label" for="email">E-mail</label>
           <input class="modal__input" id="email" type="email" required>
           <label class="modal__label" for="password">Password</label>
-          <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
-            title="Пароль должен содержать не менее 8 символов" required>
+          <!-- <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
+            title="Пароль должен содержать не менее 8 символов" required> -->
+          <input class="modal__input" id="password" type="password" name="password" pattern="^[a-zA-Z0-9]*$"
+            title="The password must contain at least 8 characters and consist only of letters and numbers" required="">
           <button class="modal__toggle-password">toggle-password</button>
           <button class="modal__button modal__sign-up-button button">Sign Up</button>
           <div class="modal__forgot">
@@ -602,7 +604,7 @@
           <input class="modal__input" id="emailOrCard" type="text" required>
           <label class="modal__label" for="passwordLogin">Password</label>
           <input class="modal__input" id="passwordLogin" type="password" name="password" pattern=".{8,}"
-            title="Пароль должен содержать не менее 8 символов" required>
+            title="The password must contain at least 8 characters" required>
           <button class="modal__button modal__log-in-button button">Log In</button>
           <div class="modal__forgot">
             <p class="modal__text">Don’t have an account?</p>
@@ -633,7 +635,7 @@
                   <div class="librarycard__icon modal__icon"><img src="images/svg/Union.svg" alt=""
                       class="librarycard__img">
                   </div>
-                  <p class="librarycard__amount librarycard__amount--visits">0</p>
+                  <p class="librarycard__amount librarycard__amount--visits">1</p>
                 </li>
                 <li class="librarycard__item modal__item">
                   <p class="librarycard__subject modal__subject">bonuses</p>

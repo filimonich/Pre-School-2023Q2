@@ -312,10 +312,12 @@
         ) {
           // если данные совпадают с данными из localStorage
           updateIcon();
-          generateCardNumber();
+          // generateCardNumber();
           localStorage.setItem('loggedIn', 'true'); // сохранение входа
           updateMenuAndIcon(); // обновление иконки и меню
-          closeModal();
+          // closeModal();
+          modalLogin.style.display = 'none';
+          document.body.style.overflow = ''; // возврат прокрутки
           toggleActiveClasstoggleActiveClass();
         } else {
           // если данные не соответствуют данным из localStorage

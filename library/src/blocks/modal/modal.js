@@ -63,9 +63,27 @@
       toggleModal('.modal__buy-card');
     }
 
-    // Открываем или закрываем выбранное модальное окно
+    // открываем или закрываем выбранное модальное окно
     const modalElement = document.querySelector(modalSelector);
     const isModalOpen = modalElement.style.display === 'block';
+
+    // проверки
+    if (
+      modalSelector === '.modal__login' &&
+      localStorage.getItem('loggedIn') === 'true'
+    ) {
+      // вошел в аккаунт, не открываем модальное окно логина
+      return;
+    }
+
+    if (
+      modalSelector === '.modal__buy-card' &&
+      localStorage.getItem('loggedIn') !== 'true'
+    ) {
+      // не вошел в аккаунт, не открываем модальное окно покупки карты
+      return;
+    }
+
     modalElement.style.display = isModalOpen ? 'none' : 'block';
     document.body.style.overflow = isModalOpen ? '' : 'hidden';
   };
@@ -82,10 +100,10 @@
     });
   });
 
-  // Добавляйте обработчик события на нажатие кнопки
+  // обработчик события на нажатие кнопки
   buyCardButtons.forEach(button => {
     button.addEventListener('click', () => {
-      toggleModal('.modal__buy-card'); // Здесь используйте правильный селектор для вашего модального окна
+      toggleModal('.modal__buy-card');
     });
   });
 
@@ -240,11 +258,11 @@
         const formattedName = `${name[0].toUpperCase()}${name.slice(1)}`;
         modalName.textContent = formattedName;
       } else {
-        modalName.textContent = ''; // Очистите содержимое, если нет имени
+        modalName.textContent = ''; // очистите содержимое, если нет имени
       }
     }
 
-    // Вызовите функцию для обновления полного имени
+    // функцию для обновления полного имени
     updateFullName();
 
     // вызов функций, если форма валидна, происходит логин
@@ -371,18 +389,18 @@
     }, 500);
   });
 
-  // Функция для увеличения счетчика "Visits" в Local Storage и обновления отображения
+  // увеличения счетчика "Visits" в Local Storage и обновления отображения
   function increaseVisitsCounter() {
-    // Получаем текущее значение счетчика "Visits" из Local Storage
+    // текущее значение счетчика "Visits" из Local Storage
     const visitsCount = getVisitsCount();
 
-    // Увеличиваем счетчик на 1
+    // увеличиваем счетчик на 1
     const newVisitsCount = incrementCount(visitsCount);
 
-    // Обновляем значение счетчика в Local Storage
+    // обновляем значение счетчика в Local Storage
     updateVisitsCountInStorage(newVisitsCount);
 
-    // Обновляем отображение счетчика на странице
+    // обновляем отображение счетчика на странице
     updateVisitsCountDisplay(newVisitsCount);
   }
 
@@ -408,9 +426,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Проверяем, был ли пользователь зарегистрирован или вошел
+    // проверка, был ли пользователь зарегистрирован или вошел
     if (isUserLoggedIn()) {
-      // Если пользователь вошел, увеличиваем счетчик "Visits"
+      // если пользователь вошел, увеличиваем счетчик "Visits"
       increaseVisitsCounter();
     }
   });
@@ -459,4 +477,182 @@
       closeModal(modalRegister);
     });
   });
+})();
+
+(() => {
+  ///////////////////////
+  // функция для обновления счетчика книг
+  function updateBookCounter() {
+    // получить количество книг из localStorage
+    const bookCount = getBookCount();
+    console.log(`Updating book counter with count: ${bookCount}`);
+
+    // элементы с классом "librarycard__amount--books" на странице
+    const booksCounterElements = document.querySelectorAll(
+      '.librarycard__amount--books'
+    );
+
+    // обновляем содержимое всех элементов с новым значением счетчика книг
+    booksCounterElements.forEach(element => {
+      element.textContent = bookCount;
+    });
+
+    // обновляем содержимое элементов в модальном окне (если есть)
+    const modalBooksCounterElements = document.querySelectorAll(
+      '.modal__content .librarycard__amount--books'
+    );
+    modalBooksCounterElements.forEach(element => {
+      element.textContent = bookCount;
+    });
+  }
+
+  // для удаления "By" из имени автора
+  function removeByFromAuthor(author) {
+    // return author.replace('By ', '');
+    return author;
+  }
+
+  // обработка нажатия на кнопку "Buy"
+  function handleBuyButtonClick(event) {
+    console.log('handleBuyButtonClick вызван');
+    // вошел ли пользователь в аккаунт
+    if (localStorage.getItem('loggedIn') === 'true') {
+      // найти элементы, содержащие информацию о книге и авторе
+      const card = event.target.closest('.favorites__card');
+      const titleElement = card.querySelector('.favorites__title-name');
+      const authorElement = card.querySelector('.favorites__title-author');
+
+      // извлечь текст из элементов
+      const title = titleElement.textContent;
+      const author = authorElement.textContent;
+
+      // удалить "By" из автора
+      const authorWithoutBy = removeByFromAuthor(author);
+
+      // создать строку в нужном формате
+      const formattedData = `${authorWithoutBy.trim()}, ${title.trim()}`;
+
+      // проверить, существует ли уже запись с такими данными в localStorage
+      if (!isBookInLocalStorage(formattedData)) {
+        // сгенерировать уникальный ключ для каждой книги
+        const key = `book_${Date.now()}`;
+
+        // сохранить данные о покупке в localStorage
+        localStorage.setItem(key, formattedData);
+
+        // отключить кнопку и изменить ее текст на "Own"
+        const buyButton = event.target;
+        buyButton.disabled = true;
+        buyButton.querySelector('.favorites__text').textContent = 'Own';
+
+        // обновить счетчик книг и список книг в модальном окне
+        updateBookCounter();
+        updateBookList();
+      }
+    }
+    console.log(event.target);
+  }
+
+  // проверка, существует ли уже запись с такими данными в localStorage
+  function isBookInLocalStorage(data) {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const storedData = localStorage.getItem(key);
+      if (storedData === data) {
+        return true; // книга уже существует в localStorage
+      }
+    }
+    return false; // книга не найдена в localStorage
+  }
+
+  // находим все кнопки "Buy"
+  const buyButtons = document.querySelectorAll('.favorites__button');
+
+  // добавить обработчик события для каждой кнопки "Buy"
+  buyButtons.forEach(button => {
+    button.addEventListener('click', handleBuyButtonClick);
+  });
+
+  buyButtons.forEach(button => {
+    const card = button.closest('.favorites__card');
+    const titleElement = card.querySelector('.favorites__title-name');
+    const authorElement = card.querySelector('.favorites__title-author');
+
+    const title = titleElement.textContent;
+    const author = authorElement.textContent;
+    const formattedData = `${author.trim()}, ${title.trim()}`;
+
+    if (localStorage.getItem('loggedIn') === 'true') {
+      console.log(localStorage.getItem('loggedIn'));
+      console.log('Checking:', formattedData);
+
+      let found = false;
+      // проверить, была ли книга куплена
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const data = localStorage.getItem(key);
+        console.log('data:', data);
+        if (data === formattedData) {
+          found = true;
+          break;
+        }
+      }
+
+      if (found) {
+        console.log('Found match for:', formattedData);
+        button.disabled = true;
+        button.querySelector('.favorites__text').textContent = 'Own';
+      }
+    }
+  });
+
+  // получить количества книг в localStorage
+  function getBookCount() {
+    let count = 0;
+
+    // перебирать все ключи в localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+
+      // проверить, начинается ли ключ с "book_"
+      if (key.startsWith('book_')) {
+        count++;
+      }
+    }
+
+    return count;
+  }
+
+  // вызывать функцию для обновления счетчика при загрузке страницы
+  updateBookCounter();
+
+  // обновления списка книг в модальном окне
+  function updateBookList() {
+    // находим контейнер для списка книг в модальном окне
+    const modalBookList = document.querySelector('.modal__items-book');
+
+    // очищаем существующий список книг
+    modalBookList.innerHTML = '';
+
+    // перебираем все элементы в localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const data = localStorage.getItem(key);
+
+      // начинается ли ключ с "book_"
+      if (key.startsWith('book_')) {
+        // создать новый элемент списка и добавляем его в контейнер
+        const listItem = document.createElement('li');
+        listItem.className = 'modal__item-book';
+        listItem.textContent = data;
+        modalBookList.appendChild(listItem);
+      }
+    }
+    console.log('Updating book list');
+  }
+
+  // функця для обновления списка книг при загрузке страницы
+  updateBookList();
+
+  ///////////////
 })();

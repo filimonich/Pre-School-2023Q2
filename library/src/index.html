@@ -179,9 +179,6 @@
                 and thrived as the modern world has changed around them.</p>
               <div class="favorites__icon"><img src="images/img/queen.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button-buy-card button" style="display: none;" disabled>
-                <span class="favorites__text">Own</span>
-              </button>
               <button class="favorites__button button-buy-card button">
                 <span class="favorites__text">Buy</span>
               </button>
@@ -474,9 +471,9 @@
                     <p class="librarycard__amount">1240</p>
                   </li>
                   <li class="librarycard__item">
-                    <p class="librarycard__subject">Books</p>
+                    <p class="librarycard__subject">books</p>
                     <div class="librarycard__icon"><img src="images/svg/book.svg" alt="" class="librarycard__img"></div>
-                    <p class="librarycard__amount"></p>
+                    <p class="librarycard__amount librarycard__amount--books"></p>
                   </li>
                 </ul>
               </div>
@@ -606,7 +603,6 @@
           <label class="modal__label" for="passwordLogin">Password</label>
           <input class="modal__input" id="passwordLogin" type="password" name="password" pattern=".{8,}"
             title="Пароль должен содержать не менее 8 символов" required>
-          <!-- <button class="modal__toggle-password">toggle-password</button> -->
           <button class="modal__button modal__log-in-button button">Log In</button>
           <div class="modal__forgot">
             <p class="modal__text">Don’t have an account?</p>
@@ -649,7 +645,7 @@
                   <p class="librarycard__subject modal__subject">Books</p>
                   <div class="librarycard__icon modal__icon"><img src="images/svg/book.svg" alt=""
                       class="librarycard__img"></div>
-                  <p class="librarycard__amount"></p>
+                  <p class="librarycard__amount librarycard__amount--books"></p>
                 </li>
               </ul>
             </div>
@@ -657,7 +653,7 @@
           <p class="modal__subtitle">Rented books</p>
           <div class="modal__items-book-container">
             <ul class="modal__items-book">
-              <li class="modal__item-book"></li>
+              <!-- <li class="modal__item-book">By Erich Auerbach, Dante: Poet of the Secular World</li> -->
             </ul>
           </div>
           <div class="modal__box">
@@ -684,13 +680,14 @@
           <li class="modal__section modal__section-form">
             <form action="" class="modal__form modal__form--buy-card">
               <label class="modal__label" for="bankCardNumber">Bank card number</label>
-              <input class="modal__input" id="bankCardNumber" type="number" name="bankCardNumber" required>
+              <input class="modal__input" id="bankCardNumber" type="text" name="bankCardNumber" pattern="\d{16}"
+                title="Must contain 16 digits" required>
               <label class="modal__label" for="expirationCodeMonth">Expiration code</label>
               <div class="modal__input-box">
                 <input class="modal__input modal__input--buy-card" id="expirationCodeMonth" type="number" name="Month"
-                  required>
+                  min="01" max="12" required>
                 <input class="modal__input modal__input--buy-card" id="expirationCodeYear" type="number" name="Year"
-                  required>
+                  min="00" max="99" required>
               </div>
               <label class="modal__label" for="CVC">CVC</label>
               <input class="modal__input modal__input--buy-card" id="CVC" type="number" name="CVC" required>

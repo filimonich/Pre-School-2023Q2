@@ -1,0 +1,142 @@
+.footer {
+  $self: &;
+
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  // margin-bottom: 0;
+  background-color: $background-black;
+  color: $white;
+
+  &__contents {
+    // margin-bottom: 0;
+  }
+
+  &__content {
+
+    &::after {
+      content: "";
+      display: block;
+
+      width: 97.2%;
+      max-width: 1440px;
+
+      // width: 1400px;
+      height: 1px;
+      margin: 0 auto;
+      background-color: $white;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 21px 20px 30px;
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 20px;
+
+    @include media('<=sm') {
+      margin: 19px 19px 29px;
+    }
+  }
+
+  &__container {}
+
+  &__adress {}
+
+  &__place {
+    margin-bottom: 10px;
+  }
+
+  &__adress-link {
+    font-family: "IR";
+    font-size: 15px;
+    line-height: 20px;
+    color: $white;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  &__item {}
+
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 8px 15px 8px 0;
+    // margin-right: 15px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      @media #{$mouse-device} {
+        transform: scale(1.2);
+      }
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__img {}
+
+  &__inner {
+    text-align: right;
+  }
+
+  &__working {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__day {}
+
+  &__hour {}
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 45px 20px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 2px;
+
+    @include media('<=sm') {
+      margin: 47px 20px;
+    }
+  }
+
+  &__text {}
+
+  &__link {
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: $white;
+  }
+
+  &__link-ml {
+    margin-left: 52px;
+
+    @include media('<=sm') {
+      margin-left: 0;
+    }
+  }
+}

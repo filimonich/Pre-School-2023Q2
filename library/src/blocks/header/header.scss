@@ -1,0 +1,167 @@
+.header {
+  $self: &;
+  width: 100%;
+  margin-bottom: 0;
+  background-color: $background-black;
+
+  &__contents {
+    z-index: 3;
+    margin-bottom: 0;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-drop {
+    position: relative;
+    min-width: 28px;
+    height: 28px;
+
+    @include media('<=lg') {
+      z-index: 1;
+      margin-right: 85px;
+    }
+
+    // @include media('<=sm') {
+    //   margin-right: 85px;
+    // }
+  }
+
+  &__image {
+    display: none;
+    position: relative;
+    z-index: -10;
+    opacity: 0;
+
+    &.active {
+      display: block;
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+
+  &__user-icon {
+    display: none;
+    z-index: -10;
+    opacity: 0;
+
+    &.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: $white;
+
+      z-index: 10;
+      opacity: 1;
+
+      color: $brown;
+      font-family: "IR";
+      font-size: 15px;
+      font-style: normal;
+      line-height: 20px;
+    }
+  }
+
+  &__menu-profile {
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    right: 0;
+    min-width: 80px;
+    min-height: 115px;
+    padding: 5px 5px 20px;
+
+    text-align: center;
+    line-height: 20px;
+
+    background-color: $white;
+    color: $text;
+
+    opacity: 0;
+    transition: opacity 1s;
+
+    pointer-events: none;
+
+
+    &--active {
+      z-index: 10;
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+    // @include media('<=lg') {
+    //   right: 9.5%;
+    // }
+    // @include media('<=md') {
+    //   right: 10.9%;
+    // }
+    // @include media('<=sm') {
+    //   right: 13.7%;
+    // }
+  }
+
+  &__menu-profile-contents {}
+
+  &__title {
+    display: none;
+
+    &.active {
+      display: block;
+      font-family: "IB";
+
+      &::after {
+        content: "";
+        display: block;
+        width: 97.2%;
+        max-width: 40px;
+        height: .5px;
+        margin: 5px auto 15px;
+        background-color: $brown;
+      }
+    }
+  }
+
+  &__card-number {
+    display: none;
+
+    &.header__title.active {
+      display: block;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 10px;
+    font-family: "IR";
+  }
+
+  &__item {}
+
+  &__link {
+    display: none;
+    padding: 0 2px;
+    font-size: 14px;
+    color: $text;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &.active {
+      display: initial;
+    }
+  }
+
+}

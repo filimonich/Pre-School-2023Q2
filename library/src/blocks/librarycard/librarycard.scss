@@ -11,7 +11,6 @@
     }
   }
 
-
   &__contents {}
 
   &__headline {}
@@ -35,6 +34,7 @@
   }
 
   &__title {
+    display: none;
     text-align: center;
     margin-bottom: 30px;
     font-family: "IR";
@@ -42,9 +42,13 @@
     line-height: 34px;
     letter-spacing: 0.6px;
     color: $text;
-    
+
+    &.active {
+      display: block;
+    }
+
     @include media('<=sm') {
-      margin-bottom: 32px;      
+      margin-bottom: 32px;
     }
   }
 
@@ -53,7 +57,8 @@
     flex-direction: column;
     align-items: center;
     width: 600px;
-    padding: 19px 18px 27px;
+    // padding: 19px 18px 27px;
+    padding: 19px 18px 0;
     border: 3px solid $brown;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
@@ -64,7 +69,7 @@
     width: 560px;
     height: 272px;
     padding: 21px 19px 26px;
-    margin-bottom: 19px;
+    // margin-bottom: 19px;
     background: $brown;
   }
 
@@ -110,18 +115,70 @@
     }
   }
 
-  &__buttons {}
+  &__buttons {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
 
   &__button {}
 
   &__button-check.button {
+    display: none;
     font-family: "IB";
     width: 242px;
+    margin: 20px 0 26px;
     padding: 9px 20px;
     font-size: 20px;
     letter-spacing: 1px;
+
+    &.active {
+      display: block;
+    }
   }
 
+  &__subject {
+    text-align: center;
+    font-family: "IR";
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__cards-profile {
+    display: none;
+    margin-top: 16px;
+    padding-bottom: 8px;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  &__item {
+    display: grid;
+    justify-items: center;
+  }
+
+  &__amount {
+    text-align: center;
+    font-family: "IR";
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: $text;
+  }
 
   &__button-get.button {
     width: 75px;
@@ -148,6 +205,7 @@
   }
 
   &__caption {
+    display: none;
     font-family: "FR";
     font-size: 30px;
     line-height: normal;
@@ -155,12 +213,17 @@
     margin-bottom: 34px;
     color: $text;
 
+    &.active {
+      display: block;
+    }
+
     @include media('<=sm') {
-      margin-bottom: 41px;      
+      margin-bottom: 41px;
     }
   }
 
   &__text {
+    display: none;
     width: 460px;
     text-align: right;
     margin-bottom: 36px;
@@ -170,13 +233,17 @@
     letter-spacing: 0.4px;
     color: $text;
 
+    &.active {
+      display: block;
+    }
+
     @include media('<=lg') {
       width: 600px;
       text-align: center;
     }
 
     @include media('<=sm') {
-      margin-bottom: 40px;      
+      margin-bottom: 40px;
     }
   }
 

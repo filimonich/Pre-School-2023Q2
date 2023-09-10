@@ -1,11 +1,16 @@
 .footer {
   $self: &;
-  margin-bottom: 0;
+
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  // margin-bottom: 0;
   background-color: $background-black;
   color: $white;
 
   &__contents {
-    margin-bottom: 0;
+    // margin-bottom: 0;
   }
 
   &__content {
@@ -13,9 +18,13 @@
     &::after {
       content: "";
       display: block;
-      margin: 0 auto;
-      width: 1400px;
+
+      width: 97.2%;
+      max-width: 1440px;
+
+      // width: 1400px;
       height: 1px;
+      margin: 0 auto;
       background-color: $white;
     }
   }
@@ -66,7 +75,9 @@
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-      transform: scale(1.2);
+      @media #{$mouse-device} {
+        transform: scale(1.2);
+      }
     }
 
     &:active {
@@ -125,7 +136,7 @@
     margin-left: 52px;
 
     @include media('<=sm') {
-     margin-left: 0;
+      margin-left: 0;
     }
   }
 }

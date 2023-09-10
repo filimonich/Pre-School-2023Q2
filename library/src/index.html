@@ -11,7 +11,7 @@
 </head>
 
 <body class="wrapper preload">
-  <header class="header">
+  <header class="header header-js">
     <div class="header__contents container">
       <div class="header__content">
         <a href="./" class="logo">
@@ -27,8 +27,26 @@
               <li class="menu__item"><a class="menu__link animation-text" href="#library-card">Library Card</a></li>
             </ul>
           </nav>
-          <a class="header__drop-menu animation-button">
-            <img src="images/svg/icon-profile.svg" alt="Button drop menu profile" class="header__image">
+          <a class="header__menu-drop">
+            <img src="images/svg/icon-profile.svg" alt="Button drop menu profile"
+              class="header__image animation-button active">
+            <div class="header__user-icon animation-button user-icon"></div>
+            <div class="header__menu-profile">
+              <div class="header__menu-profile-contents">
+                <p class="header__profile-title header__title active">Profile</p>
+                <p class="header__card-number header__title"></p>
+              </div>
+              <ul class="header__list">
+                <li class="header__item">
+                  <p class="header__link button-login animation-text active">Log In</p>
+                  <p class="header__link button-my-profile animation-text">My profile</p>
+                </li>
+                <li class="header__item">
+                  <p class="header__link button-register animation-text active">Register</p>
+                  <p class="header__link button-log-out animation-text">Log Out</p>
+                </li>
+              </ul>
+            </div>
           </a>
           <div class="hamburger hamburger-js">
             <span class="hamburger__plank"></span>
@@ -50,7 +68,7 @@
       </div>
     </section>
 
-    <section class="about container" id="about">
+    <section class="about about-js container" id="about">
       <div class="about__contents">
         <h2 class="about__headline headline">about</h2>
         <p class="about__subtitle">The Brooklyn Library is a free workspace,
@@ -69,10 +87,10 @@
             <li class="about__benefit">
               <img src="images/img/long-shelves.png" alt="long shelves in the library" class="about__img">
             </li>
-            <li class="about__benefit" style="display: none;">
+            <li class="about__benefit">
               <img src="images/img/stairs.png" alt="stairs at the bookshelf" class="about__img">
             </li>
-            <li class="about__benefit" style="display: none;">
+            <li class="about__benefit">
               <img src="images/img/caryatids.png" alt="two columns and caryatids under the roof" class="about__img">
             </li>
           </ul>
@@ -92,7 +110,7 @@
       </div>
     </section>
 
-    <section class="favorites container" id="favorites">
+    <section class="favorites favorites-js container" id="favorites">
       <div class="favorites__contents">
         <h2 class="favorites__headline headline">favorites</h2>
         <p class="favorites__subtitle">Pick favorites of season</p>
@@ -117,7 +135,7 @@
 
         <div class="favorites__holder">
           <ul class="favorites__cards">
-            <li class="favorites__card">
+            <li class="favorites__card" id="book1" data-card-id="book1">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">The Book Eaters</p>
               <p class="favorites__title-author">By Sunyi Dean</p>
@@ -126,9 +144,9 @@
                 and certain death. Complete with dysfunctional family values, light Sapphic
                 romance, and a strong, complex protagonist. Not for the faint of heart.</p>
               <div class="favorites__icon"><img src="images/img/eaters.png" alt="" class="favorites__img"></div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card">
+            <li class="favorites__card" id="card2" data-card-id="book2">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Cackle</p>
               <p class="favorites__title-author">By Rachel Harrison</p>
@@ -138,9 +156,9 @@
                 befriends a beautiful witch.</p>
               <div class="favorites__icon"><img src="images/img/cackle.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card">
+            <li class="favorites__card" id="card3" data-card-id="book3">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Dante: Poet of the Secular World</p>
               <p class="favorites__title-author">By Erich Auerbach</p>
@@ -150,9 +168,9 @@
                 significance—an inspired introduction to Dante's main themes.</p>
               <div class="favorites__icon"><img src="images/img/auerbach.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card">
+            <li class="favorites__card" id="card4" data-card-id="book4">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">The Last Queen</p>
               <p class="favorites__title-author">By Clive Irving</p>
@@ -161,18 +179,24 @@
                 and thrived as the modern world has changed around them.</p>
               <div class="favorites__icon"><img src="images/img/queen.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button" disabled><span class="favorites__text">Own</span></button>
+              <button class="favorites__button button-buy-card button">
+                <span class="favorites__text">Buy</span>
+              </button>
             </li>
-            <li class="favorites__card" style="display: none;">
+          </ul>
+        </div>
+        <div class="favorites__holder" style="display: none;">
+          <ul class="favorites__cards">
+            <li class="favorites__card" id="card5" data-card-id="book5">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">The Body</p>
               <p class="favorites__title-author">By Stephen King</p>
               <p class="favorites__desc">Powerful novel that takes you back to a nostalgic time,
                 exploring both the beauty and danger and loss of innocence that is youth.</p>
               <div class="favorites__icon"><img src="images/img/body.png" alt="book cover" class="favorites__img"></div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card6" data-card-id="book6">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Carry: A Memoir of Survival on Stolen Land</p>
               <p class="favorites__title-author">By Toni Jenson</p>
@@ -181,9 +205,9 @@
                 indictment of the way things are.</p>
               <div class="favorites__icon"><img src="images/img/carry.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card7" data-card-id="book7">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Days of Distraction</p>
               <p class="favorites__title-author">By Alexandra Chang</p>
@@ -192,9 +216,9 @@
                 all in one form-defying package of spare prose.</p>
               <div class="favorites__icon"><img src="images/img/distraction.png" alt="book cover"
                   class="favorites__img"></div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card8" data-card-id="book8">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Dominicana</p>
               <p class="favorites__title-author">By Angie Cruz</p>
@@ -204,9 +228,13 @@
                 and Julia Alvarez.</p>
               <div class="favorites__icon"><img src="images/img/dominicana.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+          </ul>
+        </div>
+        <div class="favorites__holder" style="display: none;">
+          <ul class="favorites__cards">
+            <li class="favorites__card" id="card9" data-card-id="book9">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Crude: A Memoir</p>
               <p class="favorites__title-author">By Pablo Fajardo & ​​Sophie Tardy-Joubert</p>
@@ -216,9 +244,9 @@
                 to the Amazon and her people</p>
               <div class="favorites__icon"><img src="images/img/crude.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card10" data-card-id="book10">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Let My People Go Surfing</p>
               <p class="favorites__title-author">By Yvon Chouinard</p>
@@ -228,9 +256,9 @@
                 Including 10 More Years of Business Unusual.</p>
               <div class="favorites__icon"><img src="images/img/surfing.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card11" data-card-id="book11">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">The Octopus Museum: Poems</p>
               <p class="favorites__title-author">By Brenda Shaughnessy</p>
@@ -239,9 +267,9 @@
                 and divisive politics.</p>
               <div class="favorites__icon"><img src="images/img/octopus.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card12" data-card-id="book12">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Shark Dialogues: A Novel</p>
               <p class="favorites__title-author">By Kiana Davenport</p>
@@ -250,9 +278,13 @@
                 in an erotic tale of villains and dreamers, queens and revolutionaries, lepers and healers.</p>
               <div class="favorites__icon"><img src="images/img/kiana.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+          </ul>
+        </div>
+        <div class="favorites__holder" style="display: none;">
+          <ul class="favorites__cards">
+            <li class="favorites__card" id="card13" data-card-id="book13">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Casual Conversation</p>
               <p class="favorites__title-author">By Renia White</p>
@@ -261,9 +293,9 @@
                 what we don't, examining the possibilities around how we construct and communicate identity. </p>
               <div class="favorites__icon"><img src="images/img/casual.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card14" data-card-id="book14">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">The Great Fire</p>
               <p class="favorites__title-author">By Lou Ureneck</p>
@@ -272,9 +304,9 @@
                 million refugees from the Armenian Genocide</p>
               <div class="favorites__icon"><img src="images/img/great.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card15" data-card-id="book15">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Rickey: The Life and Legend</p>
               <p class="favorites__title-author">By Howard Bryant</p>
@@ -283,9 +315,9 @@
                 the game's all-time greatest performers, the Man of Steal, Rickey Henderson?</p>
               <div class="favorites__icon"><img src="images/img/rickey.png" alt="book cover" class="favorites__img">
               </div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
-            <li class="favorites__card" style="display: none;">
+            <li class="favorites__card" id="card16" data-card-id="book16">
               <h3 class="favorites__title headline">Staff Picks</h3>
               <p class="favorites__title-name">Slug: And Other Stories</p>
               <p class="favorites__title-author">By Megan Milks</p>
@@ -293,7 +325,7 @@
                 codependency. A father and child experience the shared trauma of giving birth to gods from their wounds.
               </p>
               <div class="favorites__icon"><img src="images/img/slug.png" alt="book cover" class="favorites__img"></div>
-              <button class="favorites__button button"><span class="favorites__text">Buy</span></button>
+              <button class="favorites__button button-buy-card button"><span class="favorites__text">Buy</span></button>
             </li>
           </ul>
         </div>
@@ -407,31 +439,65 @@
 
     </section>
 
-    <section class="librarycard container" id="library-card">
+    <section class="librarycard container librarycard-js" id="library-card">
       <div class="librarycard__contents">
         <h2 class="librarycard__headline headline">digital library cards</h2>
         <div class="librarycard__content">
           <div class="librarycard__inner">
-            <h3 class="librarycard__title">Find your Library card</h3>
+            <h3 class="librarycard__title active">Find your Library card</h3>
+            <h3 class="librarycard__title">Your Library card</h3>
             <form class="librarycard__benefits">
               <div class="librarycard__box">
                 <h4 class="librarycard__subtitle">brooklyn public library</h4>
-                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
-                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Reader's name">
-                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9-]*"
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9\- ]*"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9\- ]/g, '')" placeholder="Reader's name">
+                <input class="librarycard__input" type="text" pattern="[a-zA-Z0-9]+"
                   oninput="this.value = this.value.replace(/[^a-zA-Z0-9-]/g, '')" placeholder="Card number">
               </div>
-              <button class="librarycard__button librarycard__button-check button">Check the card</button>
+              <button class="librarycard__button librarycard__button-check button active" onclick="return false;">
+                Check the card
+              </button>
+              <div class="librarycard__cards-profile">
+                <ul class="librarycard__items">
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">visits</p>
+                    <div class="librarycard__icon"><img src="images/svg/Union.svg" alt="" class="librarycard__img">
+                    </div>
+                    <p class="librarycard__amount librarycard__amount--visits">1</p>
+                  </li>
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">bonuses</p>
+                    <div class="librarycard__icon"><img src="images/svg/Star.svg" alt="" class="librarycard__img"></div>
+                    <p class="librarycard__amount">1240</p>
+                  </li>
+                  <li class="librarycard__item">
+                    <p class="librarycard__subject">books</p>
+                    <div class="librarycard__icon"><img src="images/svg/book.svg" alt="" class="librarycard__img"></div>
+                    <p class="librarycard__amount librarycard__amount--books">0</p>
+                  </li>
+                </ul>
+              </div>
             </form>
           </div>
 
           <div class="librarycard__get">
-            <h3 class="librarycard__caption">Get a reader card</h3>
-            <p class="librarycard__text">You will be able to see a reader card after logging into account or you can
-              register a new account</p>
+            <h3 class="librarycard__caption active">Get a reader card</h3>
+            <h3 class="librarycard__caption">Visit your profile</h3>
+            <p class="librarycard__text active">
+              You will be able to see a reader card after
+              logging into account or you can register a new account
+            </p>
+            <p class="librarycard__text">
+              With a digital library card you get free access to the Library’s
+              wide array of digital resources including e-books,
+              databases, educational resources, and more.
+            </p>
+            <div class="librarycard__buttons active">
+              <button class="librarycard__button librarycard__button-get button-register button">Sign Up</button>
+              <button class="librarycard__button librarycard__button-get button-login button">Log in</button>
+            </div>
             <div class="librarycard__buttons">
-              <button class="librarycard__button librarycard__button-get button">Sign Up</button>
-              <button class="librarycard__button librarycard__button-get button">Log in</button>
+              <button class="librarycard__button librarycard__button-get button-my-profile button">Profile</button>
             </div>
           </div>
         </div>
@@ -497,6 +563,164 @@
     </div>
 
   </footer>
+
+  <div class="modal modal-js">
+    <div class="modal__register modal__main">
+      <div class="modal__content">
+        <button class="modal__close-button">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <h3 class="modal__headline">register</h3>
+        <form class="modal__form">
+          <label class="modal__label" for="firstName">First name</label>
+          <input class="modal__input" id="firstName" type="text" required>
+          <label class="modal__label" for="lastName">Last name</label>
+          <input class="modal__input" id="lastName" type="text" required>
+          <label class="modal__label" for="email">E-mail</label>
+          <input class="modal__input" id="email" type="email" required>
+          <label class="modal__label" for="password">Password</label>
+          <!-- <input class="modal__input" id="password" type="password" name="password" pattern=".{8,}"
+            title="Пароль должен содержать не менее 8 символов" required> -->
+          <input class="modal__input" id="password" type="password" name="password" pattern="^[a-zA-Z0-9]*$"
+            title="The password must contain at least 8 characters and consist only of letters and numbers" required="">
+          <button class="modal__toggle-password">toggle-password</button>
+          <button class="modal__button modal__sign-up-button button">Sign Up</button>
+          <div class="modal__forgot">
+            <p class="modal__text">Already have an account?</p>
+            <div class="modal__login-button modal__style-button button-login-in animation-text">Login</div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal__login modal__main">
+      <div class="modal__content modal__content--login">
+        <button class="modal__close-button">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <h3 class="modal__headline">login</h3>
+        <form class="modal__form">
+          <label class="modal__label" for="emailOrCard">E-mail or readers card</label>
+          <input class="modal__input" id="emailOrCard" type="text" required>
+          <label class="modal__label" for="passwordLogin">Password</label>
+          <input class="modal__input" id="passwordLogin" type="password" name="password" pattern=".{8,}"
+            title="The password must contain at least 8 characters" required>
+          <button class="modal__button modal__log-in-button button">Log In</button>
+          <div class="modal__forgot">
+            <p class="modal__text">Don’t have an account?</p>
+            <div class="modal__register-button modal__style-button button-register-in animation-text">Register</div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal__my-profile modal__main">
+      <div class="modal__content modal__content--my-profile">
+        <button class="modal__close-button modal__close-button--location">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <div class="modal__sidebar">
+          <div class="modal__user-icon user-icon active"></div>
+          <div class="modal__aside-name">
+            <p class="modal__name">John Doe</p>
+          </div>
+        </div>
+        <div class="modal__inner">
+          <h4 class="modal__title">My profile</h4>
+          <div class="librarycard">
+            <div class="librarycard__cards-profile modal__cards-profile active">
+              <ul class="librarycard__items modal__items">
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">visits</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/Union.svg" alt=""
+                      class="librarycard__img">
+                  </div>
+                  <p class="librarycard__amount librarycard__amount--visits">1</p>
+                </li>
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">bonuses</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/Star.svg" alt=""
+                      class="librarycard__img"></div>
+                  <p class="librarycard__amount">1240</p>
+                </li>
+                <li class="librarycard__item modal__item">
+                  <p class="librarycard__subject modal__subject">Books</p>
+                  <div class="librarycard__icon modal__icon"><img src="images/svg/book.svg" alt=""
+                      class="librarycard__img"></div>
+                  <p class="librarycard__amount librarycard__amount--books">0</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="modal__subtitle">Rented books</p>
+          <div class="modal__items-book-container">
+            <ul class="modal__items-book">
+              <!-- <li class="modal__item-book">By Erich Auerbach, Dante: Poet of the Secular World</li> -->
+            </ul>
+          </div>
+          <div class="modal__box">
+            <p class="modal__text-item">Card number</p>
+            <p class="modal__number">F00234030</p>
+            <a class="modal__icon-copy"><img src="images/svg/icon-copy.svg" alt="" class="modal__img"></a>
+          </div>
+          <span class="modal__copy-message" style="display: none;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal__buy-card modal__main">
+      <div class="modal__content modal__content--buy-card">
+        <button class="modal__close-button modal__close-button--location modal__close-button--white">
+          <img src="images/svg/button-close.svg" alt="close the modal window" class="modal__img modal__close-img">
+        </button>
+        <div class="modal__section-header">
+          <div class="modal__block-header">
+            <h3 class="modal__headline--buy-card">buy a library card</h3>
+          </div>
+        </div>
+        <ul class="modal__sections">
+          <li class="modal__section modal__section-form">
+            <form action="" class="modal__form modal__form--buy-card">
+              <label class="modal__label" for="bankCardNumber">Bank card number</label>
+              <input class="modal__input" id="bankCardNumber" type="text" name="bankCardNumber" pattern="\d{16}"
+                title="Must contain 16 digits" required>
+              <label class="modal__label" for="expirationCodeMonth">Expiration code</label>
+              <div class="modal__input-box">
+                <input class="modal__input modal__input--buy-card" id="expirationCodeMonth" type="number" name="Month"
+                  min="01" max="12" required>
+                <input class="modal__input modal__input--buy-card" id="expirationCodeYear" type="number" name="Year"
+                  min="00" max="99" required>
+              </div>
+              <label class="modal__label" for="CVC">CVC</label>
+              <input class="modal__input modal__input--buy-card" id="CVC" type="number" name="CVC" required>
+              <label class="modal__label modal__label--mt" for="cardholderName">Cardholder name</label>
+              <input class="modal__input" id="cardholderName" type="text" name="cardholderName" required>
+              <label class="modal__label" for="PostalCode">Postal code</label>
+              <input class="modal__input" id="PostalCode" type="number" name="PostalCode" required>
+              <label class="modal__label" for="cityTown">City / Town</label>
+              <input class="modal__input" id="cityTown" type="text" name="cityTown" required>
+              <div class="modal__button-box">
+                <button class="modal__button modal__button--buy-card button" id="buttonBuyCard">
+                  <span class="modal__text--buy-card">Buy</span>
+                </button>
+                <p class="modal__price--buy-card">$ 25.00</p>
+              </div>
+            </form>
+          </li>
+          <li class="modal__section modal__section-desc">
+            <p class="modal__desc">
+              If you are live, work, attend school, or pay property taxes
+              in New York State, you can get a $25 digital library card right now
+              using this online form. Visitors to New York State can also use
+              this form to apply for a temporary card.
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
 </body>
 
 </html>

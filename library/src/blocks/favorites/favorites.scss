@@ -1,19 +1,38 @@
 .favorites {
   $self: &;
+  // min-height: 1400px;
+
+  // @include media('<=sm') {
+  //   min-height: 1400px;
+  // }
+
+  // display: block;
+  // position: relative;
 
   &.container {
+    // display: block;
+    // position: relative;
     margin-bottom: 40px;
     padding-top: 20px
   }
 
   &__contents {
+    height: 100%;
+    // height: calc(100% + 10px);
+    // height: auto;
     margin: 0 20px;
+    z-index: 1;
+
+    @include media('<=sm') {
+      // height: calc(100% + 10px);
+      height: 100%;
+    }
   }
 
   &__headline {}
 
   &__subtitle {
-    margin-bottom: 41px;
+    // margin-bottom: 41px;
     text-align: left;
     font-family: "IB";
     font-size: 20px;
@@ -21,16 +40,28 @@
   }
 
   &__radio {
+    z-index: 2;
     display: flex;
-    margin-bottom: 42px;
+    padding: 40px 0 43px;
+    // padding-bottom: 42px;
 
     @include media('<=sm') {
-      margin-bottom: 41px;
+      position: sticky;
+      top: 0;
+      // height:100px;
+      height: 62px;
+      padding: 40px 0 63px;
+      // padding-bottom: 41px;
+      text-align: center;
+      background-color: $white;
     }
 
     @include media('<sm') {
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
+      max-width: 728px;
+      width: 100%;
+      margin: 0 auto 0 .5%;
     }
   }
 
@@ -40,10 +71,10 @@
 
     @include media('<sm') {
       min-width: 100px;
-      margin-right: 1%;
+      margin-right: 5%;
       margin-bottom: 10px;
     }
-    
+
     @include media('<xs') {
       flex-basis: 40%;
     }
@@ -52,7 +83,7 @@
       margin-right: 0;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
 
@@ -60,7 +91,7 @@
       margin-right: 154px;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
 
@@ -68,7 +99,7 @@
       margin-right: 166px;
 
       @include media('<sm') {
-        margin-right: 1%;
+        margin-right: 5%;
       }
     }
   }
@@ -140,7 +171,13 @@
     }
   }
 
-  &__holder {}
+  &__holder {
+    animation: fadeOut .9s ease-in-out;
+
+    &:not([style*="display: none"]) {
+      animation: fadeIn .9s ease-in-out;
+    }
+  }
 
   &__cards {
     position: relative;
@@ -174,6 +211,14 @@
     width: 550px;
     padding: 15px 18px;
     border: 1px solid $text;
+
+    // &.fade-out {
+    //   animation: fadeOut 0.5s;
+    // }
+
+    // &.fade-in {
+    //   animation: fadeIn 0.5s;
+    // }
 
     @include media('<=xlg') {
       grid-column: span 3;

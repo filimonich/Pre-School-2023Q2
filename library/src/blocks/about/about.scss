@@ -31,6 +31,10 @@
     @include media('<=sm') {
       display: block;
       padding-top: 40px;
+
+      &.disable-control {
+        filter: opacity(0.5);
+      }
     }
   }
 
@@ -49,28 +53,48 @@
   }
 
   &__benefits {
+    // display: flex;
+
     display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+
 
     @include media('<=sm') {
+      width: 62%;
       justify-content: center;
     }
   }
 
   &__benefit {
 
-    &:nth-child(-n + 2) {
-      margin-right: 25px;
+    flex: 0 0 34.0333%;
+    transition: transform 0.5s ease-in-out;
 
-      @include media('<=sm') {
-        margin-right: 0;
-      }
+
+    @include media('<=sm') {
+      flex: 0 0 100%;
     }
 
-    &:not(:first-child) {
+    // &:nth-child(-n + 2) {
+    //   margin-right: 25px;
 
-      @include media('<=sm') {
-        display: none;
-      }
+    //   @include media('<=sm') {
+    //     margin-right: 0;
+    //   }
+    // }
+
+    // &:not(:first-child) {
+
+    //   @include media('<=sm') {
+    //     display: none;
+    //   }
+    // }
+
+    &.active-slide {
+      display: block;
     }
   }
 
@@ -85,6 +109,10 @@
 
   &__dot {
     margin-right: 10px;
+
+    & a.active-dot {
+      background-color: $brown;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -119,9 +147,9 @@
       cursor: pointer;
     }
 
-    &.active-dot {
-      background-color: $brown;
-    }
+    // &.active-dot {
+    //   background-color: $brown;
+    // }
   }
 
   &__dot-img {}

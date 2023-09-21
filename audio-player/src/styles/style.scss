@@ -77,7 +77,7 @@ html {
 .button {
   cursor: pointer;
   border-radius: 2px;
-  border: 1px solid $background-black;
+  border: 1px solid $bd-black;
   background-color: $white;
   transition: background-color 0.6s ease, border 2s ease, transform 0.6s ease;
 
@@ -104,7 +104,7 @@ html {
     font-family: "IB";
     font-size: 10px;
     letter-spacing: 1px;
-    color: $background-black;
+    color: $bd-black;
   }
 }
 
@@ -132,7 +132,7 @@ html {
 .animation-text {
   border-radius: 2px;
   cursor: pointer;
-  transition: transform 2s ease, box-shadow 2s ease, background-color 2s ease;
+  transition: transform .1s ease, box-shadow .2s ease, background-color .2s ease;
 
   &:hover {
     @media #{$mouse-device} {
@@ -142,7 +142,8 @@ html {
   }
 
   &:active {
-    transform: translateY(6px);
+    transform: translateY(2px);
+    background-color: $caribbean-green;
   }
 }
 

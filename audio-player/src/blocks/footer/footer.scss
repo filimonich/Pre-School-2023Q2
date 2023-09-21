@@ -1,0 +1,18 @@
+.footer {
+  $self: &;
+
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(90, 145, 221, 0.2);
+  color: $white;
+
+  &__link {
+    font-size: 20px;
+    font-family: "IR";
+    white-space: nowrap;
+    color: $white;
+  }
+}

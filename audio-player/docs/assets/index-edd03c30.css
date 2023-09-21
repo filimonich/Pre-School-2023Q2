@@ -121,6 +121,25 @@ a {
   font-weight: "normal";
   font-style: normal;
 }
+.footer {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #002a38;
+  color: #FFFFFF;
+}
+.footer__link {
+  font-size: 20px;
+  font-family: "IR";
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+.logo__img {
+  width: 86px;
+  height: 32px;
+}
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -200,7 +219,7 @@ html {
 .animation-text {
   border-radius: 2px;
   cursor: pointer;
-  transition: transform 2s ease, box-shadow 2s ease, background-color 2s ease;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .animation-text:hover {
@@ -209,7 +228,8 @@ html {
   }
 }
 .animation-text:active {
-  transform: translateY(6px);
+  transform: translateY(2px);
+  background-color: hsla(155, 66%, 61%, 0.207);
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

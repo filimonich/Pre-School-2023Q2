@@ -16,6 +16,11 @@ $brown: #BB945F;
 $mulberry: hsla(336, 65%, 61%, 0.207);
 $caribbean-green: hsl(155, 66%, 61%, 0.207);
 $steel-blue: hsl(215, 66%, 61%, 0.207);
+$forest-green: #2F8A1Eff;
+$castleton-green: #046351ff;
+$pigment-green: #28A858ff;
+$harvest-gold: #DE9D16ff;
+$gunmetal: #002A38ff;
 
 /* Утилиты */
 // подключить шрифт
@@ -31,8 +36,7 @@ $steel-blue: hsl(215, 66%, 61%, 0.207);
 
 // показать текущий диапазон
 @mixin screen-media($color: #777) {
-  $breakpoints: (
-      xxxxlg: 1920,
+  $breakpoints: (xxxxlg: 1920,
       xxxlg: 1680,
       xxlg: 1440,
       xlg: 1280,

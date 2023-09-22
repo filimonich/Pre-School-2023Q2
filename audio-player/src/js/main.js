@@ -61,3 +61,37 @@ function addDynamicShadow() {
 }
 
 addDynamicShadow();
+
+(() => {
+  const audioElement = document.getElementById('myAudio');
+  const playButton = document.querySelector('.player__play-inner');
+  const pauseButton = document.querySelector('.player__stop-inner');
+  const endTimeElement = document.querySelector('.player__end');
+
+  // включить трек
+  playButton.addEventListener('click', function () {
+    audioElement.play();
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'inline';
+  });
+
+  // пауза
+  pauseButton.addEventListener('click', function () {
+    audioElement.pause();
+    playButton.style.display = 'inline';
+    pauseButton.style.display = 'none';
+  });
+
+  // длина трека
+  audioElement.addEventListener('loadedmetadata', function () {
+    const duration = audioElement.duration;
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration % 60);
+    endTimeElement.textContent =
+      minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  });
+  // обновление метаданных
+  audioElement.load();
+
+  ///////////////////
+})();

@@ -36,7 +36,8 @@ $gunmetal: #002A38ff;
 
 // показать текущий диапазон
 @mixin screen-media($color: #777) {
-  $breakpoints: (xxxxlg: 1920,
+  $breakpoints: (
+      xxxxlg: 1920,
       xxxlg: 1680,
       xxlg: 1440,
       xlg: 1280,

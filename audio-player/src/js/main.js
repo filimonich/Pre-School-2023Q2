@@ -1,5 +1,25 @@
 import '/styles/style.scss';
-import '/js/blocks.js';
+
+// предварительный загрузчик
+document.body.onload = () => {
+  let delayTime = 10;
+  setTimeout(() => {
+    const preloder = document.querySelector('.preloder');
+    preloder.classList.add('done');
+  }, delayTime); // Задержка в 500 миллисекунд
+};
+
+// создать новое изображение
+const image = new Image();
+// путь к изображению
+image.src = 'images/img/Succession.png';
+// элемент изображения на странице
+const imageElement = document.getElementById('myImage');
+// обработчик события загрузки
+image.onload = () => {
+  imageElement.src = image.src;
+};
+
 
 for (let i = 1; i < 6; i++) {
   setTimeout(() => {
@@ -19,3 +39,26 @@ document.addEventListener('DOMContentLoaded', function () {
     removePreloadClass();
   }, 100);
 });
+
+// анимированная тень
+function addDynamicShadow() {
+  const blocks = document.getElementsByClassName('dynamic-shadow');
+
+  document.addEventListener('mousemove', function (e) {
+    if (window.innerWidth <= 780) {
+      return;
+    }
+
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    for (let i = 0; i < blocks.length; i++) {
+      blocks[i].style.boxShadow =
+        (x - 0.5) * 40 +
+        'px ' +
+        (y - 0.5) * 40 +
+        'px 20px rgba(0, 104, 111,0.65)';
+    }
+  });
+}
+
+addDynamicShadow();

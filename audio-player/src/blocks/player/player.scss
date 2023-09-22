@@ -1,0 +1,82 @@
+.player {
+  $self: &;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 50%;
+
+    @include media('<=sm') {
+      width: 95%;
+    }
+  }
+
+  &__inner {
+    // width: 50%;
+    background-color: $gunmetal;
+    border-radius: 10px 10px 0 0;
+
+    @include media('<=sm') {
+      width: 95%;
+    }
+  }
+
+  &__img {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+
+    background-color: $gunmetal;
+    border-radius: 0 0 10px 10px;
+    
+    @include media('<=sm') {
+      width: 95%;
+    }
+  }
+
+  &__controls {}
+
+  &__titles {}
+
+  &__executor {}
+
+  &__name {}
+
+  &__play {}
+
+  &__progress {}
+
+  &__progress-input {}
+
+  &__volume-button {}
+
+  &__volume-btn {}
+
+  &__volume-btn-img {}
+
+  &__volume {}
+
+  &__volume-input {}
+
+  &__switches {}
+
+  &__left {}
+
+  &__left-img {}
+
+  &__play-inner {}
+
+  &__play-img {}
+
+  &__right {}
+
+  &__right-img {}
+
+}

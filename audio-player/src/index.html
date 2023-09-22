@@ -10,31 +10,41 @@
   <title>audio-player</title>
 </head>
 
-<body class="wrapper preload">
 
+<body class="wrapper preload">
+  <div class="preloder">
+    <div class="preloder__circle"></div>
+  </div>
   <main class="main player">
-    <div class="player__inner"><img src="" alt="" class="player__img"></div>
-    <div class="player__container">
-      <div class="player__controls">
-        <div class="player__titles">
-          <p class="player__executor"></p>
-          <p class="player__name"></p>
-        </div>
-        <div class="player__play">
-          <div class="player__progress">
-            <input class="player__progress-input" type="range" value="0" max="301">
+    <div class="player__box dynamic-shadow">
+      <div class="player__inner">
+        <!-- <img src="images/img/Succession-80.png" srcset="images/img/Succession.png 1x, images/img/Succession-80.png 2x"
+          alt="" class="player__img" loading="lazy"> -->
+        <img src="images/img/Succession-80.png" alt="" class="player__img" loading="lazy" id="myImage">
+      </div>
+
+      <div class="player__container">
+        <div class="player__controls">
+          <div class="player__titles">
+            <p class="player__executor"></p>
+            <p class="player__name"></p>
           </div>
-          <div class="player__volume-btn">
-            <a href="" class="player__volume-btn"><img src="" alt="" class="player__volume-btn-img"></a>
+          <div class="player__play">
+            <div class="player__progress">
+              <input class="player__progress-input" type="range" value="0" max="301">
+            </div>
+            <div class="player__volume-button">
+              <a href="" class="player__volume-btn"><img src="" alt="" class="player__volume-btn-img"></a>
+            </div>
+            <div class="player__volume">
+              <input class="player__volume-input" type="range" value="90" min="0" max="100">
+            </div>
           </div>
-          <div class="player__volume">
-            <input class="player__volume-input" type="range" value="90" min="0" max="100">
+          <div class="player__switches">
+            <a href="" class="player__left"><img src="" alt="" class="player__left-img"></a>
+            <a href="" class="player__play-inner"><img src="" alt="" class="player__play-img"></a>
+            <a href="" class="player__right"><img src="" alt="" class="player__right-img"></a>
           </div>
-        </div>
-        <div class="player__switches">
-          <a href="" class="player__left"><img src="" alt="" class="player__left-img"></a>
-          <a href="" class="player__play-inner"><img src="" alt="" class="player__play-img"></a>
-          <a href="" class="player__right"><img src="" alt="" class="player__right-img"></a>
         </div>
       </div>
     </div>

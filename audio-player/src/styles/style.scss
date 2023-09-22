@@ -9,8 +9,7 @@
 // Import media-query helper
 @import "../../node_modules/include-media/dist/_include-media.scss";
 
-$breakpoints: (
-  'xxxs': 360px,
+$breakpoints: ('xxxs': 360px,
   'xxs': 480px,
   'xs': 640px,
   'sm': 780px,
@@ -117,7 +116,7 @@ html {
   &:hover {
     @media #{$mouse-device} {
       border-radius: 50%;
-      box-shadow: 0 0 2px 4px $mulberry;
+      // box-shadow: 0 0 2px 4px $mulberry;
       transform: scale(1.1);
     }
   }
@@ -155,4 +154,30 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .dynamic-shadow {
   border-radius: 10px;
+}
+
+input[type=range] {
+  height: 6px;
+  border-radius: 10px;
+  background-color: $forest-green;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: $harvest-gold;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: $harvest-gold;
+  border-radius: 50%;
+  cursor: pointer;
 }

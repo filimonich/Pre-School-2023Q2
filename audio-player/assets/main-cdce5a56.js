@@ -88,17 +88,22 @@ addDynamicShadow();
   const endTimeLabel = document.querySelector(".player__end");
   const currentTimeLabel = document.querySelector(".player__begin");
   const progressSlider = document.querySelector(".player__progress-input");
+  const nextButton = document.querySelector(".player__right");
+  const prevButton = document.querySelector(".player__left");
+  const volumeSlider = document.querySelector(".player__volume-input");
+  const muteButton = document.querySelector(".player__volume-btn");
+  const imageElement2 = document.querySelector(".player__img");
+  const wrapperElement = document.querySelector(".wrapper");
+  const trackToImage = {
+    Succession: ["Succession", "Succession-80"],
+    "If I Had a Heart": ["vikings", "vikings-17"]
+    // добавьте сюда другие треки по мере необходимости
+  };
+  let tracks = [
+    "audio/Succession - Nicholas Britell.mp3",
+    "audio/If I Had a Heart - Fever Ray Vikings.mp3"
+  ];
   let maxProgress = 1e4;
-  playBtn.addEventListener("click", function() {
-    audioPlayer.play();
-    playBtn.style.display = "none";
-    pauseBtn.style.display = "inline";
-  });
-  pauseBtn.addEventListener("click", function() {
-    audioPlayer.pause();
-    playBtn.style.display = "inline";
-    pauseBtn.style.display = "none";
-  });
   audioPlayer.addEventListener("loadedmetadata", function() {
     let durationInSeconds = audioPlayer.duration;
     let minutes = Math.floor(durationInSeconds / 60);
@@ -127,17 +132,99 @@ addDynamicShadow();
     progressSlider.value = audioPlayer.currentTime;
   });
   audioPlayer.addEventListener("timeupdate", function() {
-    progressSlider.value = Math.round(
-      audioPlayer.currentTime / audioPlayer.duration * maxProgress
-      // maxProgress представляет максимальное значение прогресса (10000)
-      // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
-      // audioPlayer.duration - длительность аудиофайла
-    );
+    if (!isNaN(audioPlayer.duration)) {
+      console.log(progressSlider.value);
+      progressSlider.value = Math.round(
+        audioPlayer.currentTime / audioPlayer.duration * maxProgress
+        // maxProgress представляет максимальное значение прогресса (10000)
+        // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
+        // audioPlayer.duration - длительность аудиофайла
+      );
+      console.log(progressSlider.value);
+    }
   });
   progressSlider.addEventListener("input", function() {
     audioPlayer.currentTime = progressSlider.value / maxProgress * audioPlayer.duration;
   });
   audioPlayer.addEventListener("loadedmetadata", function() {
     progressSlider.max = maxProgress;
+  });
+  volumeSlider.addEventListener("input", function() {
+    audioPlayer.volume = volumeSlider.value / 100;
+  });
+  let lastVolume = 1;
+  muteButton.addEventListener("click", function() {
+    if (audioPlayer.volume !== 0) {
+      lastVolume = audioPlayer.volume;
+      audioPlayer.volume = 0;
+      volumeSlider.value = 0;
+      muteButton.style.backgroundPosition = "0 28px";
+    } else {
+      audioPlayer.volume = lastVolume;
+      volumeSlider.value = lastVolume * 100;
+      if (volumeSlider.value > 50) {
+        muteButton.style.backgroundPosition = "0 0";
+      } else {
+        muteButton.style.backgroundPosition = "0 56px";
+      }
+    }
+  });
+  volumeSlider.addEventListener("input", function() {
+    if (volumeSlider.value === "0") {
+      muteButton.style.backgroundPosition = "0 28px";
+    } else if (volumeSlider.value > 50) {
+      muteButton.style.backgroundPosition = "0 0";
+    } else {
+      muteButton.style.backgroundPosition = "0 56px";
+    }
+  });
+  let currentTrackIndex = 0;
+  function playTrack() {
+    audioPlayer.play();
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline";
+  }
+  function pauseTrack() {
+    audioPlayer.pause();
+    playBtn.style.display = "inline";
+    pauseBtn.style.display = "none";
+  }
+  function nextTrack() {
+    currentTrackIndex++;
+    if (currentTrackIndex >= tracks.length) {
+      currentTrackIndex = 0;
+    }
+    audioPlayer.src = tracks[currentTrackIndex];
+    playTrack();
+  }
+  function prevTrack() {
+    currentTrackIndex--;
+    if (currentTrackIndex < 0) {
+      currentTrackIndex = tracks.length - 1;
+    }
+    audioPlayer.src = tracks[currentTrackIndex];
+    playTrack();
+  }
+  nextButton.addEventListener("click", nextTrack);
+  prevButton.addEventListener("click", prevTrack);
+  playBtn.addEventListener("click", playTrack);
+  pauseBtn.addEventListener("click", pauseTrack);
+  audioPlayer.addEventListener("play", function() {
+    let audioUrl = audioPlayer.src;
+    let fileName = audioUrl.substring(audioUrl.lastIndexOf("/") + 1);
+    fileName = fileName.replace(".mp3", "");
+    fileName = decodeURIComponent(fileName);
+    let [trackName, executor] = fileName.split(" - ");
+    let imageNames = trackToImage[trackName];
+    if (!imageNames) {
+      imageNames = [trackName.replace(/ /g, "_"), trackName.replace(/ /g, "_")];
+    }
+    if (imageNames[0] && imageNames[1]) {
+      imageElement2.src = "http://127.0.0.1:5173/images/img/" + imageNames[0] + ".png";
+      wrapperElement.style.setProperty(
+        "--bg-url",
+        'url("../images/img/' + imageNames[1] + '.png")'
+      );
+    }
   });
 })();

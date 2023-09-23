@@ -69,22 +69,17 @@ addDynamicShadow();
   const endTimeLabel = document.querySelector('.player__end');
   const currentTimeLabel = document.querySelector('.player__begin');
   const progressSlider = document.querySelector('.player__progress-input');
+  const nextButton = document.querySelector('.player__right');
+  const prevButton = document.querySelector('.player__left');
+  const volumeSlider = document.querySelector('.player__volume-input');
+  const muteButton = document.querySelector('.player__volume-btn');
+
+  let tracks = [
+    'audio/Succession - Nicholas Britell.mp3',
+    'audio/If I Had a Heart - Fever Ray Vikings.mp3',
+  ];
 
   let maxProgress = 10000; // максимальное значение прогресса
-
-  // включить трек
-  playBtn.addEventListener('click', function () {
-    audioPlayer.play();
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'inline';
-  });
-
-  // пауза
-  pauseBtn.addEventListener('click', function () {
-    audioPlayer.pause();
-    playBtn.style.display = 'inline';
-    pauseBtn.style.display = 'none';
-  });
 
   // длина трека
   audioPlayer.addEventListener('loadedmetadata', function () {
@@ -144,13 +139,18 @@ addDynamicShadow();
 
   // добавляем обработчик события 'timeupdate'
   audioPlayer.addEventListener('timeupdate', function () {
-    // обновляем значение ползунка прогресса, округляя до ближайшего целого числа
-    progressSlider.value = Math.round(
-      (audioPlayer.currentTime / audioPlayer.duration) * maxProgress
-      // maxProgress представляет максимальное значение прогресса (10000)
-      // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
-      // audioPlayer.duration - длительность аудиофайла
-    );
+    // проверяем, является ли длительность аудио числом
+    if (!isNaN(audioPlayer.duration)) {
+      // обновляем значение ползунка прогресса, округляя до ближайшего целого числа
+      console.log(progressSlider.value);
+      progressSlider.value = Math.round(
+        (audioPlayer.currentTime / audioPlayer.duration) * maxProgress
+        // maxProgress представляет максимальное значение прогресса (10000)
+        // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
+        // audioPlayer.duration - длительность аудиофайла
+      );
+      console.log(progressSlider.value);
+    }
   });
 
   // добавляем обработчик события 'input' для ползунка прогресса
@@ -170,13 +170,11 @@ addDynamicShadow();
   });
 
   // регулировка звука с помощью ползунка
-  const volumeSlider = document.querySelector('.player__volume-input');
   volumeSlider.addEventListener('input', function () {
     audioPlayer.volume = volumeSlider.value / 100;
   });
 
   let lastVolume = 1;
-  const muteButton = document.querySelector('.player__volume-btn');
   muteButton.addEventListener('click', function () {
     if (audioPlayer.volume !== 0) {
       lastVolume = audioPlayer.volume;
@@ -203,5 +201,42 @@ addDynamicShadow();
       muteButton.style.backgroundPosition = '0 56px';
     }
   });
-  /////////////
+
+  // переключение треков
+  let currentTrackIndex = 0;
+
+  function playTrack() {
+    audioPlayer.play();
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline';
+  }
+
+  function pauseTrack() {
+    audioPlayer.pause();
+    playBtn.style.display = 'inline';
+    pauseBtn.style.display = 'none';
+  }
+
+  function nextTrack() {
+    currentTrackIndex++;
+    if (currentTrackIndex >= tracks.length) {
+      currentTrackIndex = 0;
+    }
+    audioPlayer.src = tracks[currentTrackIndex];
+    playTrack();
+  }
+
+  function prevTrack() {
+    currentTrackIndex--;
+    if (currentTrackIndex < 0) {
+      currentTrackIndex = tracks.length - 1;
+    }
+    audioPlayer.src = tracks[currentTrackIndex];
+    playTrack();
+  }
+
+  nextButton.addEventListener('click', nextTrack);
+  prevButton.addEventListener('click', prevTrack);
+  playBtn.addEventListener('click', playTrack);
+  pauseBtn.addEventListener('click', pauseTrack);
 })();

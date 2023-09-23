@@ -73,6 +73,8 @@ addDynamicShadow();
   const prevButton = document.querySelector('.player__left');
   const volumeSlider = document.querySelector('.player__volume-input');
   const muteButton = document.querySelector('.player__volume-btn');
+  const trackNameElement = document.querySelector('.player__track-name');
+  const executorElement = document.querySelector('.player__executor');
 
   let tracks = [
     'audio/Succession - Nicholas Britell.mp3',
@@ -239,4 +241,28 @@ addDynamicShadow();
   prevButton.addEventListener('click', prevTrack);
   playBtn.addEventListener('click', playTrack);
   pauseBtn.addEventListener('click', pauseTrack);
+
+  // для названия трека и исполнителя
+  audioPlayer.addEventListener('play', function () {
+    // получаем url текущего аудиофайла
+    let audioUrl = audioPlayer.src;
+
+    // извлекаем имя файла из url
+    let fileName = audioUrl.substring(audioUrl.lastIndexOf('/') + 1);
+
+    // удаляем расширение .mp3
+    fileName = fileName.replace('.mp3', '');
+
+    // декодируем имя файла
+    fileName = decodeURIComponent(fileName);
+
+    // разделяем имя файла на имя трека и исполнителя
+    let [trackName, executor] = fileName.split(' - ');
+
+    // обновляем текст элементов
+    trackNameElement.textContent = trackName;
+    executorElement.textContent = executor;
+  });
+
+  /////////////////
 })();

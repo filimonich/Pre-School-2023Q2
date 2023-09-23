@@ -168,4 +168,40 @@ addDynamicShadow();
     // устанавливаем максимальное значение ползунка равным maxProgress (представляет максимальное значение прогресса)
     progressSlider.max = maxProgress;
   });
+
+  // регулировка звука с помощью ползунка
+  const volumeSlider = document.querySelector('.player__volume-input');
+  volumeSlider.addEventListener('input', function () {
+    audioPlayer.volume = volumeSlider.value / 100;
+  });
+
+  let lastVolume = 1;
+  const muteButton = document.querySelector('.player__volume-btn');
+  muteButton.addEventListener('click', function () {
+    if (audioPlayer.volume !== 0) {
+      lastVolume = audioPlayer.volume;
+      audioPlayer.volume = 0;
+      volumeSlider.value = 0;
+      muteButton.style.backgroundPosition = '0 28px';
+    } else {
+      audioPlayer.volume = lastVolume;
+      volumeSlider.value = lastVolume * 100;
+      if (volumeSlider.value > 50) {
+        muteButton.style.backgroundPosition = '0 0';
+      } else {
+        muteButton.style.backgroundPosition = '0 56px';
+      }
+    }
+  });
+
+  volumeSlider.addEventListener('input', function () {
+    if (volumeSlider.value === '0') {
+      muteButton.style.backgroundPosition = '0 28px';
+    } else if (volumeSlider.value > 50) {
+      muteButton.style.backgroundPosition = '0 0';
+    } else {
+      muteButton.style.backgroundPosition = '0 56px';
+    }
+  });
+  /////////////
 })();

@@ -344,6 +344,7 @@ a {
   visibility: hidden;
 }
 .wrapper {
+  --bg-url: url("../images/img/Succession-80.png");
   z-index: 1;
   position: relative;
   display: flex;
@@ -357,12 +358,12 @@ a {
   bottom: 0;
   left: 0;
   content: "";
-  background: left 70%/100% auto no-repeat url("../images/img/Succession-80.png");
+  background: left 70%/100% auto no-repeat var(--bg-url);
   filter: blur(5px);
 }
 @media (max-width: 780px) {
   .wrapper::before {
-    background: top no-repeat url("../images/img/Succession-80.png");
+    background: top no-repeat var(--bg-url);
   }
 }
 @keyframes fadeOut {

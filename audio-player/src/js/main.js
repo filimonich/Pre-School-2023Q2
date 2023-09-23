@@ -73,8 +73,14 @@ addDynamicShadow();
   const prevButton = document.querySelector('.player__left');
   const volumeSlider = document.querySelector('.player__volume-input');
   const muteButton = document.querySelector('.player__volume-btn');
-  const trackNameElement = document.querySelector('.player__track-name');
-  const executorElement = document.querySelector('.player__executor');
+  const imageElement = document.querySelector('.player__img');
+  const wrapperElement = document.querySelector('.wrapper');
+  // создаем объект для хранения соответствия между именами треков и именами файлов изображений
+  const trackToImage = {
+    Succession: ['Succession', 'Succession-80'],
+    'If I Had a Heart': ['vikings', 'vikings-17'],
+    // добавьте сюда другие треки по мере необходимости
+  };
 
   let tracks = [
     'audio/Succession - Nicholas Britell.mp3',
@@ -242,7 +248,7 @@ addDynamicShadow();
   playBtn.addEventListener('click', playTrack);
   pauseBtn.addEventListener('click', pauseTrack);
 
-  // для названия трека и исполнителя
+  // смена имени треков и изображений
   audioPlayer.addEventListener('play', function () {
     // получаем url текущего аудиофайла
     let audioUrl = audioPlayer.src;
@@ -259,10 +265,22 @@ addDynamicShadow();
     // разделяем имя файла на имя трека и исполнителя
     let [trackName, executor] = fileName.split(' - ');
 
-    // обновляем текст элементов
-    trackNameElement.textContent = trackName;
-    executorElement.textContent = executor;
-  });
+    // получаем имена файлов изображений из объекта trackToImage
+    let imageNames = trackToImage[trackName];
 
-  /////////////////
+    // если имена файлов изображений не найдены, используем имя трека в качестве имени файла изображения
+    if (!imageNames) {
+      imageNames = [trackName.replace(/ /g, '_'), trackName.replace(/ /g, '_')];
+    }
+
+    // если имя файла не пустое, обновляем src изображения и фоновое изображение
+    if (imageNames[0] && imageNames[1]) {
+      imageElement.src =
+        'http://127.0.0.1:5173/images/img/' + imageNames[0] + '.png';
+      wrapperElement.style.setProperty(
+        '--bg-url',
+        'url("../images/img/' + imageNames[1] + '.png")'
+      );
+    }
+  });
 })();

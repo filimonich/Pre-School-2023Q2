@@ -211,10 +211,22 @@ a {
 }
 .player__track-time {
   margin: 0 4px;
+  font-size: 12px;
+}
+.player__begin {
+  position: absolute;
+  top: 26%;
+  left: 2px;
+}
+.player__end {
+  position: absolute;
+  top: 26%;
+  right: 2px;
 }
 .player__progress {
   width: 80%;
   margin: 0 auto;
+  margin-left: 11%;
 }
 .player__progress-input {
   display: block;
@@ -228,7 +240,7 @@ a {
   display: block;
   width: 28px;
   height: 28px;
-  background-image: url("images/svg/volume-sprite.svg");
+  background-image: url("../images/svg/volume-sprite.svg");
   background-position: 0 0;
   box-sizing: border-box;
   filter: invert(1);
@@ -345,12 +357,12 @@ a {
   bottom: 0;
   left: 0;
   content: "";
-  background: left 70%/100% auto no-repeat url(images/img/Succession-80.png);
+  background: left 70%/100% auto no-repeat url("../images/img/Succession-80.png");
   filter: blur(5px);
 }
 @media (max-width: 780px) {
   .wrapper::before {
-    background: top no-repeat url(images/img/Succession-80.png);
+    background: top no-repeat url("../images/img/Succession-80.png");
   }
 }
 @keyframes fadeOut {

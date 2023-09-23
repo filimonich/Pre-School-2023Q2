@@ -82,25 +82,62 @@ function addDynamicShadow() {
 }
 addDynamicShadow();
 (() => {
-  const audioElement = document.getElementById("myAudio");
-  const playButton = document.querySelector(".player__play-inner");
-  const pauseButton = document.querySelector(".player__stop-inner");
-  const endTimeElement = document.querySelector(".player__end");
-  playButton.addEventListener("click", function() {
-    audioElement.play();
-    playButton.style.display = "none";
-    pauseButton.style.display = "inline";
+  const audioPlayer = document.getElementById("myAudio");
+  const playBtn = document.querySelector(".player__play-inner");
+  const pauseBtn = document.querySelector(".player__stop-inner");
+  const endTimeLabel = document.querySelector(".player__end");
+  const currentTimeLabel = document.querySelector(".player__begin");
+  const progressSlider = document.querySelector(".player__progress-input");
+  let maxProgress = 1e4;
+  playBtn.addEventListener("click", function() {
+    audioPlayer.play();
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline";
   });
-  pauseButton.addEventListener("click", function() {
-    audioElement.pause();
-    playButton.style.display = "inline";
-    pauseButton.style.display = "none";
+  pauseBtn.addEventListener("click", function() {
+    audioPlayer.pause();
+    playBtn.style.display = "inline";
+    pauseBtn.style.display = "none";
   });
-  audioElement.addEventListener("loadedmetadata", function() {
-    const duration = audioElement.duration;
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    endTimeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  audioPlayer.addEventListener("loadedmetadata", function() {
+    let durationInSeconds = audioPlayer.duration;
+    let minutes = Math.floor(durationInSeconds / 60);
+    let seconds = Math.floor(durationInSeconds % 60);
+    endTimeLabel.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   });
-  audioElement.load();
+  audioPlayer.load();
+  audioPlayer.addEventListener("timeupdate", function() {
+    let currentTimeInSeconds = audioPlayer.currentTime;
+    let minutes = Math.floor(currentTimeInSeconds / 60);
+    let seconds = Math.floor(currentTimeInSeconds - minutes * 60);
+    let minuteValue;
+    let secondValue;
+    let singleDigitThreshold = 10;
+    if (minutes < singleDigitThreshold) {
+      minuteValue = "0" + minutes;
+    } else {
+      minuteValue = minutes;
+    }
+    if (seconds < singleDigitThreshold) {
+      secondValue = "0" + seconds;
+    } else {
+      secondValue = seconds;
+    }
+    currentTimeLabel.textContent = minuteValue + ":" + secondValue;
+    progressSlider.value = audioPlayer.currentTime;
+  });
+  audioPlayer.addEventListener("timeupdate", function() {
+    progressSlider.value = Math.round(
+      audioPlayer.currentTime / audioPlayer.duration * maxProgress
+      // maxProgress представляет максимальное значение прогресса (10000)
+      // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
+      // audioPlayer.duration - длительность аудиофайла
+    );
+  });
+  progressSlider.addEventListener("input", function() {
+    audioPlayer.currentTime = progressSlider.value / maxProgress * audioPlayer.duration;
+  });
+  audioPlayer.addEventListener("loadedmetadata", function() {
+    progressSlider.max = maxProgress;
+  });
 })();

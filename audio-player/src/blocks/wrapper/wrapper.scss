@@ -1,12 +1,12 @@
 .wrapper {
   $self: &;
-  
+
   z-index: 1;
   position: relative;
   display: flex;
   justify-content: space-between;
 
-  
+
   &::before {
     z-index: -1;
     position: absolute;
@@ -16,11 +16,11 @@
     left: 0;
     content: "";
     // background: url(images/img/vikings-410.png) top center/100% auto no-repeat;
-    background: left 70%/100% auto no-repeat url(images/img/Succession-80.png);
+    background: left 70%/100% auto no-repeat url("../images/img/Succession-80.png");
     filter: blur(5px);
-    
+
     @include media('<=sm') {
-      background: top no-repeat url(images/img/Succession-80.png);      
+      background: top no-repeat url("../images/img/Succession-80.png");
     }
   }
 }

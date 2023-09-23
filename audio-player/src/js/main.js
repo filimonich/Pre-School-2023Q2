@@ -63,35 +63,109 @@ function addDynamicShadow() {
 addDynamicShadow();
 
 (() => {
-  const audioElement = document.getElementById('myAudio');
-  const playButton = document.querySelector('.player__play-inner');
-  const pauseButton = document.querySelector('.player__stop-inner');
-  const endTimeElement = document.querySelector('.player__end');
+  const audioPlayer = document.getElementById('myAudio');
+  const playBtn = document.querySelector('.player__play-inner');
+  const pauseBtn = document.querySelector('.player__stop-inner');
+  const endTimeLabel = document.querySelector('.player__end');
+  const currentTimeLabel = document.querySelector('.player__begin');
+  const progressSlider = document.querySelector('.player__progress-input');
+
+  let maxProgress = 10000; // максимальное значение прогресса
 
   // включить трек
-  playButton.addEventListener('click', function () {
-    audioElement.play();
-    playButton.style.display = 'none';
-    pauseButton.style.display = 'inline';
+  playBtn.addEventListener('click', function () {
+    audioPlayer.play();
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline';
   });
 
   // пауза
-  pauseButton.addEventListener('click', function () {
-    audioElement.pause();
-    playButton.style.display = 'inline';
-    pauseButton.style.display = 'none';
+  pauseBtn.addEventListener('click', function () {
+    audioPlayer.pause();
+    playBtn.style.display = 'inline';
+    pauseBtn.style.display = 'none';
   });
 
   // длина трека
-  audioElement.addEventListener('loadedmetadata', function () {
-    const duration = audioElement.duration;
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    endTimeElement.textContent =
+  audioPlayer.addEventListener('loadedmetadata', function () {
+    // получаем длительность аудиофайла в секундах
+    let durationInSeconds = audioPlayer.duration;
+    // преобразуем длительность из секунд в минуты, используя Math.floor для округления вниз
+    let minutes = Math.floor(durationInSeconds / 60);
+    // получаем оставшиеся секунды после вычисления минут, используя оператор остатка от деления (%)
+    let seconds = Math.floor(durationInSeconds % 60);
+    // обновляем текстовое содержимое endTimeLabel, добавляем ноль перед секундами, если они меньше 10
+    endTimeLabel.textContent =
       minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   });
-  // обновление метаданных
-  audioElement.load();
 
-  ///////////////////
+  // обновление метаданных
+  audioPlayer.load();
+
+  // добавляем обработчик события 'timeupdate'
+  audioPlayer.addEventListener('timeupdate', function () {
+    // получаем текущее время воспроизведения аудиофайла в секундах
+    let currentTimeInSeconds = audioPlayer.currentTime;
+
+    // преобразуем текущее время из секунд в минуты, используя Math.floor для округления вниз
+    let minutes = Math.floor(currentTimeInSeconds / 60);
+
+    // получаем оставшиеся секунды после вычисления минут, используя оператор остатка (%)
+    let seconds = Math.floor(currentTimeInSeconds - minutes * 60);
+
+    // добавляем ноль перед значениями < 10
+    let minuteValue;
+    let secondValue;
+
+    let singleDigitThreshold = 10; // пороговое значение для однозначных чисел
+
+    if (minutes < singleDigitThreshold) {
+      // если минуты - однозначное число, добавляем перед ним ноль
+      minuteValue = '0' + minutes;
+    } else {
+      // иначе просто используем значение минут
+      minuteValue = minutes;
+    }
+
+    if (seconds < singleDigitThreshold) {
+      // если секунды - однозначное число, добавляем перед ним ноль
+      secondValue = '0' + seconds;
+    } else {
+      // иначе просто используем значение секунд
+      secondValue = seconds;
+    }
+
+    // выводим текущее время в формате mm:ss
+    currentTimeLabel.textContent = minuteValue + ':' + secondValue;
+
+    // обновляем значение ползунка прогресса
+    progressSlider.value = audioPlayer.currentTime;
+  });
+
+  // добавляем обработчик события 'timeupdate'
+  audioPlayer.addEventListener('timeupdate', function () {
+    // обновляем значение ползунка прогресса, округляя до ближайшего целого числа
+    progressSlider.value = Math.round(
+      (audioPlayer.currentTime / audioPlayer.duration) * maxProgress
+      // maxProgress представляет максимальное значение прогресса (10000)
+      // audioPlayer.currentTime - текущее время воспроизведения аудиофайла
+      // audioPlayer.duration - длительность аудиофайла
+    );
+  });
+
+  // добавляем обработчик события 'input' для ползунка прогресса
+  progressSlider.addEventListener('input', function () {
+    // обновляем текущее время воспроизведения аудиофайла
+    audioPlayer.currentTime =
+      (progressSlider.value / maxProgress) * audioPlayer.duration;
+    // progressSlider.value - текущее значение ползунка прогресса
+    // maxProgress - максимальное значение прогресса (10000)
+    // audioPlayer.duration - длительность аудиофайла
+  });
+
+  // добавляем обработчик события 'loadedmetadata'
+  audioPlayer.addEventListener('loadedmetadata', function () {
+    // устанавливаем максимальное значение ползунка равным maxProgress (представляет максимальное значение прогресса)
+    progressSlider.max = maxProgress;
+  });
 })();

@@ -71,13 +71,25 @@
 
   &__track-time {
     margin: 0 4px;
+    font-size: 12px;
   }
 
-  &__begin {}
+  &__begin {
+    position: absolute;
+    top: 26%;
+    left: 2px;
+  }
+
+  &__end {
+    position: absolute;
+    top: 26%;
+    right: 2px;
+  }
 
   &__progress {
     width: 80%;
     margin: 0 auto;
+    margin-left: 11%;
   }
 
   &__progress-input {
@@ -94,7 +106,7 @@
     display: block;
     width: 28px;
     height: 28px;
-    background-image: url('images/svg/volume-sprite.svg');
+    background-image: url("../images/svg/volume-sprite.svg");
     background-position: 0 0;
     box-sizing: border-box;
     filter: invert(1);
@@ -133,7 +145,7 @@
     margin-right: 10px;
     filter: invert(1);
   }
-  
+
   &__stop-inner {
     margin-right: 10px;
     filter: invert(1);

@@ -224,10 +224,16 @@ addDynamicShadow();
     }
   }
   function updateText() {
+    if (trackNameElement.textContent === trackName && executorElement.textContent === executor || !trackName || !executor) {
+      return;
+    }
     trackNameElement.textContent = trackName;
     executorElement.textContent = executor;
   }
   function updateImages() {
+    if (imageElement2.src.includes(imageNames[0])) {
+      return;
+    }
     imageElement2.src = "images/img/" + imageNames[0] + ".png";
     wrapperElement.style.setProperty(
       "--bg-url",

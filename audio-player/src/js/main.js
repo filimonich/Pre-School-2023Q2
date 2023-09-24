@@ -283,6 +283,16 @@ addDynamicShadow();
 
   // функция для изменения текста
   function updateText() {
+    // если текущий трек уже отображается или trackName и executor не определены, не обновляем текст
+    if (
+      (trackNameElement.textContent === trackName &&
+        executorElement.textContent === executor) ||
+      !trackName ||
+      !executor
+    ) {
+      return;
+    }
+
     // обновляем текст элементов
     trackNameElement.textContent = trackName;
     executorElement.textContent = executor;
@@ -290,6 +300,11 @@ addDynamicShadow();
 
   // функция для изменения изображений
   function updateImages() {
+    // если текущее изображение уже отображается, не обновляем изображения
+    if (imageElement.src.includes(imageNames[0])) {
+      return;
+    }
+
     // обновляем src изображения и фоновое изображение
     imageElement.src = 'images/img/' + imageNames[0] + '.png';
     wrapperElement.style.setProperty(

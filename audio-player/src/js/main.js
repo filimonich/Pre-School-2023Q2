@@ -319,4 +319,10 @@ addDynamicShadow();
     updateText();
     updateImages();
   });
+
+  // поставить паузу если трек закончился
+  audioPlayer.addEventListener('ended', function () {
+    playBtn.style.display = 'inline';
+    pauseBtn.style.display = 'none';
+  });
 })();

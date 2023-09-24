@@ -82,7 +82,7 @@ addDynamicShadow();
     // добавьте сюда другие треки по мере необходимости
   };
 
-  let tracks = [
+  const tracks = [
     'audio/Succession - Nicholas Britell.mp3',
     'audio/If I Had a Heart - Fever Ray Vikings.mp3',
   ];
@@ -249,12 +249,19 @@ addDynamicShadow();
   pauseBtn.addEventListener('click', pauseTrack);
 
   // смена имени треков и изображений
-  audioPlayer.addEventListener('play', function () {
+
+  // получаем элементы для названия трека и исполнителя
+  const trackNameElement = document.querySelector('.player__track-name');
+  const executorElement = document.querySelector('.player__executor');
+
+  let audioUrl, fileName, trackName, executor, imageNames;
+
+  function updateVariables() {
     // получаем url текущего аудиофайла
-    let audioUrl = audioPlayer.src;
+    audioUrl = audioPlayer.src;
 
     // извлекаем имя файла из url
-    let fileName = audioUrl.substring(audioUrl.lastIndexOf('/') + 1);
+    fileName = audioUrl.substring(audioUrl.lastIndexOf('/') + 1);
 
     // удаляем расширение .mp3
     fileName = fileName.replace('.mp3', '');
@@ -263,24 +270,38 @@ addDynamicShadow();
     fileName = decodeURIComponent(fileName);
 
     // разделяем имя файла на имя трека и исполнителя
-    let [trackName, executor] = fileName.split(' - ');
+    [trackName, executor] = fileName.split(' - ');
 
     // получаем имена файлов изображений из объекта trackToImage
-    let imageNames = trackToImage[trackName];
+    imageNames = trackToImage[trackName];
 
     // если имена файлов изображений не найдены, используем имя трека в качестве имени файла изображения
     if (!imageNames) {
       imageNames = [trackName.replace(/ /g, '_'), trackName.replace(/ /g, '_')];
     }
+  }
 
-    // если имя файла не пустое, обновляем src изображения и фоновое изображение
-    if (imageNames[0] && imageNames[1]) {
-      imageElement.src =
-        'http://127.0.0.1:5173/images/img/' + imageNames[0] + '.png';
-      wrapperElement.style.setProperty(
-        '--bg-url',
-        'url("../images/img/' + imageNames[1] + '.png")'
-      );
-    }
+  // функция для изменения текста
+  function updateText() {
+    // обновляем текст элементов
+    trackNameElement.textContent = trackName;
+    executorElement.textContent = executor;
+  }
+
+  // функция для изменения изображений
+  function updateImages() {
+    // обновляем src изображения и фоновое изображение
+    imageElement.src = 'images/img/' + imageNames[0] + '.png';
+    wrapperElement.style.setProperty(
+      '--bg-url',
+      'url("../images/img/' + imageNames[1] + '.png")'
+    );
+  }
+
+  // добавляем обработчики событий для воспроизведения аудио
+  audioPlayer.addEventListener('play', function () {
+    updateVariables();
+    updateText();
+    updateImages();
   });
 })();

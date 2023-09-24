@@ -99,7 +99,7 @@ addDynamicShadow();
     "If I Had a Heart": ["vikings", "vikings-17"]
     // добавьте сюда другие треки по мере необходимости
   };
-  let tracks = [
+  const tracks = [
     "audio/Succession - Nicholas Britell.mp3",
     "audio/If I Had a Heart - Fever Ray Vikings.mp3"
   ];
@@ -209,22 +209,34 @@ addDynamicShadow();
   prevButton.addEventListener("click", prevTrack);
   playBtn.addEventListener("click", playTrack);
   pauseBtn.addEventListener("click", pauseTrack);
-  audioPlayer.addEventListener("play", function() {
-    let audioUrl = audioPlayer.src;
-    let fileName = audioUrl.substring(audioUrl.lastIndexOf("/") + 1);
+  const trackNameElement = document.querySelector(".player__track-name");
+  const executorElement = document.querySelector(".player__executor");
+  let audioUrl, fileName, trackName, executor, imageNames;
+  function updateVariables() {
+    audioUrl = audioPlayer.src;
+    fileName = audioUrl.substring(audioUrl.lastIndexOf("/") + 1);
     fileName = fileName.replace(".mp3", "");
     fileName = decodeURIComponent(fileName);
-    let [trackName, executor] = fileName.split(" - ");
-    let imageNames = trackToImage[trackName];
+    [trackName, executor] = fileName.split(" - ");
+    imageNames = trackToImage[trackName];
     if (!imageNames) {
       imageNames = [trackName.replace(/ /g, "_"), trackName.replace(/ /g, "_")];
     }
-    if (imageNames[0] && imageNames[1]) {
-      imageElement2.src = "http://127.0.0.1:5173/images/img/" + imageNames[0] + ".png";
-      wrapperElement.style.setProperty(
-        "--bg-url",
-        'url("../images/img/' + imageNames[1] + '.png")'
-      );
-    }
+  }
+  function updateText() {
+    trackNameElement.textContent = trackName;
+    executorElement.textContent = executor;
+  }
+  function updateImages() {
+    imageElement2.src = "images/img/" + imageNames[0] + ".png";
+    wrapperElement.style.setProperty(
+      "--bg-url",
+      'url("../images/img/' + imageNames[1] + '.png")'
+    );
+  }
+  audioPlayer.addEventListener("play", function() {
+    updateVariables();
+    updateText();
+    updateImages();
   });
 })();

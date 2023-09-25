@@ -1,0 +1,264 @@
+@charset "UTF-8";
+/* Утилиты */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img,
+abbr {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+ul li {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+legend {
+  color: #000;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "IR";
+  src: url("../fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+@font-face {
+  font-family: "FR";
+  src: url("../fonts/Forum-Regular.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+@font-face {
+  font-family: "IB";
+  src: url("../fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+.footer {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #002a38;
+  color: #FFFFFF;
+}
+.footer__link {
+  font-size: 20px;
+  font-family: "IR";
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+.logo__img {
+  width: 86px;
+  height: 32px;
+  filter: invert(1);
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body,
+html {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
+  flex-flow: column nowrap;
+  font-size: 16px;
+  font-family: "IR", sans-serif;
+  line-height: 1.2;
+  color: #000000;
+  background-color: #002a38;
+  scroll-behavior: smooth;
+}
+.preload * {
+  transition: none;
+}
+.button {
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  background-color: #FFFFFF;
+  transition: background-color 0.6s ease, border 2s ease, transform 0.6s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    border: 1px solid #BB945F;
+    background-color: #BB945F;
+  }
+}
+.button:disabled {
+  cursor: default;
+  background-color: #FFFFFF;
+  border: 1px solid #BB945F;
+  color: #BB945F;
+}
+.button:disabled span {
+  color: #BB945F;
+}
+.button span {
+  text-align: center;
+  font-family: "IB";
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #0C0C0E;
+}
+.animation-button {
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.6s ease, box-shadow 0.6s ease, box-shadow 0.6s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .animation-button:hover {
+    border-radius: 50%;
+    transform: scale(1.1);
+  }
+}
+.animation-button:active {
+  transform: scale(0.9);
+}
+.animation-text {
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .animation-text:hover {
+    background-color: hsla(215, 66%, 61%, 0.207);
+    box-shadow: 0 0 2px #BB945F;
+  }
+}
+.animation-text:active {
+  transform: translateY(2px);
+  background-color: hsla(155, 66%, 61%, 0.207);
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dynamic-shadow {
+  border-radius: 10px;
+}
+input[type=range] {
+  height: 6px;
+  border-radius: 10px;
+  background-color: #2f8a1e;
+  appearance: none;
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #de9d16;
+  border-radius: 50%;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #de9d16;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,204 @@
+@use 'sass:math';
+
+$basesize: 16;
+
+// // перевод px в rem // выражение для перевода значений через поиск (\d+(\.\d+)?)px на rem($1px)
+// @function rem($px) {
+//   @return calc($px /  $basesize)+0rem;
+// }
+
+// colors
+$white: #FFFFFF;
+$grey: #8E8E8E;
+$text: #000000;
+$bd-black: #0C0C0E;
+$brown: #BB945F;
+$mulberry: hsla(336, 65%, 61%, 0.207);
+$caribbean-green: hsl(155, 66%, 61%, 0.207);
+$steel-blue: hsl(215, 66%, 61%, 0.207);
+$forest-green: #2F8A1Eff;
+$castleton-green: #046351ff;
+$pigment-green: #28A858ff;
+$harvest-gold: #DE9D16ff;
+$gunmetal: #002A38ff;
+
+/* Утилиты */
+// подключить шрифт
+
+@mixin font-face($file, $family, $weight: "normal", $folder: "/fonts/") {
+  @font-face {
+    font-family: $family;
+    src: url("#{$folder}#{$file}.ttf") format('truetype');
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
+// показать текущий диапазон
+@mixin screen-media($color: #777) {
+  $breakpoints: (
+      xxxxlg: 1920,
+      xxxlg: 1680,
+      xxlg: 1440,
+      xlg: 1280,
+      lg: 1024,
+      md: 960,
+      sm: 780,
+      xs: 640,
+      xxs: 480,
+      xxxs: 360);
+
+  & {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      text-align: center;
+      position: fixed;
+      top: 30px;
+      // right: 5px;
+      left: 5px;
+      z-index: 9999;
+      min-height: 16px;
+      min-width: 40px;
+      padding: 0 10px;
+      font: 12px/16px Arial, sans-serif;
+      color: $color;
+      background-color: #ffffd3;
+      border: 1px solid #bbb;
+    }
+
+    @each $var,
+    $size in $breakpoints {
+      @media screen and (max-width: #{$size}px) {
+        &::before {
+          content: "#{$var}:#{$size}";
+        }
+      }
+    }
+  }
+}
+
+// resets
+// total reset of everything
+@mixin reset() {
+
+  body,
+  div,
+  dl,
+  dt,
+  dd,
+  ul,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre,
+  code,
+  form,
+  fieldset,
+  input,
+  textarea,
+  p,
+  blockquote,
+  th,
+  td {
+    margin: 0;
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  fieldset,
+  img,
+  abbr {
+    border: 0;
+  }
+
+  address,
+  caption,
+  cite,
+  code,
+  dfn,
+  em,
+  strong,
+  th,
+  var {
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  caption,
+  th {
+    text-align: left;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
+    font-weight: normal;
+  }
+
+  sup {
+    vertical-align: text-top;
+  }
+
+  sub {
+    vertical-align: text-bottom;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  legend {
+    color: #000;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section,
+  main {
+    display: block;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}

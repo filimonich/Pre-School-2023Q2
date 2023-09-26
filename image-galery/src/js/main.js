@@ -1,4 +1,5 @@
 import '/styles/style.scss';
+import '/js/unsplashAPI.js';
 
 // предварительный загрузчик
 document.body.onload = () => {
@@ -8,23 +9,6 @@ document.body.onload = () => {
     preloder.classList.add('done');
   }, delayTime); // Задержка в 500 миллисекунд
 };
-
-// создать новое изображение
-const image = new Image();
-// путь к изображению
-image.src = 'images/img/Succession.png';
-// элемент изображения на странице
-const imageElement = document.getElementById('myImage');
-// обработчик события загрузки
-image.onload = () => {
-  imageElement.src = image.src;
-};
-
-for (let i = 1; i < 6; i++) {
-  setTimeout(() => {
-    console.log('Hello');
-  }, i * 2000);
-}
 
 // убирает класс, что бы анимации не срабатывали раньше времени
 document.addEventListener('DOMContentLoaded', function () {

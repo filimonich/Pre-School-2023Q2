@@ -11,12 +11,12 @@ document.body.onload = () => {
 };
 
 // убирает класс, что бы анимации не срабатывали раньше времени
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   let preload = document.querySelector('.preload');
 
-  function removePreloadClass() {
+  const removePreloadClass = () => {
     preload.classList.remove('preload');
-  }
+  };
 
   setTimeout(() => {
     removePreloadClass();
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // анимированная тень
-function addDynamicShadow() {
+const addDynamicShadow = () => {
   const blocks = document.getElementsByClassName('dynamic-shadow');
 
-  document.addEventListener('mousemove', function (e) {
+  document.addEventListener('mousemove', e => {
     if (window.innerWidth <= 780) {
       return;
     }
@@ -42,6 +42,6 @@ function addDynamicShadow() {
         'px 20px rgba(0, 104, 111,0.65)';
     }
   });
-}
+};
 
 addDynamicShadow();

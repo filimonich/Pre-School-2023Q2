@@ -147,38 +147,7 @@ html {
   }
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
+// граница тени
 .dynamic-shadow {
   border-radius: 10px;
-}
-
-input[type=range] {
-  height: 6px;
-  border-radius: 10px;
-  background-color: $forest-green;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background: $harvest-gold;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-input[type=range]::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  background: $harvest-gold;
-  border-radius: 50%;
-  cursor: pointer;
 }

@@ -7,29 +7,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
   
-  <title>audio-player</title>
-  <script type="module" crossorigin src="./assets/main-b345307c.js"></script>
-  <link rel="stylesheet" href="./assets/index-ebfc1968.css">
+  <title>image-galery</title>
+  <script type="module" crossorigin src="./assets/main-ff81dcce.js"></script>
+  <link rel="stylesheet" href="./assets/index-c19ab04d.css">
 </head>
 
 
 <body class="wrapper preload">
-  <div class="preloder">
-    <div class="preloder__circle"></div>
-  </div>
-  <main class="main player">
+  <main class="main">
+    <header class="header">
+      <div class="header__body">
+        <div class="header__logo">
+          <div class="header__pic"><img src="images/svg/photocamera_78932.svg" alt="logo" class="header__img"></div>
+          <h1 class="header__title">Unsplash API</h1>
+        </div>
+        <div class="header__container">
+          <input type="text" id="search-input" placeholder="Search..." autofocus>
+          <label for="search-input" class="header__search-icon">✖</label>
+        </div>
+      </div>
+    </header>
+    <!-- <div class="preloder">
+      <div class="preloder__circle"></div>
+    </div> -->
+    <section class="galery">
+      <div class="galery__contents">
 
+      </div>
+    </section>
+    <footer class="footer">
+      <a class="footer__link animation-text" href="https://github.com/filimonich" target="_blank">
+        <p>filimonich</p>
+      </a>
+      <p>2023</p>
+      <a class="logo" href="https://rs.school/js-stage0/" target="_blank">
+        <img class="logo__img" src="images/svg/rs_school_js.svg" alt="RS School">
+      </a>
+    </footer>
   </main>
-
-  <footer class="footer">
-    <a class="footer__link animation-text" href="https://github.com/filimonich" target="_blank">
-      <p>filimonich</p>
-    </a>
-    <p>2023</p>
-    <a class="logo" href="https://rs.school/js-stage0/" target="_blank">
-      <img class="logo__img" src="images/svg/rs_school_js.svg" alt="RS School">
-    </a>
-  </footer>
 </body>
 
 </html>

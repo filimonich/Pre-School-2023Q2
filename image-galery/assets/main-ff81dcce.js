@@ -40,36 +40,58 @@
   }
 })();
 const style = "";
-document.body.onload = () => {
-  let delayTime = 10;
-  setTimeout(() => {
-    const preloder = document.querySelector(".preloder");
-    preloder.classList.add("done");
-  }, delayTime);
-};
-const image = new Image();
-image.src = "images/img/Succession.png";
-const imageElement = document.getElementById("myImage");
-image.onload = () => {
-  imageElement.src = image.src;
-};
 for (let i = 1; i < 6; i++) {
   setTimeout(() => {
     console.log("Hello");
   }, i * 2e3);
 }
-document.addEventListener("DOMContentLoaded", function() {
+async function getData(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.results;
+}
+const insertImage = (image, gallery) => {
+  const imgDiv = document.createElement("div");
+  imgDiv.className = "galery__image";
+  const img = document.createElement("img");
+  img.src = image.urls.small;
+  imgDiv.appendChild(img);
+  gallery.appendChild(imgDiv);
+};
+const main = async () => {
+  const url = (
+    // 'https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=landscape&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg';
+    "https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg"
+  );
+  console.log(url);
+  const images = await getData(url);
+  const gallery = document.querySelector(".galery__contents");
+  images.forEach((image, index) => {
+    setTimeout(() => {
+      insertImage(image, gallery);
+    }, index * 100);
+  });
+};
+main();
+document.body.onload = () => {
+  let delayTime = 1e6;
+  setTimeout(() => {
+    const preloder = document.querySelector(".preloder");
+    preloder.classList.add("done");
+  }, delayTime);
+};
+document.addEventListener("DOMContentLoaded", () => {
   let preload = document.querySelector(".preload");
-  function removePreloadClass() {
+  const removePreloadClass = () => {
     preload.classList.remove("preload");
-  }
+  };
   setTimeout(() => {
     removePreloadClass();
   }, 100);
 });
-function addDynamicShadow() {
+const addDynamicShadow = () => {
   const blocks = document.getElementsByClassName("dynamic-shadow");
-  document.addEventListener("mousemove", function(e) {
+  document.addEventListener("mousemove", (e) => {
     if (window.innerWidth <= 780) {
       return;
     }
@@ -79,5 +101,5 @@ function addDynamicShadow() {
       blocks[i].style.boxShadow = (x - 0.5) * 40 + "px " + (y - 0.5) * 40 + "px 20px rgba(0, 104, 111,0.65)";
     }
   });
-}
+};
 addDynamicShadow();

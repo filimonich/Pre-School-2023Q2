@@ -1,4 +1,53 @@
 .galery {
-	$self: &;
+  $self: &;
+
+  &__contents {
+    // height: 100vh; 
+    overflow: auto;
+
+    z-index: 1;
+
+    position: relative;
+    column-count: 4;
+
+    display: block;
+
+    // display: flex;
+    // flex-wrap: wrap;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+
+    padding-top: 4%;
+    padding-bottom: 10%;
+
+    @include media('<=md') {
+      column-count: 2;
+    }
+  }
+
+  &__image {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    // width: 100%;
+    // width: 20%;
+    // margin: 1% 1%;
+    margin: 4% 0;
+
+    @include media('<=md') {
+      // width: 40%;
+    }
+
+    @include media('<=sm') {
+      // width: 40%;
+    }
+
+    @include media('<=xxs') {
+      // width: 100%;
+    }
+  }
 
 }

@@ -3,7 +3,7 @@ import '/js/unsplashAPI.js';
 
 // предварительный загрузчик
 document.body.onload = () => {
-  let delayTime = 10;
+  let delayTime = 1000000;
   setTimeout(() => {
     const preloder = document.querySelector('.preloder');
     preloder.classList.add('done');

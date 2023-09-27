@@ -1,12 +1,16 @@
 .preloder {
-  z-index: 999999;
-  position: fixed;
+  z-index: 2;
+
+  position: absolute;
   top: 0;
   right: 0;
-  background: $gunmetal;
-  height: 100%;
   width: 100%;
-  transition: 1s all easy;
+  height: 100%;
+
+  // position: relative;
+  // background: $gunmetal;
+  background: $text;
+  transition: 1s all ease;
   opacity: 1;
   visibility: visible;
 

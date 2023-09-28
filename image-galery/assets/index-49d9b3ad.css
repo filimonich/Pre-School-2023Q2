@@ -141,13 +141,12 @@ a {
   color: #FFFFFF;
 }
 .galery__contents {
-  overflow: auto;
   z-index: 1;
   position: relative;
-  column-count: 4;
   display: block;
-  padding-top: 4%;
-  padding-bottom: 10%;
+  column-count: 4;
+  overflow: auto;
+  padding: 4% 2% 10%;
 }
 @media (max-width: 960px) {
   .galery__contents {
@@ -160,10 +159,13 @@ a {
   justify-content: center;
   margin: 4% 0;
 }
+.galery__image:first-child {
+  margin-top: 0;
+}
 .header {
-  z-index: 9999999;
+  z-index: 9;
   position: relative;
-  padding: 2%;
+  padding: 0.6% 4%;
   background-color: #046351;
 }
 .header__body {
@@ -171,83 +173,65 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 640px) {
+  .header__body {
+    flex-wrap: wrap;
+  }
+}
 .header__logo {
   display: flex;
+  width: 100%;
+  align-items: center;
+  font-family: "IB";
+  font-size: 18px;
+  color: #FFFFFF;
 }
 .header__pic {
   width: 100%;
+  max-width: 5%;
+  margin-right: 0.5%;
+  filter: invert(1);
+}
+.header__container {
+  position: relative;
+  padding-right: 1%;
+}
+.header__input {
+  padding: 2%;
+}
+.header__search-icon {
+  position: absolute;
+  top: 20%;
+  right: 3%;
 }
 .logo__img {
   width: 86px;
   height: 32px;
   filter: invert(1);
 }
-.preloder {
-  z-index: 2;
+.preloader {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000;
-  transition: 1s all ease;
-  opacity: 1;
-  visibility: visible;
-}
-.preloder__circle, .preloder__circle:before, .preloder__circle:after {
-  border: 3px solid transparent;
-  border-radius: 50%;
-}
-.preloder__circle {
-  height: 110px;
-  width: 110px;
-  margin: 200px auto;
-  position: relative;
-  border-top-color: #de9d16;
-  animation-name: spin;
-  animation-duration: 1.1s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-}
-.preloder__circle:before, .preloder__circle:after {
-  content: "";
-  position: absolute;
-}
-.preloder__circle:before {
   top: 10px;
   left: 10px;
-  bottom: 10px;
-  right: 10px;
-  border-top-color: #28a858;
-  animation-name: spin;
-  animation-duration: 2.1s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-duration: 2.1s;
-}
-.preloder__circle:after {
-  top: 23px;
-  left: 23px;
-  bottom: 23px;
-  right: 23px;
-  border-top-color: #046351;
-  animation-name: spin;
-  animation-delay: 1.3s;
-  animation-duration: 3.1s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
+  width: 30px;
+  height: 30px;
+  background-color: #046351;
+  animation: spin 2s linear infinite;
 }
 @keyframes spin {
-  from {
+  0% {
     transform: rotate(0deg);
+    border-radius: 2px;
   }
-  to {
+  50% {
     transform: rotate(360deg);
+    background-color: #de9d16;
+    border-radius: 100px;
   }
-}
-.done {
-  opacity: 0;
-  visibility: hidden;
+  100% {
+    transform: rotate(0deg);
+    border-radius: 50px;
+  }
 }
 @keyframes fadeOut {
   from {
@@ -323,6 +307,7 @@ html {
 }
 .animation-button:active {
   transform: scale(0.9);
+  filter: invert(0.5);
 }
 .animation-text {
   border-radius: 2px;

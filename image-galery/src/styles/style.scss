@@ -124,6 +124,7 @@ html {
 
   &:active {
     transform: scale(0.9);
+    filter: invert(.5);
   }
 
 }

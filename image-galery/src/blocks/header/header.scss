@@ -10,22 +10,47 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media('<=xs') {
+      flex-wrap: wrap;
+    }
   }
 
   &__logo {
     display: flex;
+    width: 100%;
+    align-items: center;
+
+    // text-align: center;
+    font-family: 'IB';
+    font-size: 18px;
+    color: $white;
+    
   }
 
   &__pic {
-		width: 100%;
-	}
+    width: 100%;
+    max-width: 5%;
+    margin-right: .5%;
+    filter: invert(1);
+  }
 
   &__img {}
 
   &__title {}
 
-  &__container {}
+  &__container {
+    position: relative;
+  }
 
-  &__search-icon {}
+  &__input {
+    padding: 2%;
+  }
+
+  &__search-icon {
+    position: absolute;
+    top: 20%;
+    right: 3%;
+  }
 
 }

@@ -37,7 +37,6 @@ const insertImage = (image, gallery) => {
 // главная функция
 const main = async () => {
   const url =
-    // 'https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=landscape&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg';
     'https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg';
   console.log(url);
 
@@ -47,11 +46,13 @@ const main = async () => {
   // получаем div с классом 'galery__contents'
   const gallery = document.querySelector('.galery__contents');
 
+  let delayLoadingImages = 1000;
+
   // для каждого изображения вызываем функцию insertImage с задержкой в 1 секунду
   images.forEach((image, index) => {
     setTimeout(() => {
       insertImage(image, gallery);
-    }, index * 100);
+    }, index * delayLoadingImages);
   });
 };
 

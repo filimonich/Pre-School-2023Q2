@@ -3,7 +3,7 @@
 
   z-index: 9999999;
   position: relative;
-  padding: 2%;
+  padding: 0.6% 4%;
   background-color: $castleton-green;
 
   &__body {
@@ -25,7 +25,7 @@
     font-family: 'IB';
     font-size: 18px;
     color: $white;
-    
+
   }
 
   &__pic {
@@ -41,6 +41,7 @@
 
   &__container {
     position: relative;
+    padding-right: 1%;
   }
 
   &__input {

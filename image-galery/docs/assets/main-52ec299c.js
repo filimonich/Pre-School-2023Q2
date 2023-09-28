@@ -45,41 +45,79 @@ for (let i = 1; i < 6; i++) {
     console.log("Hello");
   }, i * 2e3);
 }
-async function getData(url) {
+const input = document.getElementById("search-input");
+const randomRequests = [
+  "spring"
+  // 'summer',
+  // 'autumn',
+  // 'winter',
+  // 'nature',
+  // 'city',
+  // 'people',
+  // 'animals',
+];
+const getData = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
   return data.results;
-}
-const insertImage = (image, gallery) => {
+};
+const createImageDiv = () => {
   const imgDiv = document.createElement("div");
   imgDiv.className = "galery__image";
+  imgDiv.style.height = "100px";
+  return imgDiv;
+};
+const createPreloader = () => {
+  const preloader = document.createElement("div");
+  preloader.className = "preloader";
+  preloader.style.display = "block";
+  return preloader;
+};
+const createImgElement = (url, imgDiv, preloader) => {
   const img = document.createElement("img");
-  img.src = image.urls.small;
-  imgDiv.appendChild(img);
+  img.onload = function() {
+    preloader.style.display = "none";
+    imgDiv.style.height = "auto";
+    imgDiv.appendChild(img);
+  };
+  setTimeout(() => {
+    img.src = url;
+  }, 212);
+};
+const addImageDivToGallery = (gallery, imgDiv) => {
   gallery.appendChild(imgDiv);
 };
-const main = async () => {
-  const url = (
-    // 'https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=landscape&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg';
-    "https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg"
-  );
-  console.log(url);
+const getRandomQuery = () => {
+  const index = Math.floor(Math.random() * randomRequests.length);
+  return randomRequests[index];
+};
+const main = async (query) => {
+  const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
   const images = await getData(url);
   const gallery = document.querySelector(".galery__contents");
-  images.forEach((image, index) => {
-    setTimeout(() => {
-      insertImage(image, gallery);
-    }, index * 100);
-  });
+  gallery.innerHTML = "";
+  for (let index in images) {
+    await new Promise((resolve) => setTimeout(resolve, index * 1));
+    const image = images[index];
+    const imgDiv = createImageDiv();
+    const preloader = createPreloader();
+    addImageDivToGallery(gallery, imgDiv);
+    createImgElement(image.urls.small, imgDiv, preloader);
+    imgDiv.appendChild(preloader);
+  }
 };
-main();
-document.body.onload = () => {
-  let delayTime = 1e6;
-  setTimeout(() => {
-    const preloder = document.querySelector(".preloder");
-    preloder.classList.add("done");
-  }, delayTime);
-};
+input.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    main(input.value);
+    input.value = "";
+    input.blur();
+  }
+});
+main(getRandomQuery());
+const label = document.querySelector('label[for="search-input"]');
+label.addEventListener("click", () => {
+  input.value = "";
+});
 document.addEventListener("DOMContentLoaded", () => {
   let preload = document.querySelector(".preload");
   const removePreloadClass = () => {

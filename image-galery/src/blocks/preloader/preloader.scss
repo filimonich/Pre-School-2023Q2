@@ -1,0 +1,29 @@
+.preloader {
+  position: absolute;
+  // position: relative;
+  // display: block;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: $castleton-green;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    border-radius: 2px;
+  }
+
+  50% {
+    transform: rotate(360deg);
+    background-color: $harvest-gold;
+    border-radius: 100px;
+  }
+
+  100% {
+    transform: rotate(0deg);
+    border-radius: 50px;
+  }
+}

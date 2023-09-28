@@ -4,7 +4,7 @@ for (let i = 1; i < 6; i++) {
   }, i * 2000);
 }
 
-// получаем поле ввода
+// поле ввода
 const input = document.getElementById('search-input');
 
 // массив со случайными запросами
@@ -56,10 +56,10 @@ const main = async query => {
   const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
   console.log(url);
 
-  // получаем изображения от api
+  // изображения от api
   const images = await getData(url);
 
-  // получаем div с классом 'galery__contents'
+  // div с классом 'galery__contents'
   const gallery = document.querySelector('.galery__contents');
 
   // очищаем галерею
@@ -67,7 +67,7 @@ const main = async query => {
 
   let delayLoadingImages = 10;
 
-  // для каждого изображения вызываем функцию insertImage с задержкой в 1 секунду
+  // для каждого изображения вызываем функцию insertImage с задержкой
   images.forEach((image, index) => {
     setTimeout(() => {
       insertImage(image, gallery);
@@ -86,3 +86,11 @@ input.addEventListener('keydown', function (event) {
 
 // вызываем главную функцию с случайным запросом при загрузке страницы
 main(getRandomQuery());
+
+const label = document.querySelector('label[for="search-input"]');
+
+// добавляем обработчик событий click
+label.addEventListener('click', function () {
+  // очищаем поле ввода
+  input.value = '';
+});

@@ -1,15 +1,6 @@
 import '/styles/style.scss';
 import '/js/unsplashAPI.js';
 
-// предварительный загрузчик
-document.body.onload = () => {
-  let delayTime = 1000000;
-  setTimeout(() => {
-    const preloder = document.querySelector('.preloder');
-    preloder.classList.add('done');
-  }, delayTime); // Задержка в 500 миллисекунд
-};
-
 // убирает класс, что бы анимации не срабатывали раньше времени
 document.addEventListener('DOMContentLoaded', () => {
   let preload = document.querySelector('.preload');

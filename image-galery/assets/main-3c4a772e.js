@@ -46,20 +46,34 @@ for (let i = 1; i < 6; i++) {
   }, i * 2e3);
 }
 const input = document.getElementById("search-input");
+const gallery = document.querySelector(".galery__contents");
 const randomRequests = [
-  "spring"
-  // 'summer',
-  // 'autumn',
-  // 'winter',
-  // 'nature',
-  // 'city',
-  // 'people',
-  // 'animals',
+  "spring",
+  "summer",
+  "autumn",
+  "winter",
+  "nature",
+  "city",
+  "people",
+  "animals"
 ];
 const getData = async (url) => {
-  const res = await fetch(url);
-  const data = await res.json();
-  return data.results;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Ошибка: ${res.status}`);
+    }
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.error("An error occurred while receiving data:", error);
+    gallery.innerHTML = "";
+    const errorMessage = document.createElement("p");
+    errorMessage.className = "galery__text";
+    errorMessage.innerHTML = "An error occurred while receiving the data. Please try again. Произошла ошибка при получении данных. Пожалуйста, попробуйте еще раз.";
+    gallery.appendChild(errorMessage);
+    throw error;
+  }
 };
 const createImageDiv = () => {
   const imgDiv = document.createElement("div");
@@ -73,7 +87,7 @@ const createPreloader = () => {
   preloader.style.display = "block";
   return preloader;
 };
-const createImgElement = (url, imgDiv, preloader) => {
+const loadImage = (url, imgDiv, preloader) => {
   const img = document.createElement("img");
   img.onload = function() {
     preloader.style.display = "none";
@@ -82,28 +96,40 @@ const createImgElement = (url, imgDiv, preloader) => {
   };
   setTimeout(() => {
     img.src = url;
-  }, 212);
+  }, 2);
 };
-const addImageDivToGallery = (gallery, imgDiv) => {
-  gallery.appendChild(imgDiv);
+const addImageDivToGallery = (gallery2, imgDiv) => {
+  gallery2.appendChild(imgDiv);
 };
 const getRandomQuery = () => {
   const index = Math.floor(Math.random() * randomRequests.length);
   return randomRequests[index];
 };
+const clearGallery = (gallery2) => {
+  gallery2.innerHTML = "";
+};
 const main = async (query) => {
   const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
   const images = await getData(url);
-  const gallery = document.querySelector(".galery__contents");
-  gallery.innerHTML = "";
+  clearGallery(gallery);
+  const preloader = createPreloader();
+  gallery.appendChild(preloader);
+  if (images.length === 0) {
+    preloader.style.display = "none";
+    const noImagesOnRequest = document.createElement("p");
+    noImagesOnRequest.className = "galery__text";
+    noImagesOnRequest.innerHTML = "Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос.";
+    gallery.appendChild(noImagesOnRequest);
+    return;
+  }
   for (let index in images) {
-    await new Promise((resolve) => setTimeout(resolve, index * 1));
     const image = images[index];
     const imgDiv = createImageDiv();
-    const preloader = createPreloader();
+    loadImage(image.urls.small, imgDiv, preloader);
     addImageDivToGallery(gallery, imgDiv);
-    createImgElement(image.urls.small, imgDiv, preloader);
-    imgDiv.appendChild(preloader);
+    if (index == "0") {
+      await new Promise((resolve) => setTimeout(resolve, index * 2e4));
+    }
   }
 };
 input.addEventListener("keydown", (event) => {

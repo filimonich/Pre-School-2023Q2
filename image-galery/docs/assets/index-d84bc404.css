@@ -162,6 +162,18 @@ a {
 .galery__image:first-child {
   margin-top: 0;
 }
+.galery__image:nth-child(2) {
+  margin-top: 0;
+}
+.galery__text {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: fixed;
+  font-size: 2rem;
+  padding: 3%;
+  color: #FFFFFF;
+}
 .header {
   z-index: 9;
   position: relative;
@@ -202,7 +214,7 @@ a {
 .header__search-icon {
   position: absolute;
   top: 20%;
-  right: 3%;
+  right: 6%;
 }
 .logo__img {
   width: 86px;
@@ -210,27 +222,34 @@ a {
   filter: invert(1);
 }
 .preloader {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
-  background-color: #046351;
-  animation: spin 2s linear infinite;
+  position: fixed;
+  top: 30%;
+  right: 40%;
+  width: 60px;
+  height: 60px;
+  border: 6px solid transparent;
+  border-top: 6px solid #28a858;
+  /* Цвет красной линии */
+  border-radius: 50%;
+  animation: spin 2s linear infinite, gradient 4s linear infinite;
+  transform: translate(-50%, -50%);
 }
 @keyframes spin {
   0% {
-    transform: rotate(0deg);
-    border-radius: 2px;
-  }
-  50% {
-    transform: rotate(360deg);
-    background-color: #de9d16;
-    border-radius: 100px;
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: rotate(0deg);
-    border-radius: 50px;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes gradient {
+  0% {
+    border-image: linear-gradient(90deg, #de9d16, #2f8a1e);
+    border-image-slice: 1;
+  }
+  100% {
+    border-image: linear-gradient(90deg, #2f8a1e, #de9d16);
+    border-image-slice: 1;
   }
 }
 @keyframes fadeOut {

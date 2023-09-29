@@ -23,6 +23,20 @@
     &:first-child {
       margin-top: 0;
     }
+
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: fixed;
+    font-size: 2rem;
+    padding: 3%;
+    color: $white;
   }
 
 }

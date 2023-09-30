@@ -47,7 +47,6 @@ for (let i = 1; i < 6; i++) {
 }
 const input = document.getElementById("search-input");
 const gallery = document.querySelector(".galery__contents");
-const createElementP = document.createElement("p");
 const label = document.querySelector('label[for="search-input"]');
 const randomRequests = [
   "spring",
@@ -57,8 +56,12 @@ const randomRequests = [
   "nature",
   "city",
   "people",
-  "animals"
+  "animals",
+  "nightcity",
+  "tram",
+  "smile"
 ];
+let delayTime = 20;
 const getData = async (url) => {
   try {
     const res = await fetch(url);
@@ -78,6 +81,7 @@ const getData = async (url) => {
   }
 };
 function createAndAppendP(className, innerHTML) {
+  const createElementP = document.createElement("p");
   createElementP.className = className;
   createElementP.innerHTML = innerHTML;
   gallery.appendChild(createElementP);
@@ -85,7 +89,6 @@ function createAndAppendP(className, innerHTML) {
 const createImageDiv = () => {
   const imgDiv = document.createElement("div");
   imgDiv.className = "galery__image";
-  imgDiv.style.height = "100px";
   return imgDiv;
 };
 const createPreloader = () => {
@@ -95,15 +98,17 @@ const createPreloader = () => {
   return preloader;
 };
 const loadImage = (url, imgDiv, preloader) => {
-  const img = document.createElement("img");
-  img.onload = function() {
-    preloader.style.display = "none";
+  const createElementImg = document.createElement("img");
+  createElementImg.onload = function() {
+    if (preloader) {
+      preloader.style.display = "none";
+    }
     imgDiv.style.height = "auto";
-    imgDiv.appendChild(img);
+    imgDiv.appendChild(createElementImg);
   };
   setTimeout(() => {
-    img.src = url;
-  }, 2);
+    createElementImg.src = url;
+  }, delayTime);
 };
 const addImageDivToGallery = (gallery2, imgDiv) => {
   gallery2.appendChild(imgDiv);
@@ -116,39 +121,55 @@ const getRandomQuery = () => {
 const clearGallery = (gallery2) => {
   gallery2.innerHTML = "";
 };
-const main = async (query) => {
+const getDataAndHandleErrors = async (query) => {
   const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
-  const images = await getData(url);
-  clearGallery(gallery);
   const preloader = createPreloader();
   gallery.appendChild(preloader);
+  const images = await getData(url);
+  clearGallery(gallery);
   if (images.length === 0) {
-    preloader.style.display = "none";
+    if (preloader) {
+      preloader.style.display = "none";
+    }
     createAndAppendP(
       "galery__text",
       "Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос."
     );
     return;
   }
-  for (let index in images) {
-    const image = images[index];
+  return images;
+};
+const createImageGallery = async (images) => {
+  for (const image of images) {
     const imgDiv = createImageDiv();
-    loadImage(image.urls.small, imgDiv, preloader);
+    loadImage(image.urls.small, imgDiv);
     addImageDivToGallery(gallery, imgDiv);
-    const delayTime = 20;
     await new Promise((resolve) => setTimeout(resolve, delayTime));
+  }
+};
+const main = async (query) => {
+  const images = await getDataAndHandleErrors(query);
+  if (images) {
+    await createImageGallery(images);
   }
 };
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     main(input.value);
-    input.value = "";
     input.blur();
   }
 });
 main(getRandomQuery());
 label.addEventListener("click", () => {
   input.value = "";
+});
+window.addEventListener("scroll", () => {
+  const arrowUp = document.querySelector(".galery__arrow-up");
+  if (window.pageYOffset > window.innerHeight / 2) {
+    arrowUp.style.display = "block";
+  } else {
+    arrowUp.style.display = "none";
+  }
 });
 document.addEventListener("DOMContentLoaded", () => {
   let preload = document.querySelector(".preload");

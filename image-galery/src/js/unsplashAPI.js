@@ -188,3 +188,12 @@ label.addEventListener('click', () => {
   // очищаем поле ввода
   input.value = '';
 });
+
+window.addEventListener('scroll', () => {
+  const arrowUp = document.querySelector('.galery__arrow-up');
+  if (window.pageYOffset > window.innerHeight / 2) {
+    arrowUp.style.display = 'block';
+  } else {
+    arrowUp.style.display = 'none';
+  }
+});

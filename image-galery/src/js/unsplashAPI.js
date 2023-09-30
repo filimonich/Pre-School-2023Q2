@@ -145,7 +145,7 @@ const getDataAndHandleErrors = async query => {
 // объявляем асинхронную функцию для создания галереи изображений
 const createImageGallery = async images => {
   // проходим по каждому изображению в массиве images
-  images.forEach(async image => {
+  for (const image of images) {
     // создаем div для изображения
     const imgDiv = createImageDiv();
 
@@ -156,9 +156,8 @@ const createImageGallery = async images => {
     addImageDivToGallery(gallery, imgDiv);
 
     // делаем паузу после загрузки изображения
-    const delayTime = 20;
     await new Promise(resolve => setTimeout(resolve, delayTime));
-  });
+  }
 };
 
 // объявляем асинхронную функцию main с параметром query
@@ -176,7 +175,7 @@ input.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     // здесь вызываем функцию поиска с запросом из поля ввода
     main(input.value);
-    input.value = '';
+    // input.value = '';
     input.blur();
   }
 });

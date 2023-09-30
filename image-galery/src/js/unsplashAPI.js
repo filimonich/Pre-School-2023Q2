@@ -80,7 +80,9 @@ const loadImage = (url, imgDiv, preloader) => {
   const createElementImg = document.createElement('img');
   // когда изображение загрузится, скрываем прелоудер и добавляем img в imgDiv
   createElementImg.onload = function () {
-    preloader.style.display = 'none'; // скрываем прелоудер
+    if (preloader) {
+      preloader.style.display = 'none'; // скрываем прелоудер
+    }
     imgDiv.style.height = 'auto'; // меняем высоту блока на auto
     imgDiv.appendChild(createElementImg); // добавляем img в imgDiv только после того, как изображение загрузилось
   };
@@ -108,11 +110,14 @@ const clearGallery = gallery => {
   gallery.innerHTML = '';
 };
 
-// главная функция
-// объявляем асинхронную функцию main с параметром query
-const main = async query => {
+// объявляем асинхронную функцию для получения данных
+const getDataAndHandleErrors = async query => {
   // формируем URL для запроса к API Unsplash
   const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
+
+  // создаем и добавляем прелоудер в галерею
+  const preloader = createPreloader();
+  gallery.appendChild(preloader);
 
   // получаем данные (изображения) от API Unsplash
   const images = await getData(url);
@@ -120,14 +125,12 @@ const main = async query => {
   // очищаем галерею перед каждым новым запросом
   clearGallery(gallery);
 
-  // создаем и добавляем прелоудер в галерею
-  const preloader = createPreloader();
-  gallery.appendChild(preloader);
-
   // проверяем, есть ли изображения по данному запросу
   if (images.length === 0) {
     // если изображений нет, скрываем прелоудер и выводим сообщение об отсутствии изображений
-    preloader.style.display = 'none';
+    if (preloader) {
+      preloader.style.display = 'none'; // скрываем прелоудер
+    }
     createAndAppendP(
       'galery__text',
       'Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос.'
@@ -136,18 +139,34 @@ const main = async query => {
     return;
   }
 
+  return images;
+};
+
+// объявляем асинхронную функцию для создания галереи изображений
+const createImageGallery = async images => {
   // проходим по каждому изображению в массиве images
-  for (let index in images) {
-    // получаем текущее изображение
-    const image = images[index];
+  images.forEach(async image => {
     // создаем div для изображения
     const imgDiv = createImageDiv();
+
     // загружаем изображение и добавляем его в div
-    loadImage(image.urls.small, imgDiv, preloader);
+    loadImage(image.urls.small, imgDiv);
+
     // добавляем div с изображением в галерею
     addImageDivToGallery(gallery, imgDiv);
+
     // делаем паузу после загрузки изображения
-    await new Promise(resolve => setTimeout(resolve, 1));
+    const delayTime = 20;
+    await new Promise(resolve => setTimeout(resolve, delayTime));
+  });
+};
+
+// объявляем асинхронную функцию main с параметром query
+const main = async query => {
+  const images = await getDataAndHandleErrors(query);
+
+  if (images) {
+    await createImageGallery(images);
   }
 };
 

@@ -6,7 +6,6 @@ for (let i = 1; i < 6; i++) {
 
 const input = document.getElementById('search-input');
 const gallery = document.querySelector('.galery__contents');
-const createElementP = document.createElement('p');
 const label = document.querySelector('label[for="search-input"]');
 
 // массив со случайными запросами
@@ -19,7 +18,12 @@ const randomRequests = [
   'city',
   'people',
   'animals',
+  'nightcity',
+  'tram',
+  'smile',
 ];
+
+let delayTime = 20;
 
 // получения данных от api
 const getData = async url => {
@@ -50,6 +54,7 @@ const getData = async url => {
 
 // функция для создания текстового элемента для вывода сообщения ошибок
 function createAndAppendP(className, innerHTML) {
+  const createElementP = document.createElement('p');
   createElementP.className = className;
   createElementP.innerHTML = innerHTML;
   gallery.appendChild(createElementP);
@@ -59,7 +64,6 @@ function createAndAppendP(className, innerHTML) {
 const createImageDiv = () => {
   const imgDiv = document.createElement('div');
   imgDiv.className = 'galery__image';
-  imgDiv.style.height = '100px'; // устанавливаем высоту блока равной 100px
   return imgDiv;
 };
 
@@ -73,19 +77,18 @@ const createPreloader = () => {
 
 // функция для создания и загрузки изображения
 const loadImage = (url, imgDiv, preloader) => {
-  const img = document.createElement('img');
-
+  const createElementImg = document.createElement('img');
   // когда изображение загрузится, скрываем прелоудер и добавляем img в imgDiv
-  img.onload = function () {
+  createElementImg.onload = function () {
     preloader.style.display = 'none'; // скрываем прелоудер
     imgDiv.style.height = 'auto'; // меняем высоту блока на auto
-    imgDiv.appendChild(img); // добавляем img в imgDiv только после того, как изображение загрузилось
+    imgDiv.appendChild(createElementImg); // добавляем img в imgDiv только после того, как изображение загрузилось
   };
 
   // устанавливаем src изображения с задержкой в 2 секунды для тестирования прелоадера
   setTimeout(() => {
-    img.src = url;
-  }, 2);
+    createElementImg.src = url;
+  }, delayTime);
 };
 
 // функция для добавления блока изображения в галерею
@@ -144,8 +147,7 @@ const main = async query => {
     // добавляем div с изображением в галерею
     addImageDivToGallery(gallery, imgDiv);
     // делаем паузу после загрузки изображения
-    const delayTime = 20;
-    await new Promise(resolve => setTimeout(resolve, delayTime));
+    await new Promise(resolve => setTimeout(resolve, 1));
   }
 };
 

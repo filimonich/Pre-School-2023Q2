@@ -47,6 +47,8 @@ for (let i = 1; i < 6; i++) {
 }
 const input = document.getElementById("search-input");
 const gallery = document.querySelector(".galery__contents");
+const createElementP = document.createElement("p");
+const label = document.querySelector('label[for="search-input"]');
 const randomRequests = [
   "spring",
   "summer",
@@ -68,13 +70,18 @@ const getData = async (url) => {
   } catch (error) {
     console.error("An error occurred while receiving data:", error);
     gallery.innerHTML = "";
-    const errorMessage = document.createElement("p");
-    errorMessage.className = "galery__text";
-    errorMessage.innerHTML = "An error occurred while receiving the data. Please try again. Произошла ошибка при получении данных. Пожалуйста, попробуйте еще раз.";
-    gallery.appendChild(errorMessage);
+    createAndAppendP(
+      "galery__text",
+      "An error occurred while receiving the data. Please try again. Произошла ошибка при получении данных. Пожалуйста, попробуйте еще раз."
+    );
     throw error;
   }
 };
+function createAndAppendP(className, innerHTML) {
+  createElementP.className = className;
+  createElementP.innerHTML = innerHTML;
+  gallery.appendChild(createElementP);
+}
 const createImageDiv = () => {
   const imgDiv = document.createElement("div");
   imgDiv.className = "galery__image";
@@ -103,6 +110,7 @@ const addImageDivToGallery = (gallery2, imgDiv) => {
 };
 const getRandomQuery = () => {
   const index = Math.floor(Math.random() * randomRequests.length);
+  console.log(randomRequests[index]);
   return randomRequests[index];
 };
 const clearGallery = (gallery2) => {
@@ -116,10 +124,10 @@ const main = async (query) => {
   gallery.appendChild(preloader);
   if (images.length === 0) {
     preloader.style.display = "none";
-    const noImagesOnRequest = document.createElement("p");
-    noImagesOnRequest.className = "galery__text";
-    noImagesOnRequest.innerHTML = "Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос.";
-    gallery.appendChild(noImagesOnRequest);
+    createAndAppendP(
+      "galery__text",
+      "Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос."
+    );
     return;
   }
   for (let index in images) {
@@ -127,9 +135,8 @@ const main = async (query) => {
     const imgDiv = createImageDiv();
     loadImage(image.urls.small, imgDiv, preloader);
     addImageDivToGallery(gallery, imgDiv);
-    if (index == "0") {
-      await new Promise((resolve) => setTimeout(resolve, index * 2e4));
-    }
+    const delayTime = 20;
+    await new Promise((resolve) => setTimeout(resolve, delayTime));
   }
 };
 input.addEventListener("keydown", (event) => {
@@ -140,7 +147,6 @@ input.addEventListener("keydown", (event) => {
   }
 });
 main(getRandomQuery());
-const label = document.querySelector('label[for="search-input"]');
 label.addEventListener("click", () => {
   input.value = "";
 });

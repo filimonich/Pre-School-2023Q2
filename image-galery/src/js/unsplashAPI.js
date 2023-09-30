@@ -6,6 +6,8 @@ for (let i = 1; i < 6; i++) {
 
 const input = document.getElementById('search-input');
 const gallery = document.querySelector('.galery__contents');
+const createElementP = document.createElement('p');
+const label = document.querySelector('label[for="search-input"]');
 
 // массив со случайными запросами
 const randomRequests = [
@@ -37,18 +39,21 @@ const getData = async url => {
     return data.results;
   } catch (error) {
     console.error('An error occurred while receiving data:', error);
-
-    gallery.innerHTML = ''; // очищаем галерею
-
-    const errorMessage = document.createElement('p');
-    errorMessage.className = 'galery__text';
-    errorMessage.innerHTML =
-      'An error occurred while receiving the data. Please try again. Произошла ошибка при получении данных. Пожалуйста, попробуйте еще раз.';
-    gallery.appendChild(errorMessage);
-
-    throw error; // Перебрасываем ошибку, чтобы остановить выполнение функции
+    gallery.innerHTML = '';
+    createAndAppendP(
+      'galery__text',
+      'An error occurred while receiving the data. Please try again. Произошла ошибка при получении данных. Пожалуйста, попробуйте еще раз.'
+    );
+    throw error;
   }
 };
+
+// функция для создания текстового элемента для вывода сообщения ошибок
+function createAndAppendP(className, innerHTML) {
+  createElementP.className = className;
+  createElementP.innerHTML = innerHTML;
+  gallery.appendChild(createElementP);
+}
 
 // функция для создания div для изображения
 const createImageDiv = () => {
@@ -91,6 +96,7 @@ const addImageDivToGallery = (gallery, imgDiv) => {
 // получения случайного элемента из массива
 const getRandomQuery = () => {
   const index = Math.floor(Math.random() * randomRequests.length);
+  console.log(randomRequests[index]);
   return randomRequests[index];
 };
 
@@ -100,36 +106,46 @@ const clearGallery = gallery => {
 };
 
 // главная функция
+// объявляем асинхронную функцию main с параметром query
 const main = async query => {
+  // формируем URL для запроса к API Unsplash
   const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=30&orientation=portrait&client_id=l-zkI308Tcihpn1AgexKwD_jFJ9SfU8I_008J48EBgg`;
 
+  // получаем данные (изображения) от API Unsplash
   const images = await getData(url);
 
-  // очищаем галерею перед каждым запросом
+  // очищаем галерею перед каждым новым запросом
   clearGallery(gallery);
 
+  // создаем и добавляем прелоудер в галерею
   const preloader = createPreloader();
   gallery.appendChild(preloader);
 
   // проверяем, есть ли изображения по данному запросу
   if (images.length === 0) {
-    preloader.style.display = 'none'; // скрываем прелоудер
-    const noImagesOnRequest = document.createElement('p');
-    noImagesOnRequest.className = 'galery__text';
-    noImagesOnRequest.innerHTML =
-      'Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос.';
-    gallery.appendChild(noImagesOnRequest);
+    // если изображений нет, скрываем прелоудер и выводим сообщение об отсутствии изображений
+    preloader.style.display = 'none';
+    createAndAppendP(
+      'galery__text',
+      'Unfortunately, no images were found for your request. Try another query. К сожалению, по вашему запросу не было найдено изображений. Попробуйте другой запрос.'
+    );
+    // завершаем выполнение функции
     return;
   }
 
+  // проходим по каждому изображению в массиве images
   for (let index in images) {
+    // получаем текущее изображение
     const image = images[index];
+    // создаем div для изображения
     const imgDiv = createImageDiv();
+    // загружаем изображение и добавляем его в div
     loadImage(image.urls.small, imgDiv, preloader);
+    // добавляем div с изображением в галерею
     addImageDivToGallery(gallery, imgDiv);
-    if (index == '0') {
-      await new Promise(resolve => setTimeout(resolve, index * 20000));
-    }
+    // делаем паузу после загрузки изображения
+    const delayTime = 20;
+    await new Promise(resolve => setTimeout(resolve, delayTime));
   }
 };
 
@@ -146,8 +162,6 @@ input.addEventListener('keydown', event => {
 
 // вызываем главную функцию с случайным запросом при загрузке страницы
 main(getRandomQuery());
-
-const label = document.querySelector('label[for="search-input"]');
 
 // добавляем обработчик событий click
 label.addEventListener('click', () => {

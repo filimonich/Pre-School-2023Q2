@@ -5,10 +5,11 @@
   position: relative;
   padding: 0.6% 4%;
   background-color: $castleton-green;
+  border-radius: 0 0 .4rem .4rem;
 
   &__body {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 
     @include media('<=xs') {
@@ -16,42 +17,28 @@
     }
   }
 
-  &__logo {
-    display: flex;
-    width: 100%;
-    align-items: center;
-
-    // text-align: center;
-    font-family: 'IB';
-    font-size: 18px;
-    color: $white;
-
-  }
-
-  &__pic {
-    width: 100%;
-    max-width: 5%;
-    margin-right: .5%;
-    filter: invert(1);
-  }
-
-  &__img {}
-
   &__title {}
 
-  &__container {
-    position: relative;
-    padding-right: 1%;
+  &__img {
+    width: 3rem;
   }
 
-  &__input {
-    padding: 2%;
-  }
+  &__restart {}
 
-  &__search-icon {
-    position: absolute;
-    top: 20%;
-    right: 6%;
-  }
+  &__restart-btn {}
+
+  &__score {}
+
+  &__score-text {}
+
+  &__score-point {}
+
+  &__record {}
+
+  &__record-text {}
+
+  &__record-point {}
+
+  &__subtitle {}
 
 }

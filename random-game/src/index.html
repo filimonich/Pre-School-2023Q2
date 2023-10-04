@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
   <script type="module" src="js/main.js"></script>
-  <title>random-game</title>
+  <title>2048</title>
 </head>
 
 
@@ -15,9 +15,27 @@
   <main class="main" id="main">
     <header class="header">
       <div class="header__body">
-
+        <h1 class="header__title">2048</h1>
+        <div class="header__restart"><img src="images/svg/restart.svg" alt="" class="header__restart-btn header__img">
+        </div>
+        <div class="header__score">
+          <p class="header__score-text">score</p>
+          <p class="header__score-point">0</p>
+        </div>
+        <div class="header__record">
+          <p class="header__record-text">record</p>
+          <p class="header__record-point">0</p>
+        </div>
+        <div class="header__restart" style="display: block;"><img src="images/svg/sound-off.svg" alt=""
+            class="header__restart-btn header__img"></div>
+        <div class="header__restart" style="display: none;"><img src="images/svg/sound-on.svg" alt=""
+            class="header__restart-btn header__img"></div>
+        <h2 class="header__subtitle">info</h2>
       </div>
     </header>
+    <section class="is-game">
+
+    </section>
     <footer class="footer">
       <a class="footer__link animation-text" href="https://github.com/filimonich" target="_blank">
         <p>filimonich</p>

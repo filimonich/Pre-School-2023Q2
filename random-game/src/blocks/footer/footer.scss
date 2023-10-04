@@ -2,6 +2,7 @@
   $self: &;
   z-index: 10;
   position: fixed;
+  // position: relative;
   width: 100%;
   bottom: 0;
   display: flex;
@@ -13,9 +14,9 @@
   border: 2px solid $castleton-green;
   border-radius: .4rem .4rem 0 0;
 
-  @include media('<=md') {
-    position: relative;
-  }
+  // @include media('<=md') {
+  //   position: relative;
+  // }
 
   &__link {
     font-size: 20px;

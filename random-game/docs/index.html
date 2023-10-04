@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
   
-  <title>random-game</title>
-  <script type="module" crossorigin src="./assets/main-4038e1b6.js"></script>
-  <link rel="stylesheet" href="./assets/index-dff471db.css">
+  <title>2048</title>
+  <script type="module" crossorigin src="./assets/main-38ccb488.js"></script>
+  <link rel="stylesheet" href="./assets/index-c64b5bdc.css">
 </head>
 
 
@@ -17,9 +17,49 @@
   <main class="main" id="main">
     <header class="header">
       <div class="header__body">
-
+        <h1 class="header__title">2048</h1>
+        <div class="header__restart animation-button"><img src="images/svg/restart.svg" alt="restart" title="restart"
+            class="header__restart-btn header__img">
+        </div>
+        <div class="header__score">
+          <p class="header__score-text">score</p>
+          <p class="header__score-point">0</p>
+        </div>
+        <div class="header__record">
+          <p class="header__record-text">record</p>
+          <p class="header__record-point">0</p>
+        </div>
+        <div class="header__restart animation-button" style="display: block;"><img src="images/svg/sound-off.svg"
+            alt="sound off" title="sound off" class="header__restart-btn header__img"></div>
+        <div class="header__restart animation-button" style="display: none;"><img src="images/svg/sound-on.svg"
+            alt="sound on" title="sound on" class="header__restart-btn header__img"></div>
+        <h2 class="header__subtitle animation-button">info</h2>
       </div>
     </header>
+    <section class="is-game">
+      <div class="is-game__main">
+        <div class="is-game__contents">
+          <ul class="is-game__items">
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+            <li class="is-game__item"><span class="is-game__number">0</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <footer class="footer">
       <a class="footer__link animation-text" href="https://github.com/filimonich" target="_blank">
         <p>filimonich</p>

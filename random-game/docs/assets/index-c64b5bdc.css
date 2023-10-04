@@ -133,11 +133,7 @@ a {
   background-color: #002a38;
   color: #FFFFFF;
   border: 2px solid #046351;
-}
-@media (max-width: 960px) {
-  .footer {
-    position: relative;
-  }
+  border-radius: 0.4rem 0.4rem 0 0;
 }
 .footer__link {
   font-size: 20px;
@@ -149,11 +145,15 @@ a {
   z-index: 9;
   position: relative;
   padding: 0.6% 4%;
+  color: #FFFFFF;
   background-color: #046351;
+  border-radius: 0 0 0.4rem 0.4rem;
+  fill: #806600;
+  stroke: #858500;
 }
 .header__body {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 @media (max-width: 640px) {
@@ -161,31 +161,36 @@ a {
     flex-wrap: wrap;
   }
 }
-.header__logo {
-  display: flex;
+.header__img {
+  width: 3rem;
+  cursor: pointer;
+}
+.is-game {
+  display: block;
+  max-width: 30rem;
+  max-height: 30rem;
   width: 100%;
-  align-items: center;
-  font-family: "IB";
-  font-size: 18px;
+  height: 100%;
+  background-color: #2f8a1e;
+  margin: 2% auto auto;
+  padding: 1rem;
+}
+.is-game__contents {
+  width: 100%;
+  height: 100%;
+}
+.is-game__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.is-game__item {
+  padding: 40%;
+  text-align: center;
+  background-color: #046351;
+}
+.is-game__number {
   color: #FFFFFF;
-}
-.header__pic {
-  width: 100%;
-  max-width: 5%;
-  margin-right: 0.5%;
-  filter: invert(1);
-}
-.header__container {
-  position: relative;
-  padding-right: 1%;
-}
-.header__input {
-  padding: 2%;
-}
-.header__search-icon {
-  position: absolute;
-  top: 20%;
-  right: 6%;
 }
 .logo__img {
   width: 86px;

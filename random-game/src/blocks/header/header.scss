@@ -4,8 +4,11 @@
   z-index: 9;
   position: relative;
   padding: 0.6% 4%;
+  color: $white;
   background-color: $castleton-green;
   border-radius: 0 0 .4rem .4rem;
+  fill: #806600;
+  stroke: #858500;
 
   &__body {
     display: flex;
@@ -21,6 +24,7 @@
 
   &__img {
     width: 3rem;
+    cursor: pointer;
   }
 
   &__restart {}

@@ -40,6 +40,42 @@
   }
 })();
 const style = "";
+for (let i = 1; i < 6; i++) {
+  setTimeout(() => {
+    console.log("Hello");
+  }, i * 2e3);
+}
+const generateRandomNumber = () => {
+  const randomNumber = Math.random() < 0.9 ? 2 : 4;
+  return randomNumber;
+};
+const clearGameBoard = () => {
+  const gameItemsNumber = document.querySelectorAll(".is-game__number");
+  gameItemsNumber.forEach((item) => {
+    item.textContent = "0";
+  });
+};
+const addRandomNumbers = () => {
+  const gameItemsNumber = document.querySelectorAll(".is-game__number");
+  const availableItems = [];
+  gameItemsNumber.forEach((item, index) => {
+    if (item.textContent === "0") {
+      availableItems.push(index);
+    }
+  });
+  for (let i = 0; i < 2; i++) {
+    const randomIndex = Math.floor(Math.random() * availableItems.length);
+    const chosenIndex = availableItems.splice(randomIndex, 1)[0];
+    gameItemsNumber[chosenIndex].textContent = generateRandomNumber();
+  }
+};
+const restartButton = document.querySelector(".header__restart");
+restartButton.addEventListener("click", () => {
+  clearGameBoard();
+  addRandomNumbers();
+});
+clearGameBoard();
+addRandomNumbers();
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");
   const removePreloadClass = () => {

@@ -1,4 +1,5 @@
 import '/styles/style.scss';
+import '/js/isGameStartRestart.js';
 
 // убирает класс, что бы анимации не срабатывали раньше времени
 document.addEventListener('DOMContentLoaded', () => {

@@ -9,7 +9,8 @@
   background-color: $forest-green;
   // background-color: $pigment-green;
   margin: 2% auto auto;
-  padding: 1rem;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
 
   &__main {
     // background-color: $forest-green;
@@ -24,18 +25,20 @@
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 0.5rem;
     // width: 100%;
     // height: 100%;
   }
 
   &__item {
-    padding: 40%;
+    padding: 30%;
     text-align: center;
-    background-color: $castleton-green;
+    // background-color: $castleton-green;
+    border-radius: .4rem;
   }
 
   &__number {
-		color: $white;
-	}
+    color: $white;
+    font-size: 2rem;
+  }
 }

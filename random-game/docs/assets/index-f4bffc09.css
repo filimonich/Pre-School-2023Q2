@@ -173,7 +173,8 @@ a {
   height: 100%;
   background-color: #2f8a1e;
   margin: 2% auto auto;
-  padding: 1rem;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
 }
 .is-game__contents {
   width: 100%;
@@ -182,15 +183,16 @@ a {
 .is-game__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .is-game__item {
-  padding: 40%;
+  padding: 30%;
   text-align: center;
-  background-color: #046351;
+  border-radius: 0.4rem;
 }
 .is-game__number {
   color: #FFFFFF;
+  font-size: 2rem;
 }
 .logo__img {
   width: 86px;

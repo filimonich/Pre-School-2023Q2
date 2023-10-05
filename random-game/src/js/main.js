@@ -1,5 +1,12 @@
 import '/styles/style.scss';
 import '/js/isGameStartRestart.js';
+import '/js/colorGradientNumbers.js';
+
+for (let i = 1; i < 6; i++) {
+  setTimeout(() => {
+    console.log('Hello');
+  }, i * 2048);
+}
 
 // убирает класс, что бы анимации не срабатывали раньше времени
 document.addEventListener('DOMContentLoaded', () => {

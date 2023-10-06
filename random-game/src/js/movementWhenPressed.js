@@ -1,6 +1,6 @@
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 
-// функция для перемещения чисел влево или вправо
+// перемещения чисел влево или вправо
 const moveNumbersHorizontal = direction => {
   // проходимся по каждой строке
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -58,7 +58,7 @@ const moveNumbersHorizontal = direction => {
   }
 };
 
-// функция для перемещения чисел вверх или вниз
+// перемещения чисел вверх или вниз
 const moveNumbersVertical = direction => {
   // проходимся по каждому столбцу
   for (let colIndex = 0; colIndex < 4; colIndex++) {
@@ -141,5 +141,25 @@ document.addEventListener('keydown', e => {
     else if (direction === 'up' || direction === 'down') {
       moveNumbersVertical(direction);
     }
+
+    // добавляем новое число после каждого хода
+    addNewNumber();
   }
 });
+
+// добавления нового числа после хода
+const addNewNumber = () => {
+  // фильтруем только пустые ячейки
+  const emptyCells = Array.from(allGameNumbers).filter(
+    number => number.textContent === '0'
+  );
+
+  if (emptyCells.length > 0) {
+    // выбираем случайную пустую ячейку
+    const randomCell =
+      emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
+    // добавляем в нее новое случайное число (2 или 4)
+    randomCell.textContent = Math.random() < 0.5 ? '2' : '4';
+  }
+};

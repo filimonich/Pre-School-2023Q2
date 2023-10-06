@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const updateItemColor = (item) => {
     let number = parseInt(item.innerText);
     if (number <= 0) {
-      item.style.backgroundColor = "#046351ff";
+      item.style.backgroundColor = "#008040";
     } else if (number > 0 && number <= 2) {
-      item.style.backgroundColor = "#405ce8";
+      item.style.backgroundColor = "#a5c19f";
     } else if (number > 2 && number <= 4) {
       item.style.backgroundColor = "#0036f8";
     } else if (number > 4 && number <= 8) {
       item.style.backgroundColor = "#3418e3";
     } else if (number > 8 && number <= 16) {
-      item.style.backgroundColor = "#ad8d10";
+      item.style.backgroundColor = "#5b5b00";
     } else if (number > 16 && number <= 32) {
       item.style.backgroundColor = "#e0cd6b";
     } else if (number > 32 && number <= 64) {
@@ -203,8 +203,18 @@ document.addEventListener("keydown", (e) => {
     } else if (direction === "up" || direction === "down") {
       moveNumbersVertical(direction);
     }
+    addNewNumber();
   }
 });
+const addNewNumber = () => {
+  const emptyCells = Array.from(allGameNumbers).filter(
+    (number) => number.textContent === "0"
+  );
+  if (emptyCells.length > 0) {
+    const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    randomCell.textContent = Math.random() < 0.5 ? "2" : "4";
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");
   const removePreloadClass = () => {

@@ -71,33 +71,28 @@ restartButton.addEventListener("click", () => {
 });
 clearGameBoard();
 addRandomNumbers();
-for (let i = 1; i < 6; i++) {
-  setTimeout(() => {
-    console.log("Hello");
-  }, i * 2048);
-}
 document.addEventListener("DOMContentLoaded", (event) => {
   const itemElements = document.querySelectorAll(".is-game__item");
   const updateItemColor = (item) => {
     let number = parseInt(item.innerText);
     if (number <= 0) {
-      item.style.backgroundColor = "#046351ff";
+      item.style.backgroundColor = "#008040";
     } else if (number > 0 && number <= 2) {
-      item.style.backgroundColor = "#405ce8";
+      item.style.backgroundColor = "#a5c19f";
     } else if (number > 2 && number <= 4) {
-      item.style.backgroundColor = "#3418e3";
+      item.style.backgroundColor = "#0036f8";
     } else if (number > 4 && number <= 8) {
-      item.style.backgroundColor = "#282137";
+      item.style.backgroundColor = "#3418e3";
     } else if (number > 8 && number <= 16) {
-      item.style.backgroundColor = "#ad8d10";
+      item.style.backgroundColor = "#5b5b00";
     } else if (number > 16 && number <= 32) {
       item.style.backgroundColor = "#e0cd6b";
     } else if (number > 32 && number <= 64) {
       item.style.backgroundColor = "#c27938";
     } else if (number > 64 && number <= 128) {
-      item.style.backgroundColor = "#7a2d6a";
+      item.style.backgroundColor = "#282137";
     } else if (number > 128 && number <= 256) {
-      item.style.backgroundColor = "#0036f8";
+      item.style.backgroundColor = "#7a2d6a";
     } else if (number > 256 && number <= 512) {
       item.style.backgroundColor = "#6c19b6";
     } else if (number > 512 && number <= 1024) {
@@ -116,11 +111,110 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
 });
-for (let i = 1; i < 6; i++) {
-  setTimeout(() => {
-    console.log("Hello");
-  }, i * 2048);
-}
+const allGameNumbers = document.querySelectorAll(".is-game__number");
+const moveNumbersHorizontal = (direction) => {
+  for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+    const rowNumbers = Array.from(allGameNumbers).slice(
+      rowIndex * 4,
+      (rowIndex + 1) * 4
+    );
+    if (direction === "right") {
+      rowNumbers.reverse();
+    }
+    const nonZeroNumbers = rowNumbers.filter(
+      (number) => number.textContent !== "0"
+    );
+    for (let colIndex = 0; colIndex < 4; colIndex++) {
+      if (nonZeroNumbers[colIndex]) {
+        rowNumbers[colIndex].textContent = nonZeroNumbers[colIndex].textContent;
+      } else {
+        rowNumbers[colIndex].textContent = "0";
+      }
+    }
+    for (let colIndex = 0; colIndex < 3; colIndex++) {
+      if (rowNumbers[colIndex].textContent === rowNumbers[colIndex + 1].textContent && rowNumbers[colIndex].textContent !== "0") {
+        rowNumbers[colIndex].textContent = (parseInt(rowNumbers[colIndex].textContent) * 2).toString();
+        rowNumbers[colIndex + 1].textContent = "0";
+      }
+    }
+    const updatedNonZeroNumbers = rowNumbers.filter(
+      (number) => number.textContent !== "0"
+    );
+    for (let colIndex = 0; colIndex < 4; colIndex++) {
+      if (updatedNonZeroNumbers[colIndex]) {
+        rowNumbers[colIndex].textContent = updatedNonZeroNumbers[colIndex].textContent;
+      } else {
+        rowNumbers[colIndex].textContent = "0";
+      }
+    }
+  }
+};
+const moveNumbersVertical = (direction) => {
+  for (let colIndex = 0; colIndex < 4; colIndex++) {
+    const columnNumbers = Array.from(allGameNumbers).filter(
+      (_, index) => index % 4 === colIndex
+    );
+    if (direction === "down") {
+      columnNumbers.reverse();
+    }
+    const nonZeroNumbers = columnNumbers.filter(
+      (number) => number.textContent !== "0"
+    );
+    for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+      if (nonZeroNumbers[rowIndex]) {
+        columnNumbers[rowIndex].textContent = nonZeroNumbers[rowIndex].textContent;
+      } else {
+        columnNumbers[rowIndex].textContent = "0";
+      }
+    }
+    for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
+      if (columnNumbers[rowIndex].textContent === columnNumbers[rowIndex + 1].textContent && columnNumbers[rowIndex].textContent !== "0") {
+        columnNumbers[rowIndex].textContent = (parseInt(columnNumbers[rowIndex].textContent) * 2).toString();
+        columnNumbers[rowIndex + 1].textContent = "0";
+      }
+    }
+    const updatedNonZeroNumbers = columnNumbers.filter(
+      (number) => number.textContent !== "0"
+    );
+    for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+      if (updatedNonZeroNumbers[rowIndex]) {
+        columnNumbers[rowIndex].textContent = updatedNonZeroNumbers[rowIndex].textContent;
+      } else {
+        columnNumbers[rowIndex].textContent = "0";
+      }
+    }
+  }
+};
+document.addEventListener("keydown", (e) => {
+  const keyToDirectionMap = {
+    ArrowLeft: "left",
+    a: "left",
+    ArrowRight: "right",
+    d: "right",
+    ArrowUp: "up",
+    w: "up",
+    ArrowDown: "down",
+    s: "down"
+  };
+  const direction = keyToDirectionMap[e.key];
+  if (direction) {
+    if (direction === "left" || direction === "right") {
+      moveNumbersHorizontal(direction);
+    } else if (direction === "up" || direction === "down") {
+      moveNumbersVertical(direction);
+    }
+    addNewNumber();
+  }
+});
+const addNewNumber = () => {
+  const emptyCells = Array.from(allGameNumbers).filter(
+    (number) => number.textContent === "0"
+  );
+  if (emptyCells.length > 0) {
+    const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    randomCell.textContent = Math.random() < 0.5 ? "2" : "4";
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");
   const removePreloadClass = () => {

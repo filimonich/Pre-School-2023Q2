@@ -186,7 +186,7 @@ a {
   gap: 0.5rem;
 }
 .is-game__item {
-  padding: 30%;
+  padding: 30% 0;
   text-align: center;
   border-radius: 0.4rem;
 }

@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', event => {
     // то мы снова применяем функцию updateItemColor ко всем элементам
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList') {
-        console.log('subtree');
         // если были изменения в структуре dom, обновляем цвета элементов
         itemElements.forEach(updateItemColor);
       }

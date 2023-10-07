@@ -118,8 +118,8 @@ const moveNumbersVertical = direction => {
 
 // обработчик события для нажатия клавиш
 document.addEventListener('keydown', e => {
-  console.log('keydown');
-  console.log('Клавиша нажата:', e.key);
+  // console.log('keydown');
+  // console.log('Клавиша нажата:', e.key);
   // карта соответствия клавиш и направлений
   const keyToDirectionMap = {
     ArrowLeft: 'left',
@@ -136,6 +136,35 @@ document.addEventListener('keydown', e => {
     ы: 'down',
   };
 
+  // конец игры если нет места для новых блоков
+  const checkGameOver = () => {
+    for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+      for (let colIndex = 0; colIndex < 4; colIndex++) {
+        // если текущая ячейка пуста, игра продолжается
+        if (allGameNumbers[rowIndex * 4 + colIndex].textContent === '0') {
+          return false;
+        }
+        // проверяем соседние ячейки
+        if (
+          rowIndex < 3 &&
+          allGameNumbers[rowIndex * 4 + colIndex].textContent ===
+            allGameNumbers[(rowIndex + 1) * 4 + colIndex].textContent
+        ) {
+          return false;
+        }
+        if (
+          colIndex < 3 &&
+          allGameNumbers[rowIndex * 4 + colIndex].textContent ===
+            allGameNumbers[rowIndex * 4 + (colIndex + 1)].textContent
+        ) {
+          return false;
+        }
+      }
+    }
+    // если все ячейки заполнены и нет одинаковых чисел рядом, игра закончена
+    return true;
+  };
+
   // определяем направление по нажатой клавише
   const direction = keyToDirectionMap[e.key];
   if (direction) {
@@ -150,6 +179,11 @@ document.addEventListener('keydown', e => {
 
     // добавляем новое число после каждого хода
     addNewNumber();
+
+    // показать alert когда игра окончена
+    if (checkGameOver()) {
+      alert('Игра окончена!');
+    }
   }
 });
 

@@ -189,12 +189,32 @@ document.addEventListener("keydown", (e) => {
   const keyToDirectionMap = {
     ArrowLeft: "left",
     a: "left",
+    ф: "left",
     ArrowRight: "right",
     d: "right",
+    в: "right",
     ArrowUp: "up",
     w: "up",
+    ц: "up",
     ArrowDown: "down",
-    s: "down"
+    s: "down",
+    ы: "down"
+  };
+  const checkGameOver = () => {
+    for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
+      for (let colIndex = 0; colIndex < 4; colIndex++) {
+        if (allGameNumbers[rowIndex * 4 + colIndex].textContent === "0") {
+          return false;
+        }
+        if (rowIndex < 3 && allGameNumbers[rowIndex * 4 + colIndex].textContent === allGameNumbers[(rowIndex + 1) * 4 + colIndex].textContent) {
+          return false;
+        }
+        if (colIndex < 3 && allGameNumbers[rowIndex * 4 + colIndex].textContent === allGameNumbers[rowIndex * 4 + (colIndex + 1)].textContent) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
   const direction = keyToDirectionMap[e.key];
   if (direction) {
@@ -204,6 +224,9 @@ document.addEventListener("keydown", (e) => {
       moveNumbersVertical(direction);
     }
     addNewNumber();
+    if (checkGameOver()) {
+      alert("Игра окончена!");
+    }
   }
 });
 const addNewNumber = () => {

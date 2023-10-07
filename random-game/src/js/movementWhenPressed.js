@@ -118,6 +118,7 @@ const moveNumbersVertical = direction => {
 
 // обработчик события для нажатия клавиш
 document.addEventListener('keydown', e => {
+  console.log('keydown');
   // карта соответствия клавиш и направлений
   const keyToDirectionMap = {
     ArrowLeft: 'left',

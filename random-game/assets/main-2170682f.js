@@ -111,6 +111,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
 });
+(async () => {
+  for (let i = 1; i < 6; i++) {
+    await new Promise((resolve) => setTimeout(resolve, i * 2048));
+    console.log("Hello");
+  }
+  console.log("Привет");
+})();
+for (let i = 1; i < 6; i++) {
+  setTimeout(() => {
+    console.log("Hello");
+  }, i * 2048);
+}
 const allGameNumbers = document.querySelectorAll(".is-game__number");
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -225,7 +237,7 @@ document.addEventListener("keydown", (e) => {
     }
     addNewNumber();
     if (checkGameOver()) {
-      alert("Игра окончена!");
+      console.log("Игра окончена!");
     }
   }
 });

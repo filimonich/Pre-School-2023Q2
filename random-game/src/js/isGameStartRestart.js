@@ -1,3 +1,12 @@
+import {
+  showGame,
+  hideGame,
+  modalOver,
+  gameMain,
+  modalTable,
+  hideResultTable,
+} from './onOffModal.js';
+
 // инициализация новой игры: очистить игровое поле и добавлени две случайные двойки.
 
 // функция  для генерации случайного числа 2 или 4
@@ -36,12 +45,24 @@ const addRandomNumbers = () => {
   }
 };
 
-// назначаем обработчик события на кнопку рестарт
-const restartButton = document.querySelector('.header__restart');
-restartButton.addEventListener('click', () => {
-  clearGameBoard(); // очистка поля
-  addRandomNumbers(); // добавить два случайных числа
-});
+// рестарт 
+  const restartButton = document.querySelectorAll(
+    '.header__restart, .modal__restart'
+  );
+  restartButton.forEach(button => {
+    button.addEventListener('click', () => {
+      clearGameBoard(); // очистка поля
+      addRandomNumbers(); // добавить два случайных числа
+      if (modalOver) {
+        console.log('закрыть окно');
+        showGame();
+      }
+      if (modalTable) {
+        console.log('закрыть таблицу');
+        hideResultTable();
+      }
+    });
+  });
 
 // инициализация новой игры при загрузки страницы
 clearGameBoard();

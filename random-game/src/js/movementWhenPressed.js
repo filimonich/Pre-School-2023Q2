@@ -1,4 +1,4 @@
-import './onOffModal.js'; // тест
+import { showGame, hideGame } from './onOffModal.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 
@@ -185,6 +185,7 @@ document.addEventListener('keydown', e => {
     // показать alert когда игра окончена
     if (checkGameOver()) {
       console.log('Игра окончена!');
+      hideGame();
     }
   }
 });

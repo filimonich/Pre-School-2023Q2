@@ -40,6 +40,51 @@
   }
 })();
 const style = "";
+const gameMain = document.querySelector(".is-game__main");
+const modalOver = document.querySelector(".modal__over");
+const modalTable = document.querySelector(".modal__table");
+const showGame = () => {
+  if (gameMain && modalOver) {
+    gameMain.style.display = "block";
+    modalOver.style.display = "none";
+  }
+};
+const hideGame = () => {
+  if (gameMain && modalOver) {
+    gameMain.style.display = "none";
+    modalOver.style.display = "block";
+  }
+};
+const showResultTable = () => {
+  if (gameMain && modalTable) {
+    gameMain.style.display = "none";
+    modalTable.style.display = "block";
+  }
+};
+const hideResultTable = () => {
+  if (gameMain && modalTable) {
+    gameMain.style.display = "block";
+    modalTable.style.display = "none";
+  }
+};
+const modalTableRecordOpen = document.querySelectorAll(
+  ".modal__restart, .header__record, .modal__scor"
+);
+modalTableRecordOpen.forEach((button) => {
+  button.addEventListener("click", () => {
+    showResultTable();
+    if (modalOver) {
+      console.log("если конец игры, закрыть окно");
+      modalOver.style.display = "none";
+    }
+  });
+});
+(async () => {
+  for (let i = 1; i < 6; i++) {
+    await new Promise((resolve) => setTimeout(resolve, i * 2048));
+    console.log("Hello");
+  }
+})();
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4;
   return randomNumber;
@@ -64,10 +109,22 @@ const addRandomNumbers = () => {
     gameItemsNumber[chosenIndex].textContent = generateRandomNumber();
   }
 };
-const restartButton = document.querySelector(".header__restart");
-restartButton.addEventListener("click", () => {
-  clearGameBoard();
-  addRandomNumbers();
+const restartButton = document.querySelectorAll(
+  ".header__restart, .modal__restart"
+);
+restartButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    clearGameBoard();
+    addRandomNumbers();
+    if (modalOver) {
+      console.log("закрыть окно");
+      showGame();
+    }
+    if (modalTable) {
+      console.log("закрыть таблицу");
+      hideResultTable();
+    }
+  });
 });
 clearGameBoard();
 addRandomNumbers();
@@ -111,18 +168,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
 });
-(async () => {
-  for (let i = 1; i < 6; i++) {
-    await new Promise((resolve) => setTimeout(resolve, i * 2048));
-    console.log("Hello");
-  }
-  console.log("Привет");
-})();
-for (let i = 1; i < 6; i++) {
-  setTimeout(() => {
-    console.log("Hello");
-  }, i * 2048);
-}
 const allGameNumbers = document.querySelectorAll(".is-game__number");
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -238,6 +283,7 @@ document.addEventListener("keydown", (e) => {
     addNewNumber();
     if (checkGameOver()) {
       console.log("Игра окончена!");
+      hideGame();
     }
   }
 });

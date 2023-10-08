@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
   
   <title>2048</title>
-  <script type="module" crossorigin src="./assets/main-2170682f.js"></script>
+  <script type="module" crossorigin src="./assets/main-58f0af2c.js"></script>
   <link rel="stylesheet" href="./assets/index-fe94421a.css">
 </head>
 
@@ -38,7 +38,7 @@
     </header>
     <section class="is-game">
       <!-- <div class="is-game__main" style="display: none;"> -->
-        <div class="is-game__main">
+      <div class="is-game__main">
         <div class="is-game__contents">
           <ul class="is-game__items">
             <li class="is-game__item"><span class="is-game__number">0</span></li>
@@ -65,22 +65,25 @@
           <!-- <div class="modal__over" style="display: block;"> -->
           <h3 class="modal__title">Игра окончена</h3>
           <div class="modal__container">
-            <button class="modal__button button-buy-card button"><span class="modal__text">Начать заново</span></button>
-            <button class="modal__button button-buy-card button" style="display: none;"><span
-                class="modal__text">Продолжить</span></button>
-            <button class="modal__button button-buy-card button"><span class="modal__text">Таблица
-                рекордов</span></button>
+            <button class="modal__button modal__restart button">
+              <span class="modal__text">Начать заново</span></button>
+            <button class="modal__button modal__scor button">
+              <span class="modal__text">Таблица рекордов</span></button>
           </div>
         </div>
         <div class="modal__table" style="display: none;">
-        <!-- <div class="modal__table" style="display: block;"> -->
-          <h3 class="modal__title">Игра окончена</h3>
+          <!-- <div class="modal__table" style="display: block;"> -->
+          <h3 class="modal__title">Таблица рекордов</h3>
           <ul class="modal__items">
             <li class="modal__item">
               <p class="modal__place">1</p>
               <p class="modal__point">0</p>
             </li>
           </ul>
+          <button class="modal__button modal__restart button">
+            <span class="modal__text">Начать заново</span></button>
+          <button class="modal__button modal__resume button">
+            <span class="modal__text">Продолжить</span></button>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import '/styles/style.scss';
+import '/js/blocks.js';
 import '/js/isGameStartRestart.js';
 import '/js/colorGradientNumbers.js';
 import '/js/movementWhenPressed.js';

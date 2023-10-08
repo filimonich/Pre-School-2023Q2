@@ -1,3 +1,5 @@
+import './onOffModal.js'; // тест
+
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 
 // перемещения чисел влево или вправо
@@ -182,7 +184,7 @@ document.addEventListener('keydown', e => {
 
     // показать alert когда игра окончена
     if (checkGameOver()) {
-      alert('Игра окончена!');
+      console.log('Игра окончена!');
     }
   }
 });

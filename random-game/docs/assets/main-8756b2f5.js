@@ -73,7 +73,7 @@ const modalTableRecordOpen = document.querySelectorAll(
 modalTableRecordOpen.forEach((button) => {
   button.addEventListener("click", () => {
     showResultTable();
-    if (modalOver) {
+    if (modalOver.style.display === "block") {
       console.log("если конец игры, закрыть окно");
       modalOver.style.display = "none";
     }
@@ -116,11 +116,11 @@ restartButton.forEach((button) => {
   button.addEventListener("click", () => {
     clearGameBoard();
     addRandomNumbers();
-    if (modalOver) {
+    if (modalOver.style.display === "block") {
       console.log("закрыть окно");
       showGame();
     }
-    if (modalTable) {
+    if (modalTable.style.display === "block") {
       console.log("закрыть таблицу");
       hideResultTable();
     }
@@ -242,7 +242,11 @@ const moveNumbersVertical = (direction) => {
     }
   }
 };
-document.addEventListener("keydown", (e) => {
+const handleKeydown = (e) => {
+  if (window.getComputedStyle(modalOver).display === "block" || window.getComputedStyle(modalTable).display === "block") {
+    console.log("модальное окно открыто, нажатие клавиш игнорируется");
+    return;
+  }
   const keyToDirectionMap = {
     ArrowLeft: "left",
     a: "left",
@@ -283,10 +287,12 @@ document.addEventListener("keydown", (e) => {
     addNewNumber();
     if (checkGameOver()) {
       console.log("Игра окончена!");
+      modalTable.style.display = "none";
       hideGame();
     }
   }
-});
+};
+document.addEventListener("keydown", handleKeydown);
 const addNewNumber = () => {
   const emptyCells = Array.from(allGameNumbers).filter(
     (number) => number.textContent === "0"

@@ -1,8 +1,6 @@
 import {
   showGame,
-  hideGame,
   modalOver,
-  gameMain,
   modalTable,
   hideResultTable,
 } from './onOffModal.js';
@@ -45,24 +43,24 @@ const addRandomNumbers = () => {
   }
 };
 
-// рестарт 
-  const restartButton = document.querySelectorAll(
-    '.header__restart, .modal__restart'
-  );
-  restartButton.forEach(button => {
-    button.addEventListener('click', () => {
-      clearGameBoard(); // очистка поля
-      addRandomNumbers(); // добавить два случайных числа
-      if (modalOver) {
-        console.log('закрыть окно');
-        showGame();
-      }
-      if (modalTable) {
-        console.log('закрыть таблицу');
-        hideResultTable();
-      }
-    });
+// рестарт
+const restartButton = document.querySelectorAll(
+  '.header__restart, .modal__restart'
+);
+restartButton.forEach(button => {
+  button.addEventListener('click', () => {
+    clearGameBoard(); // очистка поля
+    addRandomNumbers(); // добавить два случайных числа
+    if (modalOver.style.display === 'block') {
+      console.log('закрыть окно');
+      showGame();
+    }
+    if (modalTable.style.display === 'block') {
+      console.log('закрыть таблицу');
+      hideResultTable();
+    }
   });
+});
 
 // инициализация новой игры при загрузки страницы
 clearGameBoard();

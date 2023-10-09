@@ -1,4 +1,4 @@
-import { showGame, hideGame } from './onOffModal.js';
+import { hideGame, modalTable, modalOver } from './onOffModal.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 
@@ -119,9 +119,19 @@ const moveNumbersVertical = direction => {
 };
 
 // обработчик события для нажатия клавиш
-document.addEventListener('keydown', e => {
+// document.addEventListener('keydown', e => {
+const handleKeydown = e => {
   // console.log('keydown');
   // console.log('Клавиша нажата:', e.key);
+
+  if (
+    window.getComputedStyle(modalOver).display === 'block' ||
+    window.getComputedStyle(modalTable).display === 'block'
+  ) {
+    console.log('модальное окно открыто, нажатие клавиш игнорируется');
+    return;
+  }
+
   // карта соответствия клавиш и направлений
   const keyToDirectionMap = {
     ArrowLeft: 'left',
@@ -182,13 +192,18 @@ document.addEventListener('keydown', e => {
     // добавляем новое число после каждого хода
     addNewNumber();
 
-    // показать alert когда игра окончена
+    // проверяем, не закончилась ли игра
     if (checkGameOver()) {
       console.log('Игра окончена!');
+      modalTable.style.display = 'none';
       hideGame();
     }
   }
-});
+};
+// });
+
+// вызов обработчика событий для нажатия клавиш
+document.addEventListener('keydown', handleKeydown);
 
 // добавления нового числа после хода
 const addNewNumber = () => {

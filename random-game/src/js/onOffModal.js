@@ -40,7 +40,7 @@ const modalTableRecordOpen = document.querySelectorAll(
 modalTableRecordOpen.forEach(button => {
   button.addEventListener('click', () => {
     showResultTable();
-    if (modalOver) {
+    if (modalOver.style.display === 'block') {
       console.log('если конец игры, закрыть окно');
       modalOver.style.display = 'none';
     }

@@ -47,6 +47,7 @@ const showGame = () => {
   if (gameMain && modalOver) {
     gameMain.style.display = "block";
     modalOver.style.display = "none";
+    modalTable.style.display = "none";
   }
 };
 const hideGame = () => {
@@ -76,6 +77,15 @@ modalTableRecordOpen.forEach((button) => {
     if (modalOver.style.display === "block") {
       console.log("если конец игры, закрыть окно");
       modalOver.style.display = "none";
+    }
+  });
+});
+const continueButton = document.querySelectorAll(".modal__resume");
+continueButton.forEach((continueButton2) => {
+  continueButton2.addEventListener("click", () => {
+    if (modalOver.style.display === "block" || modalTable.style.display === "block") {
+      console.log("продолжить игру");
+      showGame();
     }
   });
 });

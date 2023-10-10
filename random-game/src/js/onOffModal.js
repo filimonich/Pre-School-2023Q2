@@ -1,11 +1,13 @@
 export const gameMain = document.querySelector('.is-game__main');
 export const modalOver = document.querySelector('.modal__over');
 export const modalTable = document.querySelector('.modal__table');
+
 // показать игру
 export const showGame = () => {
   if (gameMain && modalOver) {
     gameMain.style.display = 'block';
     modalOver.style.display = 'none';
+    modalTable.style.display = 'none';
   }
 };
 
@@ -43,6 +45,21 @@ modalTableRecordOpen.forEach(button => {
     if (modalOver.style.display === 'block') {
       console.log('если конец игры, закрыть окно');
       modalOver.style.display = 'none';
+    }
+  });
+});
+
+// кнопка продолжить
+const continueButton = document.querySelectorAll('.modal__resume');
+
+continueButton.forEach(continueButton => {
+  continueButton.addEventListener('click', () => {
+    if (
+      modalOver.style.display === 'block' ||
+      modalTable.style.display === 'block'
+    ) {
+      console.log('продолжить игру');
+      showGame();
     }
   });
 });

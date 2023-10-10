@@ -1,4 +1,5 @@
 import { hideGame, modalTable, modalOver } from './onOffModal.js';
+import { mergeNumbers, updateScore } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 
@@ -16,6 +17,8 @@ const moveNumbersHorizontal = direction => {
     if (direction === 'right') {
       rowNumbers.reverse();
     }
+
+    mergeNumbers(rowNumbers);
 
     // фильтруем только ненулевые элементы и сохраняем порядок
     const nonZeroNumbers = rowNumbers.filter(
@@ -38,9 +41,9 @@ const moveNumbersHorizontal = direction => {
           rowNumbers[colIndex + 1].textContent &&
         rowNumbers[colIndex].textContent !== '0'
       ) {
-        rowNumbers[colIndex].textContent = (
-          parseInt(rowNumbers[colIndex].textContent) * 2
-        ).toString();
+        let newValue = parseInt(rowNumbers[colIndex].textContent) * 2;
+        rowNumbers[colIndex].textContent = newValue.toString();
+        updateScore(newValue); // обновляем счет
         rowNumbers[colIndex + 1].textContent = '0';
       }
     }
@@ -74,6 +77,8 @@ const moveNumbersVertical = direction => {
       columnNumbers.reverse();
     }
 
+    mergeNumbers(columnNumbers);
+
     // фильтруем только ненулевые элементы и сохраняем порядок
     const nonZeroNumbers = columnNumbers.filter(
       number => number.textContent !== '0'
@@ -96,9 +101,9 @@ const moveNumbersVertical = direction => {
           columnNumbers[rowIndex + 1].textContent &&
         columnNumbers[rowIndex].textContent !== '0'
       ) {
-        columnNumbers[rowIndex].textContent = (
-          parseInt(columnNumbers[rowIndex].textContent) * 2
-        ).toString();
+        let newValue = parseInt(columnNumbers[rowIndex].textContent) * 2;
+        columnNumbers[rowIndex].textContent = newValue.toString();
+        updateScore(newValue); // Обновляем счет
         columnNumbers[rowIndex + 1].textContent = '0';
       }
     }

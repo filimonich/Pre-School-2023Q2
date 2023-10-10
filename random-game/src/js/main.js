@@ -3,6 +3,7 @@ import '/js/blocks.js';
 import '/js/isGameStartRestart.js';
 import '/js/colorGradientNumbers.js';
 import '/js/movementWhenPressed.js';
+import '/js/score.js';
 
 // for (let i = 1; i < 6; i++) {
 //   setTimeout(() => {

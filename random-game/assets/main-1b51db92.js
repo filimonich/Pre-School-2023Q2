@@ -47,6 +47,7 @@ const showGame = () => {
   if (gameMain && modalOver) {
     gameMain.style.display = "block";
     modalOver.style.display = "none";
+    modalTable.style.display = "none";
   }
 };
 const hideGame = () => {
@@ -79,12 +80,15 @@ modalTableRecordOpen.forEach((button) => {
     }
   });
 });
-(async () => {
-  for (let i = 1; i < 6; i++) {
-    await new Promise((resolve) => setTimeout(resolve, i * 2048));
-    console.log("Hello");
-  }
-})();
+const continueButton = document.querySelectorAll(".modal__resume");
+continueButton.forEach((continueButton2) => {
+  continueButton2.addEventListener("click", () => {
+    if (modalOver.style.display === "block" || modalTable.style.display === "block") {
+      console.log("продолжить игру");
+      showGame();
+    }
+  });
+});
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4;
   return randomNumber;
@@ -168,6 +172,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
 });
+(async () => {
+  for (let i = 1; i < 6; i++) {
+    await new Promise((resolve) => setTimeout(resolve, i * 2048));
+    console.log("счёт");
+  }
+})();
+let score = 0;
+const updateScore = () => {
+  const scoreElement = document.querySelector(".header__score-point");
+  scoreElement.textContent = score.toString();
+};
+const addToScore = (points) => {
+  score += points;
+  updateScore();
+};
+const mergeNumbers = (rowNumbers) => {
+  for (let colIndex = 0; colIndex < 3; colIndex++) {
+    const currentNumber = rowNumbers[colIndex].textContent;
+    const nextNumber = rowNumbers[colIndex + 1].textContent;
+    if (currentNumber === nextNumber && currentNumber !== "0") {
+      const mergedValue = parseInt(currentNumber) * 2;
+      rowNumbers[colIndex].textContent = mergedValue.toString();
+      rowNumbers[colIndex + 1].textContent = "0";
+      addToScore(mergedValue);
+    }
+  }
+};
 const allGameNumbers = document.querySelectorAll(".is-game__number");
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -178,6 +209,7 @@ const moveNumbersHorizontal = (direction) => {
     if (direction === "right") {
       rowNumbers.reverse();
     }
+    mergeNumbers(rowNumbers);
     const nonZeroNumbers = rowNumbers.filter(
       (number) => number.textContent !== "0"
     );
@@ -190,7 +222,9 @@ const moveNumbersHorizontal = (direction) => {
     }
     for (let colIndex = 0; colIndex < 3; colIndex++) {
       if (rowNumbers[colIndex].textContent === rowNumbers[colIndex + 1].textContent && rowNumbers[colIndex].textContent !== "0") {
-        rowNumbers[colIndex].textContent = (parseInt(rowNumbers[colIndex].textContent) * 2).toString();
+        let newValue = parseInt(rowNumbers[colIndex].textContent) * 2;
+        rowNumbers[colIndex].textContent = newValue.toString();
+        updateScore();
         rowNumbers[colIndex + 1].textContent = "0";
       }
     }
@@ -214,6 +248,7 @@ const moveNumbersVertical = (direction) => {
     if (direction === "down") {
       columnNumbers.reverse();
     }
+    mergeNumbers(columnNumbers);
     const nonZeroNumbers = columnNumbers.filter(
       (number) => number.textContent !== "0"
     );
@@ -226,7 +261,9 @@ const moveNumbersVertical = (direction) => {
     }
     for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
       if (columnNumbers[rowIndex].textContent === columnNumbers[rowIndex + 1].textContent && columnNumbers[rowIndex].textContent !== "0") {
-        columnNumbers[rowIndex].textContent = (parseInt(columnNumbers[rowIndex].textContent) * 2).toString();
+        let newValue = parseInt(columnNumbers[rowIndex].textContent) * 2;
+        columnNumbers[rowIndex].textContent = newValue.toString();
+        updateScore();
         columnNumbers[rowIndex + 1].textContent = "0";
       }
     }

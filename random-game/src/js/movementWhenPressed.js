@@ -1,7 +1,9 @@
 import { hideGame, modalTable, modalOver } from './onOffModal.js';
-import { mergeNumbers, updateScore } from './score.js';
+// import { printTotalSum } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
+
+let totalSum = 0;
 
 // перемещения чисел влево или вправо
 const moveNumbersHorizontal = direction => {
@@ -17,8 +19,6 @@ const moveNumbersHorizontal = direction => {
     if (direction === 'right') {
       rowNumbers.reverse();
     }
-
-    mergeNumbers(rowNumbers);
 
     // фильтруем только ненулевые элементы и сохраняем порядок
     const nonZeroNumbers = rowNumbers.filter(
@@ -41,9 +41,12 @@ const moveNumbersHorizontal = direction => {
           rowNumbers[colIndex + 1].textContent &&
         rowNumbers[colIndex].textContent !== '0'
       ) {
-        let newValue = parseInt(rowNumbers[colIndex].textContent) * 2;
-        rowNumbers[colIndex].textContent = newValue.toString();
-        updateScore(newValue); // обновляем счет
+        const sum = parseInt(rowNumbers[colIndex].textContent) * 2;
+        console.log(
+          `сложение: ${rowNumbers[colIndex].textContent} + ${rowNumbers[colIndex].textContent} = ${sum}`
+        );
+        totalSum += sum; // обновляем totalSum
+        rowNumbers[colIndex].textContent = (+sum).toString();
         rowNumbers[colIndex + 1].textContent = '0';
       }
     }
@@ -61,6 +64,8 @@ const moveNumbersHorizontal = direction => {
       }
     }
   }
+
+  printTotalSum(); // Выdводим общую сумму в консоле
 };
 
 // перемещения чисел вверх или вниз
@@ -76,8 +81,6 @@ const moveNumbersVertical = direction => {
     if (direction === 'down') {
       columnNumbers.reverse();
     }
-
-    mergeNumbers(columnNumbers);
 
     // фильтруем только ненулевые элементы и сохраняем порядок
     const nonZeroNumbers = columnNumbers.filter(
@@ -101,9 +104,12 @@ const moveNumbersVertical = direction => {
           columnNumbers[rowIndex + 1].textContent &&
         columnNumbers[rowIndex].textContent !== '0'
       ) {
-        let newValue = parseInt(columnNumbers[rowIndex].textContent) * 2;
-        columnNumbers[rowIndex].textContent = newValue.toString();
-        updateScore(newValue); // Обновляем счет
+        const sum = parseInt(columnNumbers[rowIndex].textContent) * 2;
+        console.log(
+          `сложение: ${columnNumbers[rowIndex].textContent} + ${columnNumbers[rowIndex].textContent} = ${sum}`
+        );
+        totalSum += sum; // обновляем totalSum
+        columnNumbers[rowIndex].textContent = (+sum).toString();
         columnNumbers[rowIndex + 1].textContent = '0';
       }
     }
@@ -121,6 +127,7 @@ const moveNumbersVertical = direction => {
       }
     }
   }
+  printTotalSum(); // Выdводим общую сумму в консоле
 };
 
 // обработчик события для нажатия клавиш
@@ -225,4 +232,10 @@ const addNewNumber = () => {
     // добавляем в нее новое случайное число (2 или 4)
     randomCell.textContent = Math.random() < 0.5 ? '2' : '4';
   }
+};
+
+const printTotalSum = () => {
+  console.log(`общая сумма былов: ${totalSum}`);
+  const scoreElement = document.querySelector('.header__score-point');
+  scoreElement.textContent = totalSum;
 };

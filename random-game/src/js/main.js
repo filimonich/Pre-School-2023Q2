@@ -5,11 +5,21 @@ import '/js/colorGradientNumbers.js';
 import '/js/movementWhenPressed.js';
 import '/js/score.js';
 
+// глобальная переменная для хранения общей суммы
+// window.totalSum = 0;
+
 // for (let i = 1; i < 6; i++) {
 //   setTimeout(() => {
 //     console.log('Hello');
 //   }, i * 2048);
 // }
+
+// (async () => {
+//   for (let i = 1; i < 6; i++) {
+//     await new Promise(resolve => setTimeout(resolve, i * 2048));
+//     console.log('счёт');
+//   }
+// })();
 
 // убирает класс, что бы анимации не срабатывали раньше времени
 document.addEventListener('DOMContentLoaded', () => {

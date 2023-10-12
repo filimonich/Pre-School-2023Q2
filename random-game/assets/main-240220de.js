@@ -172,34 +172,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
 });
-(async () => {
-  for (let i = 1; i < 6; i++) {
-    await new Promise((resolve) => setTimeout(resolve, i * 2048));
-    console.log("счёт");
-  }
-})();
-let score = 0;
-const updateScore = () => {
-  const scoreElement = document.querySelector(".header__score-point");
-  scoreElement.textContent = score.toString();
-};
-const addToScore = (points) => {
-  score += points;
-  updateScore();
-};
-const mergeNumbers = (rowNumbers) => {
-  for (let colIndex = 0; colIndex < 3; colIndex++) {
-    const currentNumber = rowNumbers[colIndex].textContent;
-    const nextNumber = rowNumbers[colIndex + 1].textContent;
-    if (currentNumber === nextNumber && currentNumber !== "0") {
-      const mergedValue = parseInt(currentNumber) * 2;
-      rowNumbers[colIndex].textContent = mergedValue.toString();
-      rowNumbers[colIndex + 1].textContent = "0";
-      addToScore(mergedValue);
-    }
-  }
-};
 const allGameNumbers = document.querySelectorAll(".is-game__number");
+let totalSum = 0;
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
     const rowNumbers = Array.from(allGameNumbers).slice(
@@ -209,7 +183,6 @@ const moveNumbersHorizontal = (direction) => {
     if (direction === "right") {
       rowNumbers.reverse();
     }
-    mergeNumbers(rowNumbers);
     const nonZeroNumbers = rowNumbers.filter(
       (number) => number.textContent !== "0"
     );
@@ -222,9 +195,12 @@ const moveNumbersHorizontal = (direction) => {
     }
     for (let colIndex = 0; colIndex < 3; colIndex++) {
       if (rowNumbers[colIndex].textContent === rowNumbers[colIndex + 1].textContent && rowNumbers[colIndex].textContent !== "0") {
-        let newValue = parseInt(rowNumbers[colIndex].textContent) * 2;
-        rowNumbers[colIndex].textContent = newValue.toString();
-        updateScore();
+        const sum = parseInt(rowNumbers[colIndex].textContent) * 2;
+        console.log(
+          `сложение: ${rowNumbers[colIndex].textContent} + ${rowNumbers[colIndex].textContent} = ${sum}`
+        );
+        totalSum += sum;
+        rowNumbers[colIndex].textContent = (+sum).toString();
         rowNumbers[colIndex + 1].textContent = "0";
       }
     }
@@ -239,6 +215,7 @@ const moveNumbersHorizontal = (direction) => {
       }
     }
   }
+  printTotalSum();
 };
 const moveNumbersVertical = (direction) => {
   for (let colIndex = 0; colIndex < 4; colIndex++) {
@@ -248,7 +225,6 @@ const moveNumbersVertical = (direction) => {
     if (direction === "down") {
       columnNumbers.reverse();
     }
-    mergeNumbers(columnNumbers);
     const nonZeroNumbers = columnNumbers.filter(
       (number) => number.textContent !== "0"
     );
@@ -261,9 +237,12 @@ const moveNumbersVertical = (direction) => {
     }
     for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
       if (columnNumbers[rowIndex].textContent === columnNumbers[rowIndex + 1].textContent && columnNumbers[rowIndex].textContent !== "0") {
-        let newValue = parseInt(columnNumbers[rowIndex].textContent) * 2;
-        columnNumbers[rowIndex].textContent = newValue.toString();
-        updateScore();
+        const sum = parseInt(columnNumbers[rowIndex].textContent) * 2;
+        console.log(
+          `сложение: ${columnNumbers[rowIndex].textContent} + ${columnNumbers[rowIndex].textContent} = ${sum}`
+        );
+        totalSum += sum;
+        columnNumbers[rowIndex].textContent = (+sum).toString();
         columnNumbers[rowIndex + 1].textContent = "0";
       }
     }
@@ -278,6 +257,7 @@ const moveNumbersVertical = (direction) => {
       }
     }
   }
+  printTotalSum();
 };
 const handleKeydown = (e) => {
   if (window.getComputedStyle(modalOver).display === "block" || window.getComputedStyle(modalTable).display === "block") {
@@ -338,6 +318,11 @@ const addNewNumber = () => {
     const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     randomCell.textContent = Math.random() < 0.5 ? "2" : "4";
   }
+};
+const printTotalSum = () => {
+  console.log(`общая сумма былов: ${totalSum}`);
+  const scoreElement = document.querySelector(".header__score-point");
+  scoreElement.textContent = totalSum;
 };
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");

@@ -4,7 +4,11 @@ import {
   modalTable,
   hideResultTable,
 } from './onOffModal.js';
-import { scoreElement } from './movementWhenPressed.js';
+import {
+  scoreElement,
+  totalSum, // удалить, это для проверки
+  resetTotalSum,
+} from './movementWhenPressed.js';
 
 // инициализация новой игры: очистить игровое поле и добавлени две случайные двойки.
 
@@ -50,7 +54,10 @@ const restartButton = document.querySelectorAll(
 );
 restartButton.forEach(button => {
   button.addEventListener('click', () => {
-    scoreElement.textContent = 0; // обнуление счета
+    resetTotalSum(); // обнуление totalSum
+    scoreElement.textContent = 0; // обнуление счета на экране
+    console.log(totalSum); // удалить, это для проверки
+
     clearGameBoard(); // очистка поля
     addRandomNumbers(); // добавить два случайных числа
     if (modalOver.style.display === 'block') {

@@ -4,10 +4,10 @@ import { hideGame, modalTable, modalOver } from './onOffModal.js';
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 export const scoreElement = document.querySelector('.header__score-point');
 
-let totalSum = 0;
+export let totalSum = 0;
 
 // перемещения чисел влево или вправо
-const moveNumbersHorizontal = direction => {
+export const moveNumbersHorizontal = direction => {
   // проходимся по каждой строке
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
     // выбираем числа текущей строки
@@ -70,7 +70,7 @@ const moveNumbersHorizontal = direction => {
 };
 
 // перемещения чисел вверх или вниз
-const moveNumbersVertical = direction => {
+export const moveNumbersVertical = direction => {
   // проходимся по каждому столбцу
   for (let colIndex = 0; colIndex < 4; colIndex++) {
     // выбираем числа текущего столбца
@@ -235,7 +235,28 @@ const addNewNumber = () => {
   }
 };
 
-const printTotalSum = () => {
-  console.log(`общая сумма былов: ${totalSum}`);
-  scoreElement.textContent = totalSum;
+// функция для вывода общей суммы
+export const printTotalSum = () => {
+  console.log(`общая сумма былов: ${totalSum}`); // выводим общую сумму в консоль
+  scoreElement.textContent = totalSum; // обновляем текст элемента scoreElement общей суммой
+  // return totalSum; // возвращаем общую сумму
 };
+
+console.log(totalSum);
+
+// функция для обнуления общей суммы
+export function resetTotalSum() {
+  totalSum = 0; // обнуляем totalSum
+}
+
+/////////// удалить ///////////
+// функция для добавления значения к общей сумме
+export function addToTotalSum(value) {
+  totalSum += value; // добавляем значение к totalSum
+}
+
+// функция для получения общей суммы
+export function getTotalSum() {
+  return totalSum; // возвращаем значение totalSum
+}
+/////////// удалить ///////////

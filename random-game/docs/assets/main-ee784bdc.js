@@ -89,90 +89,8 @@ continueButton.forEach((continueButton2) => {
     }
   });
 });
-const generateRandomNumber = () => {
-  const randomNumber = Math.random() < 0.9 ? 2 : 4;
-  return randomNumber;
-};
-const clearGameBoard = () => {
-  const gameItemsNumber = document.querySelectorAll(".is-game__number");
-  gameItemsNumber.forEach((item) => {
-    item.textContent = "0";
-  });
-};
-const addRandomNumbers = () => {
-  const gameItemsNumber = document.querySelectorAll(".is-game__number");
-  const availableItems = [];
-  gameItemsNumber.forEach((item, index) => {
-    if (item.textContent === "0") {
-      availableItems.push(index);
-    }
-  });
-  for (let i = 0; i < 2; i++) {
-    const randomIndex = Math.floor(Math.random() * availableItems.length);
-    const chosenIndex = availableItems.splice(randomIndex, 1)[0];
-    gameItemsNumber[chosenIndex].textContent = generateRandomNumber();
-  }
-};
-const restartButton = document.querySelectorAll(
-  ".header__restart, .modal__restart"
-);
-restartButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    clearGameBoard();
-    addRandomNumbers();
-    if (modalOver.style.display === "block") {
-      console.log("закрыть окно");
-      showGame();
-    }
-    if (modalTable.style.display === "block") {
-      console.log("закрыть таблицу");
-      hideResultTable();
-    }
-  });
-});
-clearGameBoard();
-addRandomNumbers();
-document.addEventListener("DOMContentLoaded", (event) => {
-  const itemElements = document.querySelectorAll(".is-game__item");
-  const updateItemColor = (item) => {
-    let number = parseInt(item.innerText);
-    if (number <= 0) {
-      item.style.backgroundColor = "#008040";
-    } else if (number > 0 && number <= 2) {
-      item.style.backgroundColor = "#a5c19f";
-    } else if (number > 2 && number <= 4) {
-      item.style.backgroundColor = "#0036f8";
-    } else if (number > 4 && number <= 8) {
-      item.style.backgroundColor = "#3418e3";
-    } else if (number > 8 && number <= 16) {
-      item.style.backgroundColor = "#5b5b00";
-    } else if (number > 16 && number <= 32) {
-      item.style.backgroundColor = "#e0cd6b";
-    } else if (number > 32 && number <= 64) {
-      item.style.backgroundColor = "#c27938";
-    } else if (number > 64 && number <= 128) {
-      item.style.backgroundColor = "#282137";
-    } else if (number > 128 && number <= 256) {
-      item.style.backgroundColor = "#7a2d6a";
-    } else if (number > 256 && number <= 512) {
-      item.style.backgroundColor = "#6c19b6";
-    } else if (number > 512 && number <= 1024) {
-      item.style.backgroundColor = "#912425";
-    } else if (number > 1024 && number <= 2048) {
-      item.style.backgroundColor = "#af0022";
-    }
-  };
-  itemElements.forEach(updateItemColor);
-  const domChangeObserver = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.type === "childList") {
-        itemElements.forEach(updateItemColor);
-      }
-    }
-  });
-  domChangeObserver.observe(document.body, { childList: true, subtree: true });
-});
 const allGameNumbers = document.querySelectorAll(".is-game__number");
+const scoreElement = document.querySelector(".header__score-point");
 let totalSum = 0;
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -321,9 +239,92 @@ const addNewNumber = () => {
 };
 const printTotalSum = () => {
   console.log(`общая сумма былов: ${totalSum}`);
-  const scoreElement = document.querySelector(".header__score-point");
   scoreElement.textContent = totalSum;
 };
+const generateRandomNumber = () => {
+  const randomNumber = Math.random() < 0.9 ? 2 : 4;
+  return randomNumber;
+};
+const clearGameBoard = () => {
+  const gameItemsNumber = document.querySelectorAll(".is-game__number");
+  gameItemsNumber.forEach((item) => {
+    item.textContent = "0";
+  });
+};
+const addRandomNumbers = () => {
+  const gameItemsNumber = document.querySelectorAll(".is-game__number");
+  const availableItems = [];
+  gameItemsNumber.forEach((item, index) => {
+    if (item.textContent === "0") {
+      availableItems.push(index);
+    }
+  });
+  for (let i = 0; i < 2; i++) {
+    const randomIndex = Math.floor(Math.random() * availableItems.length);
+    const chosenIndex = availableItems.splice(randomIndex, 1)[0];
+    gameItemsNumber[chosenIndex].textContent = generateRandomNumber();
+  }
+};
+const restartButton = document.querySelectorAll(
+  ".header__restart, .modal__restart"
+);
+restartButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    scoreElement.textContent = 0;
+    clearGameBoard();
+    addRandomNumbers();
+    if (modalOver.style.display === "block") {
+      console.log("закрыть окно");
+      showGame();
+    }
+    if (modalTable.style.display === "block") {
+      console.log("закрыть таблицу");
+      hideResultTable();
+    }
+  });
+});
+clearGameBoard();
+addRandomNumbers();
+document.addEventListener("DOMContentLoaded", (event) => {
+  const itemElements = document.querySelectorAll(".is-game__item");
+  const updateItemColor = (item) => {
+    let number = parseInt(item.innerText);
+    if (number <= 0) {
+      item.style.backgroundColor = "#008040";
+    } else if (number > 0 && number <= 2) {
+      item.style.backgroundColor = "#a5c19f";
+    } else if (number > 2 && number <= 4) {
+      item.style.backgroundColor = "#0036f8";
+    } else if (number > 4 && number <= 8) {
+      item.style.backgroundColor = "#3418e3";
+    } else if (number > 8 && number <= 16) {
+      item.style.backgroundColor = "#5b5b00";
+    } else if (number > 16 && number <= 32) {
+      item.style.backgroundColor = "#e0cd6b";
+    } else if (number > 32 && number <= 64) {
+      item.style.backgroundColor = "#c27938";
+    } else if (number > 64 && number <= 128) {
+      item.style.backgroundColor = "#282137";
+    } else if (number > 128 && number <= 256) {
+      item.style.backgroundColor = "#7a2d6a";
+    } else if (number > 256 && number <= 512) {
+      item.style.backgroundColor = "#6c19b6";
+    } else if (number > 512 && number <= 1024) {
+      item.style.backgroundColor = "#912425";
+    } else if (number > 1024 && number <= 2048) {
+      item.style.backgroundColor = "#af0022";
+    }
+  };
+  itemElements.forEach(updateItemColor);
+  const domChangeObserver = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        itemElements.forEach(updateItemColor);
+      }
+    }
+  });
+  domChangeObserver.observe(document.body, { childList: true, subtree: true });
+});
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");
   const removePreloadClass = () => {

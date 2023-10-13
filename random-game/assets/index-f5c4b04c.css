@@ -199,6 +199,9 @@ a {
   height: 32px;
   filter: invert(1);
 }
+.modal__item {
+  display: flex;
+}
 .preloader {
   position: fixed;
   top: 30%;

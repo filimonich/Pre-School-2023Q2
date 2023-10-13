@@ -4,6 +4,7 @@ import {
   modalTable,
   hideResultTable,
 } from './onOffModal.js';
+import { scoreElement } from './movementWhenPressed.js';
 
 // инициализация новой игры: очистить игровое поле и добавлени две случайные двойки.
 
@@ -49,6 +50,7 @@ const restartButton = document.querySelectorAll(
 );
 restartButton.forEach(button => {
   button.addEventListener('click', () => {
+    scoreElement.textContent = 0; // обнуление счета
     clearGameBoard(); // очистка поля
     addRandomNumbers(); // добавить два случайных числа
     if (modalOver.style.display === 'block') {

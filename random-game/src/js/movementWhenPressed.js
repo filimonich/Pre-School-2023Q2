@@ -2,6 +2,7 @@ import { hideGame, modalTable, modalOver } from './onOffModal.js';
 // import { printTotalSum } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
+export const scoreElement = document.querySelector('.header__score-point');
 
 let totalSum = 0;
 
@@ -65,7 +66,7 @@ const moveNumbersHorizontal = direction => {
     }
   }
 
-  printTotalSum(); // Выdводим общую сумму в консоле
+  printTotalSum(); // выdводим общую сумму в консоле
 };
 
 // перемещения чисел вверх или вниз
@@ -127,7 +128,7 @@ const moveNumbersVertical = direction => {
       }
     }
   }
-  printTotalSum(); // Выdводим общую сумму в консоле
+  printTotalSum(); // выdводим общую сумму в консоле
 };
 
 // обработчик события для нажатия клавиш
@@ -236,6 +237,5 @@ const addNewNumber = () => {
 
 const printTotalSum = () => {
   console.log(`общая сумма былов: ${totalSum}`);
-  const scoreElement = document.querySelector('.header__score-point');
   scoreElement.textContent = totalSum;
 };

@@ -1,44 +1,26 @@
 .modal {
-	$self: &;
+  $self: &;
 
-	&__over {
+  &__over {}
 
-	}
+  &__title {}
 
-	&__title {
+  &__container {}
 
-	}
+  &__button {}
 
-	&__container {
+  &__text {}
 
-	}
+  &__table {}
 
-	&__button {
+  &__items {}
 
-	}
+  &__item {
+    display: flex;
+  }
 
-	&__text {
+  &__place {}
 
-	}
-
-	&__table {
-
-	}
-
-	&__items {
-
-	}
-
-	&__item {
-
-	}
-
-	&__place {
-
-	}
-
-	&__point {
-
-	}
+  &__point {}
 
 }

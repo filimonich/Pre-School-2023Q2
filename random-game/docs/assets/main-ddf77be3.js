@@ -241,6 +241,44 @@ const printTotalSum = () => {
   console.log(`общая сумма былов: ${totalSum}`);
   scoreElement.textContent = totalSum;
 };
+console.log(`1: ${totalSum}`);
+function resetTotalSum() {
+  totalSum = 0;
+}
+const saveScore = () => {
+  let currentScore = parseInt(
+    document.querySelector(".header__score-point").innerText
+  );
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  if (currentScore > 0) {
+    savedGames.push({ gameNumber: savedGames.length + 1, score: currentScore });
+    savedGames.sort((a, b) => b.score - a.score);
+    if (savedGames.length > 10) {
+      savedGames = savedGames.slice(0, 10);
+    }
+  }
+  localStorage.setItem("games", JSON.stringify(savedGames));
+};
+const displayScores = () => {
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  let listElement = document.querySelector(".modal__items");
+  listElement.innerHTML = "";
+  for (let game of savedGames) {
+    let listItem = document.createElement("li");
+    listItem.className = "modal__item";
+    let placeElement = document.createElement("p");
+    placeElement.className = "modal__place";
+    placeElement.innerText = "Номер игры: " + game.gameNumber;
+    let scoreElement2 = document.createElement("p");
+    scoreElement2.className = "modal__point";
+    scoreElement2.innerText = "Ваш счёт: " + game.score;
+    listItem.appendChild(placeElement);
+    listItem.appendChild(scoreElement2);
+    listElement.appendChild(listItem);
+    let hrElement = document.createElement("hr");
+    listElement.appendChild(hrElement);
+  }
+};
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4;
   return randomNumber;
@@ -270,7 +308,11 @@ const restartButton = document.querySelectorAll(
 );
 restartButton.forEach((button) => {
   button.addEventListener("click", () => {
+    saveScore();
+    displayScores();
+    resetTotalSum();
     scoreElement.textContent = 0;
+    console.log(`рестарт, текущий счёт: ${totalSum}`);
     clearGameBoard();
     addRandomNumbers();
     if (modalOver.style.display === "block") {

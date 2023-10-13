@@ -9,6 +9,7 @@ import {
   totalSum, // удалить, это для проверки
   resetTotalSum,
 } from './movementWhenPressed.js';
+import { saveScore, displayScores } from './score.js';
 
 // инициализация новой игры: очистить игровое поле и добавлени две случайные двойки.
 
@@ -54,9 +55,12 @@ const restartButton = document.querySelectorAll(
 );
 restartButton.forEach(button => {
   button.addEventListener('click', () => {
+    saveScore();
+    displayScores();
+
     resetTotalSum(); // обнуление totalSum
     scoreElement.textContent = 0; // обнуление счета на экране
-    console.log(totalSum); // удалить, это для проверки
+    console.log(`рестарт, текущий счёт: ${totalSum}`); // удалить, это для проверки
 
     clearGameBoard(); // очистка поля
     addRandomNumbers(); // добавить два случайных числа

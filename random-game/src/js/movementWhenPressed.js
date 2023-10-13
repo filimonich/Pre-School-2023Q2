@@ -242,7 +242,7 @@ export const printTotalSum = () => {
   // return totalSum; // возвращаем общую сумму
 };
 
-console.log(totalSum);
+console.log(`1: ${totalSum}`);
 
 // функция для обнуления общей суммы
 export function resetTotalSum() {

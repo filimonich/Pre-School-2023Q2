@@ -279,6 +279,16 @@ const displayScores = () => {
     listElement.appendChild(hrElement);
   }
 };
+const updateRecordScore = () => {
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  if (savedGames.length > 0) {
+    let maxScore = Math.max(...savedGames.map((game) => game.score));
+    let recordElement = document.querySelector(".header__record-point");
+    recordElement.innerText = maxScore;
+  }
+};
+displayScores();
+updateRecordScore();
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4;
   return randomNumber;
@@ -310,6 +320,7 @@ restartButton.forEach((button) => {
   button.addEventListener("click", () => {
     saveScore();
     displayScores();
+    updateRecordScore();
     resetTotalSum();
     scoreElement.textContent = 0;
     console.log(`рестарт, текущий счёт: ${totalSum}`);

@@ -1,0 +1,27 @@
+.notifications {
+  $self: &;
+
+  z-index: 99999999999999999999;
+  position: absolute;
+  // display: none;
+  bottom: 15%;
+  right: 6%;
+
+	animation-name: fadeOut;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+
+	background-color: #0036f8;
+	
+  &.hide {
+		animation-name: fadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+  }
+
+  &__title {
+		padding: 0 1rem;
+    color: $white;
+    font-size: 1.6rem;
+  }
+}

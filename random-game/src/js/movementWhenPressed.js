@@ -2,6 +2,7 @@ import { hideGame, modalTable, modalOver } from './onOffModal.js';
 // import { printTotalSum } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
+const notificationsElement = document.querySelector('.notifications');
 export const scoreElement = document.querySelector('.header__score-point');
 
 export let totalSum = 0;
@@ -211,7 +212,18 @@ const handleKeydown = e => {
         console.log('Игра окончена!');
         modalTable.style.display = 'none';
         hideGame();
-      }, 2048);
+      }, 1048);
+
+      // чтобы скрыть элемент
+      notificationsElement.classList.add('hide');
+      setTimeout(() => {
+        // чтобы показать элемент
+        notificationsElement.classList.remove('hide');
+      }, 1048);
+
+      saveScore(); // сохранение счета в localstorage
+      displayScores(); // обновление таблицы результатов
+      updateRecordScore(); // отображение рекордного результата
     }
   }
 };
@@ -250,15 +262,3 @@ console.log(`1: ${totalSum}`);
 export function resetTotalSum() {
   totalSum = 0; // обнуляем totalSum
 }
-
-/////////// удалить ///////////
-// функция для добавления значения к общей сумме
-export function addToTotalSum(value) {
-  totalSum += value; // добавляем значение к totalSum
-}
-
-// функция для получения общей суммы
-export function getTotalSum() {
-  return totalSum; // возвращаем значение totalSum
-}
-/////////// удалить ///////////

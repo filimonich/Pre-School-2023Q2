@@ -34,24 +34,24 @@ $mouse-device: '(hover: hover) and (pointer: fine)';
 @import "../blocks/**/*.scss";
 
 // Определяем анимацию затухания  
-@keyframes fadeOut {
-  from {
-    opacity: 1;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
 
-  to {
-    opacity: 0;
+  100% {
+    opacity: 1;
   }
 }
 
 // Определяем анимацию проявления 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
 
-  to {
-    opacity: 1;
+  100% {
+    opacity: 0;
   }
 }
 

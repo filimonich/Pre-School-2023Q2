@@ -9,7 +9,7 @@ import {
   totalSum, // удалить, это для проверки
   resetTotalSum,
 } from './movementWhenPressed.js';
-import { saveScore, displayScores } from './score.js';
+import { saveScore, displayScores, updateRecordScore } from './score.js';
 
 // инициализация новой игры: очистить игровое поле и добавлени две случайные двойки.
 
@@ -55,8 +55,9 @@ const restartButton = document.querySelectorAll(
 );
 restartButton.forEach(button => {
   button.addEventListener('click', () => {
-    saveScore();
-    displayScores();
+    saveScore(); // сохранение счета в localstorage
+    displayScores(); // обновление таблицы результатов
+    updateRecordScore(); // отображение рекордного результата
 
     resetTotalSum(); // обнуление totalSum
     scoreElement.textContent = 0; // обнуление счета на экране

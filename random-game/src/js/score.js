@@ -57,3 +57,22 @@ export const displayScores = () => {
     listElement.appendChild(hrElement);
   }
 };
+
+export const updateRecordScore = () => {
+  // получаем сохраненные игры из localStorage
+  let savedGames = JSON.parse(localStorage.getItem('games')) || [];
+
+  // если есть сохраненные игры, находим игру с максимальным счетом
+  if (savedGames.length > 0) {
+    let maxScore = Math.max(...savedGames.map(game => game.score));
+
+    // получаем элемент, где будет отображаться рекордный счет
+    let recordElement = document.querySelector('.header__record-point');
+
+    // обновляем рекордный счет
+    recordElement.innerText = maxScore;
+  }
+};
+
+displayScores();
+updateRecordScore();

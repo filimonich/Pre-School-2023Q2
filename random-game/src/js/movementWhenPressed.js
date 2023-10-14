@@ -1,5 +1,5 @@
 import { hideGame, modalTable, modalOver } from './onOffModal.js';
-// import { printTotalSum } from './score.js';
+import { saveScore, displayScores, updateRecordScore } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 const notificationsElement = document.querySelector('.notifications');

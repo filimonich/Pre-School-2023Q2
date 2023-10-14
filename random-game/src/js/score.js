@@ -7,9 +7,15 @@ export const saveScore = () => {
   // получаем сохраненные игры из localStorage
   let savedGames = JSON.parse(localStorage.getItem('games')) || [];
 
-  // добавляем новую игру в массив, только если счет больше 0
-  if (currentScore > 0) {
-    savedGames.push({ gameNumber: savedGames.length + 1, score: currentScore });
+  // добавляем новую игру в массив, только если счет больше 0 и его еще нет в списке сохраненных игр
+  if (
+    currentScore > 0 &&
+    !savedGames.some(game => game.score === currentScore)
+  ) {
+    // находим максимальный gameNumber в savedGames
+    let maxGameNumber = Math.max(...savedGames.map(game => game.gameNumber), 0);
+
+    savedGames.push({ gameNumber: maxGameNumber + 1, score: currentScore });
 
     // сортируем игры по счету от большего к меньшему
     savedGames.sort((a, b) => b.score - a.score);

@@ -89,7 +89,53 @@ continueButton.forEach((continueButton2) => {
     }
   });
 });
+const saveScore = () => {
+  let currentScore = parseInt(
+    document.querySelector(".header__score-point").innerText
+  );
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  if (currentScore > 0 && !savedGames.some((game) => game.score === currentScore)) {
+    let maxGameNumber = Math.max(...savedGames.map((game) => game.gameNumber), 0);
+    savedGames.push({ gameNumber: maxGameNumber + 1, score: currentScore });
+    savedGames.sort((a, b) => b.score - a.score);
+    if (savedGames.length > 10) {
+      savedGames = savedGames.slice(0, 10);
+    }
+  }
+  localStorage.setItem("games", JSON.stringify(savedGames));
+};
+const displayScores = () => {
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  let listElement = document.querySelector(".modal__items");
+  listElement.innerHTML = "";
+  for (let game of savedGames) {
+    let listItem = document.createElement("li");
+    listItem.className = "modal__item";
+    let placeElement = document.createElement("p");
+    placeElement.className = "modal__place";
+    placeElement.innerText = "Номер игры: " + game.gameNumber;
+    let scoreElement2 = document.createElement("p");
+    scoreElement2.className = "modal__point";
+    scoreElement2.innerText = "Ваш счёт: " + game.score;
+    listItem.appendChild(placeElement);
+    listItem.appendChild(scoreElement2);
+    listElement.appendChild(listItem);
+    let hrElement = document.createElement("hr");
+    listElement.appendChild(hrElement);
+  }
+};
+const updateRecordScore = () => {
+  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
+  if (savedGames.length > 0) {
+    let maxScore = Math.max(...savedGames.map((game) => game.score));
+    let recordElement = document.querySelector(".header__record-point");
+    recordElement.innerText = maxScore;
+  }
+};
+displayScores();
+updateRecordScore();
 const allGameNumbers = document.querySelectorAll(".is-game__number");
+const notificationsElement = document.querySelector(".notifications");
 const scoreElement = document.querySelector(".header__score-point");
 let totalSum = 0;
 const moveNumbersHorizontal = (direction) => {
@@ -221,9 +267,18 @@ const handleKeydown = (e) => {
     }
     addNewNumber();
     if (checkGameOver()) {
-      console.log("Игра окончена!");
-      modalTable.style.display = "none";
-      hideGame();
+      setTimeout(() => {
+        console.log("Игра окончена!");
+        modalTable.style.display = "none";
+        hideGame();
+      }, 1048);
+      notificationsElement.classList.add("hide");
+      setTimeout(() => {
+        notificationsElement.classList.remove("hide");
+      }, 1048);
+      saveScore();
+      displayScores();
+      updateRecordScore();
     }
   }
 };
@@ -245,50 +300,6 @@ console.log(`1: ${totalSum}`);
 function resetTotalSum() {
   totalSum = 0;
 }
-const saveScore = () => {
-  let currentScore = parseInt(
-    document.querySelector(".header__score-point").innerText
-  );
-  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
-  if (currentScore > 0) {
-    savedGames.push({ gameNumber: savedGames.length + 1, score: currentScore });
-    savedGames.sort((a, b) => b.score - a.score);
-    if (savedGames.length > 10) {
-      savedGames = savedGames.slice(0, 10);
-    }
-  }
-  localStorage.setItem("games", JSON.stringify(savedGames));
-};
-const displayScores = () => {
-  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
-  let listElement = document.querySelector(".modal__items");
-  listElement.innerHTML = "";
-  for (let game of savedGames) {
-    let listItem = document.createElement("li");
-    listItem.className = "modal__item";
-    let placeElement = document.createElement("p");
-    placeElement.className = "modal__place";
-    placeElement.innerText = "Номер игры: " + game.gameNumber;
-    let scoreElement2 = document.createElement("p");
-    scoreElement2.className = "modal__point";
-    scoreElement2.innerText = "Ваш счёт: " + game.score;
-    listItem.appendChild(placeElement);
-    listItem.appendChild(scoreElement2);
-    listElement.appendChild(listItem);
-    let hrElement = document.createElement("hr");
-    listElement.appendChild(hrElement);
-  }
-};
-const updateRecordScore = () => {
-  let savedGames = JSON.parse(localStorage.getItem("games")) || [];
-  if (savedGames.length > 0) {
-    let maxScore = Math.max(...savedGames.map((game) => game.score));
-    let recordElement = document.querySelector(".header__record-point");
-    recordElement.innerText = maxScore;
-  }
-};
-displayScores();
-updateRecordScore();
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4;
   return randomNumber;

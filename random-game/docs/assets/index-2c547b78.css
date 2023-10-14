@@ -166,6 +166,7 @@ a {
   cursor: pointer;
 }
 .is-game {
+  position: relative;
   display: block;
   max-width: 30rem;
   max-height: 30rem;
@@ -199,6 +200,10 @@ a {
   height: 32px;
   filter: invert(1);
 }
+.main {
+  display: block;
+  position: relative;
+}
 .modal__item {
   display: flex;
 }
@@ -206,6 +211,26 @@ a {
   max-width: 9rem;
   width: 100%;
   margin-right: 1rem;
+}
+.notifications {
+  z-index: 100000000000000000000;
+  position: absolute;
+  bottom: 15%;
+  right: 6%;
+  animation-name: fadeOut;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  background-color: #0036f8;
+}
+.notifications.hide {
+  animation-name: fadeIn;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+.notifications__title {
+  padding: 0 1rem;
+  color: #FFFFFF;
+  font-size: 1.6rem;
 }
 .preloader {
   position: fixed;
@@ -238,20 +263,24 @@ a {
     border-image-slice: 1;
   }
 }
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+.wrapper {
+  position: relative;
+  display: block;
 }
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 body,

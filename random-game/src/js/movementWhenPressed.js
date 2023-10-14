@@ -207,9 +207,11 @@ const handleKeydown = e => {
 
     // проверяем, не закончилась ли игра
     if (checkGameOver()) {
-      console.log('Игра окончена!');
-      modalTable.style.display = 'none';
-      hideGame();
+      setTimeout(() => {
+        console.log('Игра окончена!');
+        modalTable.style.display = 'none';
+        hideGame();
+      }, 2048);
     }
   }
 };

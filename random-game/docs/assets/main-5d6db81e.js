@@ -137,6 +137,7 @@ updateRecordScore();
 const allGameNumbers = document.querySelectorAll(".is-game__number");
 const notificationsElement = document.querySelector(".notifications");
 const scoreElement = document.querySelector(".header__score-point");
+const greetingElement = document.querySelector(".greet");
 let totalSum = 0;
 const moveNumbersHorizontal = (direction) => {
   for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
@@ -224,7 +225,7 @@ const moveNumbersVertical = (direction) => {
   printTotalSum();
 };
 const handleKeydown = (e) => {
-  if (window.getComputedStyle(modalOver).display === "block" || window.getComputedStyle(modalTable).display === "block") {
+  if (window.getComputedStyle(modalOver).display === "block" || window.getComputedStyle(modalTable).display === "block" || window.getComputedStyle(greetingElement).display === "block") {
     console.log("модальное окно открыто, нажатие клавиш игнорируется");
     return;
   }
@@ -273,6 +274,7 @@ const handleKeydown = (e) => {
         hideGame();
       }, 1048);
       notificationsElement.classList.add("hide");
+      notificationsElement.style.display = "block";
       setTimeout(() => {
         notificationsElement.classList.remove("hide");
       }, 1048);
@@ -388,6 +390,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   });
   domChangeObserver.observe(document.body, { childList: true, subtree: true });
+});
+(async () => {
+  for (let i = 1; i < 6; i++) {
+    await new Promise((resolve) => setTimeout(resolve, i * 2048));
+    console.log("счёт");
+  }
+})();
+document.addEventListener("DOMContentLoaded", function() {
+  const mainElement = document.querySelector(".main");
+  const closeButton = document.querySelector(".greet__close");
+  const startButton = document.querySelector(".greet__button");
+  const infoButton = document.querySelector(".header__subtitle");
+  function switchToMainFromGreeting() {
+    greetingElement.style.display = "none";
+    mainElement.style.display = "block";
+  }
+  function switchToGreetingFromMain() {
+    greetingElement.style.display = "block";
+    mainElement.style.display = "none";
+  }
+  closeButton.addEventListener("click", switchToMainFromGreeting);
+  startButton.addEventListener("click", switchToMainFromGreeting);
+  infoButton.addEventListener("click", switchToGreetingFromMain);
 });
 document.addEventListener("DOMContentLoaded", () => {
   const preload = document.querySelector(".preload");

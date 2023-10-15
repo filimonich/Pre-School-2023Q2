@@ -8,13 +8,29 @@
   <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
   
   <title>2048</title>
-  <script type="module" crossorigin src="./assets/main-4d116b03.js"></script>
-  <link rel="stylesheet" href="./assets/index-2c547b78.css">
+  <script type="module" crossorigin src="./assets/main-5d6db81e.js"></script>
+  <link rel="stylesheet" href="./assets/index-5c03dbb5.css">
 </head>
 
 
 <body class="wrapper preload">
-  <main class="main" id="main">
+  <div class="greet">
+    <div class="greet__box">
+      <h2 class="greet__title">Правила игры</h2>
+      <div class="greet__close animation-button">⨉</div>
+      <ul class="greet__items">
+        <li class="greet__item">
+          <p class="greet__text">Вы можете управлять движением блоков с помощью клавиш WASD или стрелок ←↑↓→.</p>
+        </li>
+        <li class="greet__item">
+          <p class="greet__text">Если блокам не осталось места для движения, игра завершится.</p>
+        </li>
+      </ul>
+      <button class="greet__button greet__start button">
+        <span class="greet__text">Начать игру</span></button>
+    </div>
+  </div>
+  <main class="main">
     <header class="header">
       <div class="header__body">
         <h1 class="header__title">2048</h1>
@@ -33,7 +49,7 @@
             alt="sound off" title="sound off" class="header__restart-btn header__img"></div>
         <div class="header__restart animation-button" style="display: none;"><img src="images/svg/sound-on.svg"
             alt="sound on" title="sound on" class="header__restart-btn header__img"></div>
-        <h2 class="header__subtitle animation-button">info</h2>
+        <div class="header__subtitle animation-button">menu</div>
       </div>
     </header>
     <section class="is-game">
@@ -61,18 +77,18 @@
       </div>
       <div class="modal modal-js">
         <div class="modal__over" style="display: none;">
-          <h3 class="modal__title">Игра окончена</h3>
+          <h2 class="modal__title">Игра окончена</h2>
           <div class="modal__container">
             <button class="modal__button modal__restart button">
               <span class="modal__text">Начать заново</span></button>
             <button class="modal__button modal__scor button">
               <span class="modal__text">Таблица рекордов</span></button>
             <button class="modal__button modal__resume button">
-              <span class="modal__text">Продолжить</span></button>
+              <span class="modal__text">Поле игры</span></button>
           </div>
         </div>
         <div class="modal__table" style="display: none;">
-          <h3 class="modal__title">Таблица рекордов</h3>
+          <h2 class="modal__title">Таблица рекордов</h2>
           <hr>
           <ul class="modal__items">
 
@@ -95,7 +111,7 @@
     </footer>
   </main>
   <div class="notifications">
-    <h3 class="notifications__title">Игра окончена</h3>
+    <h2 class="notifications__title">Игра окончена</h2>
   </div>
 </body>
 

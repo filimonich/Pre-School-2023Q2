@@ -4,6 +4,7 @@ import { saveScore, displayScores, updateRecordScore } from './score.js';
 const allGameNumbers = document.querySelectorAll('.is-game__number');
 const notificationsElement = document.querySelector('.notifications');
 export const scoreElement = document.querySelector('.header__score-point');
+export const greetingElement = document.querySelector('.greet');
 
 export let totalSum = 0;
 
@@ -133,14 +134,14 @@ export const moveNumbersVertical = direction => {
 };
 
 // обработчик события для нажатия клавиш
-// document.addEventListener('keydown', e => {
 const handleKeydown = e => {
   // console.log('keydown');
   // console.log('Клавиша нажата:', e.key);
 
   if (
     window.getComputedStyle(modalOver).display === 'block' ||
-    window.getComputedStyle(modalTable).display === 'block'
+    window.getComputedStyle(modalTable).display === 'block' ||
+    window.getComputedStyle(greetingElement).display === 'block'
   ) {
     console.log('модальное окно открыто, нажатие клавиш игнорируется');
     return;
@@ -162,7 +163,8 @@ const handleKeydown = e => {
     ы: 'down',
   };
 
-  // конец игры если нет места для новых блоков
+  // конец игры
+  // если нет места для новых блоков
   const checkGameOver = () => {
     for (let rowIndex = 0; rowIndex < 4; rowIndex++) {
       for (let colIndex = 0; colIndex < 4; colIndex++) {
@@ -228,7 +230,6 @@ const handleKeydown = e => {
     }
   }
 };
-// });
 
 // вызов обработчика событий для нажатия клавиш
 document.addEventListener('keydown', handleKeydown);

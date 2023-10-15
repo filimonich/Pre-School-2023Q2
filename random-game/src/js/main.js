@@ -4,6 +4,7 @@ import '/js/isGameStartRestart.js';
 import '/js/colorGradientNumbers.js';
 import '/js/movementWhenPressed.js';
 import '/js/score.js';
+import '/js/firstScreenGame.js';
 
 // глобальная переменная для хранения общей суммы
 // window.totalSum = 0;

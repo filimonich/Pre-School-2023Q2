@@ -45,9 +45,7 @@ export const moveNumbersHorizontal = direction => {
         rowNumbers[colIndex].textContent !== '0'
       ) {
         const sum = parseInt(rowNumbers[colIndex].textContent) * 2;
-        console.log(
-          `сложение: ${rowNumbers[colIndex].textContent} + ${rowNumbers[colIndex].textContent} = ${sum}`
-        );
+
         totalSum += sum; // обновляем totalSum
         rowNumbers[colIndex].textContent = (+sum).toString();
         rowNumbers[colIndex + 1].textContent = '0';
@@ -108,9 +106,7 @@ export const moveNumbersVertical = direction => {
         columnNumbers[rowIndex].textContent !== '0'
       ) {
         const sum = parseInt(columnNumbers[rowIndex].textContent) * 2;
-        console.log(
-          `сложение: ${columnNumbers[rowIndex].textContent} + ${columnNumbers[rowIndex].textContent} = ${sum}`
-        );
+
         totalSum += sum; // обновляем totalSum
         columnNumbers[rowIndex].textContent = (+sum).toString();
         columnNumbers[rowIndex + 1].textContent = '0';
@@ -135,15 +131,11 @@ export const moveNumbersVertical = direction => {
 
 // обработчик события для нажатия клавиш
 const handleKeydown = e => {
-  // console.log('keydown');
-  // console.log('Клавиша нажата:', e.key);
-
   if (
     window.getComputedStyle(modalOver).display === 'block' ||
     window.getComputedStyle(modalTable).display === 'block' ||
     window.getComputedStyle(greetingElement).display === 'block'
   ) {
-    console.log('модальное окно открыто, нажатие клавиш игнорируется');
     return;
   }
 
@@ -211,7 +203,6 @@ const handleKeydown = e => {
     // проверяем, не закончилась ли игра
     if (checkGameOver()) {
       setTimeout(() => {
-        console.log('Игра окончена!');
         modalTable.style.display = 'none';
         hideGame();
       }, 1048);
@@ -253,12 +244,8 @@ const addNewNumber = () => {
 
 // функция для вывода общей суммы
 export const printTotalSum = () => {
-  console.log(`общая сумма былов: ${totalSum}`); // выводим общую сумму в консоль
   scoreElement.textContent = totalSum; // обновляем текст элемента scoreElement общей суммой
-  // return totalSum; // возвращаем общую сумму
 };
-
-console.log(`1: ${totalSum}`);
 
 // функция для обнуления общей суммы
 export function resetTotalSum() {

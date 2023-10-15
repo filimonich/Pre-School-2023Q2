@@ -16,7 +16,6 @@ import { saveScore, displayScores, updateRecordScore } from './score.js';
 // функция  для генерации случайного числа 2 или 4
 const generateRandomNumber = () => {
   const randomNumber = Math.random() < 0.9 ? 2 : 4; // вероятность 90% для числа 2 и 10% - 4
-  // console.log(randomNumber);
   return randomNumber;
 };
 
@@ -61,16 +60,13 @@ restartButton.forEach(button => {
 
     resetTotalSum(); // обнуление totalSum
     scoreElement.textContent = 0; // обнуление счета на экране
-    console.log(`рестарт, текущий счёт: ${totalSum}`); // удалить, это для проверки
 
     clearGameBoard(); // очистка поля
     addRandomNumbers(); // добавить два случайных числа
     if (modalOver.style.display === 'block') {
-      console.log('закрыть окно');
       showGame();
     }
     if (modalTable.style.display === 'block') {
-      console.log('закрыть таблицу');
       hideResultTable();
     }
   });

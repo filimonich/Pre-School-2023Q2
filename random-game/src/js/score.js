@@ -47,11 +47,11 @@ export const displayScores = () => {
 
     let placeElement = document.createElement('p');
     placeElement.className = 'modal__place';
-    placeElement.innerText = 'Номер игры: ' + game.gameNumber;
+    placeElement.innerText = 'Game number: ' + game.gameNumber;
 
     let scoreElement = document.createElement('p');
     scoreElement.className = 'modal__point';
-    scoreElement.innerText = 'Ваш счёт: ' + game.score;
+    scoreElement.innerText = 'Your score points: ' + game.score;
 
     listItem.appendChild(placeElement);
     listItem.appendChild(scoreElement);

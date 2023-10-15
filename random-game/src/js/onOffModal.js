@@ -43,7 +43,6 @@ modalTableRecordOpen.forEach(button => {
   button.addEventListener('click', () => {
     showResultTable();
     if (modalOver.style.display === 'block') {
-      console.log('если конец игры, закрыть окно');
       modalOver.style.display = 'none';
     }
   });
@@ -58,7 +57,6 @@ continueButton.forEach(continueButton => {
       modalOver.style.display === 'block' ||
       modalTable.style.display === 'block'
     ) {
-      console.log('продолжить игру');
       showGame();
     }
   });

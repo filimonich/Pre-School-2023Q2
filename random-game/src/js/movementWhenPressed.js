@@ -2,7 +2,8 @@ import { hideGame, modalTable, modalOver } from './onOffModal.js';
 import { saveScore, displayScores, updateRecordScore } from './score.js';
 
 const allGameNumbers = document.querySelectorAll('.is-game__number');
-const notificationsElement = document.querySelector('.notifications');
+export const notificationsElement = document.querySelector('.notifications');
+export const titleElement = document.querySelector('.modal__title');
 export const scoreElement = document.querySelector('.header__score-point');
 export const greetingElement = document.querySelector('.greet');
 
@@ -218,6 +219,8 @@ const handleKeydown = e => {
       saveScore(); // сохранение счета в localstorage
       displayScores(); // обновление таблицы результатов
       updateRecordScore(); // отображение рекордного результата
+
+      titleElement.textContent = 'The game is over';
     }
   }
 };

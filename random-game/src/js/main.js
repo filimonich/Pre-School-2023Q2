@@ -6,6 +6,7 @@ import '/js/movementWhenPressed.js';
 import '/js/score.js';
 import '/js/firstScreenGame.js';
 import '/js/soundOnOff.js';
+import '/js/scorePointsToWin.js';
 
 // глобальная переменная для хранения общей суммы
 // window.totalSum = 0;

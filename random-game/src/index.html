@@ -31,7 +31,10 @@
   <main class="main">
     <header class="header">
       <div class="header__body">
-        <h1 class="header__title">2048</h1>
+        <h1 class="header__title"><span class="header__title-color header__title-color--sage-color">2</span>0<span
+            class="header__title-color header__title-color-blue">4</span><span
+            class="header__title-color header__title-color-purple">8</span>
+        </h1>
         <div class="header__restart animation-button"><img src="images/svg/restart.svg" alt="restart" title="restart"
             class="header__restart-btn header__img">
         </div>
@@ -47,7 +50,7 @@
             alt="sound off" title="sound off" class="header__restart-btn header__img"></div>
         <div class="header__sound animation-button" style="display: none;"><img src="images/svg/sound-on.svg"
             alt="sound on" title="sound on" class="header__restart-btn header__img"></div>
-        <div class="header__subtitle animation-button">menu</div>
+        <div class="header__subtitle animation-button">Rules</div>
       </div>
     </header>
     <section class="is-game">
@@ -78,11 +81,11 @@
           <h2 class="modal__title">The game is over</h2>
           <div class="modal__container">
             <button class="modal__button modal__restart button">
-              <span class="modal__text">Начать заново</span></button>
+              <span class="modal__text">Start over</span></button>
             <button class="modal__button modal__scor button">
               <span class="modal__text">Table of records</span></button>
             <button class="modal__button modal__resume button">
-              <span class="modal__text">Поле игры</span></button>
+              <span class="modal__text">Field of play</span></button>
           </div>
         </div>
         <div class="modal__table" style="display: none;">
@@ -92,9 +95,9 @@
 
           </ul>
           <button class="modal__button modal__restart button">
-            <span class="modal__text">Начать заново</span></button>
+            <span class="modal__text">Start over</span></button>
           <button class="modal__button modal__resume button">
-            <span class="modal__text">Продолжить</span></button>
+            <span class="modal__text">Field of play</span></button>
         </div>
       </div>
     </section>

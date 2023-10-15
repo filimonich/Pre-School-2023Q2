@@ -7,8 +7,6 @@
   color: $white;
   background-color: $castleton-green;
   border-radius: 0 0 .4rem .4rem;
-  fill: #806600;
-  stroke: #858500;
 
   &__body {
     display: flex;
@@ -20,7 +18,26 @@
     }
   }
 
-  &__title {}
+  &__title {
+    background-color: $steel-blue;
+    padding: .2rem;
+    border-radius: .2rem;
+    font-size: 1.8rem;
+  }
+
+  &__title-color {}
+
+  &__title-color--sage-color {
+    color: rgb(165, 193, 159);
+  }
+
+  &__title-color-blue {
+    color: rgb(0, 54, 248)
+  }
+
+  &__title-color-purple {
+    color: rgb(52, 24, 227)
+  }
 
   &__img {
     width: 3rem;
@@ -44,5 +61,7 @@
   &__record-point {}
 
   &__subtitle {}
+
+  &__sound {}
 
 }

@@ -1,22 +1,31 @@
 .modal {
   $self: &;
 
-  &__over {}
+  color: $white;
+
+  &__over {
+    padding: 1rem 1rem;
+  }
 
   &__title {}
 
-  &__container {}
+  &__container {
+    margin-top: 1rem;
+  }
 
   &__button {}
 
   &__text {}
 
-  &__table {}
+  &__table {
+    padding: 1rem .5rem;
+  }
 
   &__items {}
 
   &__item {
     display: flex;
+    padding: 0 .5rem;
   }
 
   &__place {

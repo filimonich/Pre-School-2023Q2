@@ -216,6 +216,7 @@ const handleKeydown = e => {
 
       // чтобы скрыть элемент
       notificationsElement.classList.add('hide');
+      notificationsElement.style.display = 'block';
       setTimeout(() => {
         // чтобы показать элемент
         notificationsElement.classList.remove('hide');

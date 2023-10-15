@@ -1,19 +1,20 @@
 .notifications {
   $self: &;
 
-  z-index: 99999999999999999999;
+  // z-index: -1;
   position: absolute;
-  // display: none;
+  display: none;
   bottom: 15%;
   right: 6%;
-
+  
 	animation-name: fadeOut;
   animation-duration: .6s;
   animation-fill-mode: forwards;
-
+  
 	background-color: #0036f8;
 	
   &.hide {
+    display: block;
 		animation-name: fadeIn;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;

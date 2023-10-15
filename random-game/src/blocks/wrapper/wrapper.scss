@@ -1,7 +1,8 @@
 .wrapper {
-	$self: &;
+  $self: &;
 
-	position: relative;
-	display: block;
+  z-index: 10;
+  position: relative;
+  display: block;
 
 }

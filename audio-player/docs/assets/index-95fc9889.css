@@ -1,0 +1,498 @@
+@charset "UTF-8";
+/* Утилиты */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img,
+abbr {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+ul li {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+legend {
+  color: #000;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "IR";
+  src: url("../fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+@font-face {
+  font-family: "FR";
+  src: url("../fonts/Forum-Regular.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+@font-face {
+  font-family: "IB";
+  src: url("../fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: "normal";
+  font-style: normal;
+}
+.footer {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #002a38;
+  color: #FFFFFF;
+}
+.footer__link {
+  font-size: 20px;
+  font-family: "IR";
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+.logo__img {
+  width: 86px;
+  height: 32px;
+  filter: invert(1);
+}
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  width: 100%;
+  margin: 3% auto;
+}
+@media (max-width: 780px) {
+  .main {
+    max-width: 640px;
+    width: 100%;
+    margin: 10% auto;
+  }
+}
+.player__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: #002a38;
+  color: #FFFFFF;
+}
+@media (max-width: 780px) {
+  .player__box {
+    width: 95%;
+  }
+}
+.player__inner {
+  border-radius: 10px 10px 0 0;
+}
+.player__img {
+  border-radius: 10px 10px 0 0;
+}
+.player__container {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #002a38;
+  border-radius: 0 0 10px 10px;
+}
+.player__section {
+  display: flex;
+  font-family: "IR";
+  font-size: 14px;
+  font-style: normal;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media (max-width: 780px) {
+  .player__section {
+    font-size: 13px;
+  }
+}
+.player__titles {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 780px) {
+  .player__titles {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.player__track-name {
+  padding: 0 10px;
+}
+.player__executor {
+  padding: 0 10px;
+}
+.player__play {
+  position: relative;
+  display: flex;
+}
+.player__track-time {
+  margin: 0 4px;
+  font-size: 12px;
+}
+.player__begin {
+  position: absolute;
+  top: 26%;
+  left: 2px;
+}
+.player__end {
+  position: absolute;
+  top: 26%;
+  right: 2px;
+}
+.player__progress {
+  width: 80%;
+  margin: 0 auto;
+  margin-left: 11%;
+}
+.player__progress-input {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+}
+.player__volume-button {
+  padding-right: 10px;
+}
+.player__volume-btn {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/svg/volume-sprite.svg");
+  background-position: 0 0;
+  box-sizing: border-box;
+  filter: invert(1);
+}
+.player__volume {
+  padding-right: 10px;
+}
+.player__volume-input {
+  display: block;
+  width: 100%;
+  margin-top: 11px;
+}
+.player__switches {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.player__switch {
+  max-height: 50px;
+}
+.player__left {
+  margin-right: 10px;
+  filter: invert(1);
+}
+.player__play-inner {
+  margin-right: 10px;
+  filter: invert(1);
+}
+.player__stop-inner {
+  margin-right: 10px;
+  filter: invert(1);
+}
+.player__right {
+  filter: invert(1);
+}
+.preloder {
+  z-index: 999999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #002a38;
+  height: 100%;
+  width: 100%;
+  transition: 1s all easy;
+  opacity: 1;
+  visibility: visible;
+}
+.preloder__circle, .preloder__circle:before, .preloder__circle:after {
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+.preloder__circle {
+  height: 110px;
+  width: 110px;
+  margin: 200px auto;
+  position: relative;
+  border-top-color: #de9d16;
+  animation-name: spin;
+  animation-duration: 1.1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+.preloder__circle:before, .preloder__circle:after {
+  content: "";
+  position: absolute;
+}
+.preloder__circle:before {
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  border-top-color: #28a858;
+  animation-name: spin;
+  animation-duration: 2.1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-duration: 2.1s;
+}
+.preloder__circle:after {
+  top: 23px;
+  left: 23px;
+  bottom: 23px;
+  right: 23px;
+  border-top-color: #046351;
+  animation-name: spin;
+  animation-delay: 1.3s;
+  animation-duration: 3.1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.done {
+  opacity: 0;
+  visibility: hidden;
+}
+.wrapper {
+  --bg-url: url("../images/img/Succession-80.png");
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper::before {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background: left 70%/100% auto no-repeat var(--bg-url);
+  filter: blur(5px);
+}
+@media (max-width: 780px) {
+  .wrapper::before {
+    background: top no-repeat var(--bg-url);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body,
+html {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
+  flex-flow: column nowrap;
+  font-size: 16px;
+  font-family: "IR", sans-serif;
+  line-height: 1.2;
+  color: #000000;
+  background-color: #002a38;
+  scroll-behavior: smooth;
+}
+.preload * {
+  transition: none;
+}
+.button {
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  background-color: #FFFFFF;
+  transition: background-color 0.6s ease, border 2s ease, transform 0.6s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    border: 1px solid #BB945F;
+    background-color: #BB945F;
+  }
+}
+.button:disabled {
+  cursor: default;
+  background-color: #FFFFFF;
+  border: 1px solid #BB945F;
+  color: #BB945F;
+}
+.button:disabled span {
+  color: #BB945F;
+}
+.button span {
+  text-align: center;
+  font-family: "IB";
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #0C0C0E;
+}
+.animation-button {
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.6s ease, box-shadow 0.6s ease, box-shadow 0.6s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .animation-button:hover {
+    border-radius: 50%;
+    transform: scale(1.1);
+  }
+}
+.animation-button:active {
+  transform: scale(0.9);
+}
+.animation-text {
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .animation-text:hover {
+    background-color: hsla(215, 66%, 61%, 0.207);
+    box-shadow: 0 0 2px #BB945F;
+  }
+}
+.animation-text:active {
+  transform: translateY(2px);
+  background-color: hsla(155, 66%, 61%, 0.207);
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dynamic-shadow {
+  border-radius: 10px;
+}
+input[type=range] {
+  height: 6px;
+  border-radius: 10px;
+  background-color: #2f8a1e;
+  appearance: none;
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #de9d16;
+  border-radius: 50%;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #de9d16;
+  border-radius: 50%;
+  cursor: pointer;
+}

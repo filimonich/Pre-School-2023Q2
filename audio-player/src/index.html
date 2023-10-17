@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/svg/logo-SF.svg">
+  <script type="module" src="js/main.js"></script>
+  <title>audio-player</title>
+</head>
+
+
+<body class="wrapper preload">
+  <audio id="myAudio">
+    <source src="audio/Succession - Nicholas Britell.mp3" type="audio/mpeg">
+  </audio>
+  <div class="preloder">
+    <div class="preloder__circle"></div>
+  </div>
+  <main class="main player">
+    <div class="player__box dynamic-shadow">
+      <div class="player__inner">
+        <img src="images/img/Succession-80.png" alt="" class="player__img" loading="lazy" id="myImage">
+      </div>
+
+      <div class="player__container">
+        <div class="player__controls">
+          <div class="player__titles">
+
+            <div class="player__section">
+              <p class="player__track-name">Succession</p>
+              <p class="player__dash">-</p>
+              <p class="player__executor">Nicholas Britell</p>
+            </div>
+
+            <div class="player__section">
+              <div class="player__volume-button">
+                <span href="" class="player__volume-btn animation-button"></span>
+              </div>
+              <div class="player__volume">
+                <input class="player__volume-input" type="range" value="90" min="0" max="100">
+              </div>
+            </div>
+
+          </div>
+          <div class="player__play">
+            <p class="player__begin player__track-time">0:00</p>
+            <div class="player__progress">
+              <input class="player__progress-input" type="range" value="0" max="0">
+            </div>
+            <p class="player__end player__track-time">0:00</p>
+          </div>
+          <div class="player__switches">
+            <span href="" class="player__left animation-button">
+              <img src="images/svg/backward.svg" alt="" class="player__left-img player__switch">
+            </span>
+            <span href="" class="player__play-inner animation-button">
+              <img src="images/svg/play.svg" alt="" class="player__play-img player__switch">
+            </span>
+            <span href="" class="player__stop-inner animation-button" style="display: none;">
+              <img src="images/svg/pause.svg" alt="" class="player__play-img player__switch">
+            </span>
+            <span href="" class="player__right animation-button">
+              <img src="images/svg/forward.svg" alt="" class="player__right-img player__switch">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__link animation-text" href="https://github.com/filimonich" target="_blank">
+      <p>filimonich</p>
+    </a>
+    <p>2023</p>
+    <a class="logo" href="https://rs.school/js-stage0/" target="_blank">
+      <img class="logo__img" src="images/svg/rs_school_js.svg" alt="RS School">
+    </a>
+  </footer>
+</body>
+
+</html>

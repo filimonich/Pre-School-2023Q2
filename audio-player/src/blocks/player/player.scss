@@ -1,0 +1,174 @@
+.player {
+  $self: &;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 50%;
+
+    background-color: $gunmetal;
+    color: $white;
+
+    @include media('<=sm') {
+      width: 95%;
+    }
+  }
+
+  &__inner {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &__img {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+
+    background-color: $gunmetal;
+    border-radius: 0 0 10px 10px;
+
+    // @include media('<=sm') {
+    // width: 95%;
+    // }
+  }
+
+  &__controls {}
+
+  &__section {
+    display: flex;
+    font-family: "IR";
+    font-size: 14px;
+    font-style: normal;
+    line-height: 28px;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    @include media('<=sm') {
+      font-size: 13px;
+    }
+  }
+
+  &__titles {
+    display: flex;
+    justify-content: space-between;
+
+    @include media('<=sm') {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__track-name {
+    padding: 0 10px;
+  }
+
+  &__executor {
+    padding: 0 10px;
+  }
+
+  &__play {
+    position: relative;
+    display: flex;
+  }
+
+  &__track-time {
+    margin: 0 4px;
+    font-size: 12px;
+  }
+
+  &__begin {
+    position: absolute;
+    top: 26%;
+    left: 2px;
+  }
+
+  &__end {
+    position: absolute;
+    top: 26%;
+    right: 2px;
+  }
+
+  &__progress {
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 11%;
+  }
+
+  &__progress-input {
+    // pointer-events: none !important;
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+  }
+
+  &__volume-button {
+    padding-right: 10px;
+  }
+
+  &__volume-btn {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background-image: url("../images/svg/volume-sprite.svg");
+    background-position: 0 0;
+    box-sizing: border-box;
+    filter: invert(1);
+  }
+
+  &__volume-btn-img {}
+
+  &__volume {
+    padding-right: 10px;
+  }
+
+  &__volume-input {
+    display: block;
+    width: 100%;
+    margin-top: 11px;
+  }
+
+  &__switches {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  &__switch {
+    max-height: 50px;
+  }
+
+  &__left {
+    margin-right: 10px;
+    filter: invert(1);
+  }
+
+  &__left-img {}
+
+  &__play-inner {
+    margin-right: 10px;
+    filter: invert(1);
+  }
+
+  &__stop-inner {
+    margin-right: 10px;
+    filter: invert(1);
+  }
+
+  &__play-img {}
+
+  &__play-img {}
+
+  &__right {
+    filter: invert(1);
+  }
+
+  &__right-img {}
+
+}

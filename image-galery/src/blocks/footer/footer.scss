@@ -1,0 +1,29 @@
+.footer {
+  $self: &;
+
+  z-index: 10;
+
+  // position: absolute;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: $gunmetal;
+  color: $white;
+  border: 2px solid $castleton-green;
+
+  @include media('<=md') {
+    position: relative;
+  }
+
+  &__link {
+    font-size: 20px;
+    font-family: "IR";
+    white-space: nowrap;
+    color: $white;
+  }
+}

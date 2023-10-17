@@ -1,0 +1,45 @@
+.is-game {
+  $self: &;
+
+  position: relative;
+  display: block;
+  max-width: 30rem;
+  max-height: 30rem;
+  width: 100%;
+  height: 100%;
+  background-color: $forest-green;
+  // background-color: #00530b;
+  margin: 2% auto auto;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
+
+  &__main {
+    // background-color: $forest-green;
+  }
+
+  &__contents {
+    // background-color: $pigment-green;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    // width: 100%;
+    // height: 100%;
+  }
+
+  &__item {
+    padding: 30% 0;
+    text-align: center;
+    // background-color: $castleton-green;
+    border-radius: .4rem;
+  }
+
+  &__number {
+    color: $white;
+    font-size: 2rem;
+  }
+}

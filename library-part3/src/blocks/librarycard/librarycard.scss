@@ -1,0 +1,250 @@
+.librarycard {
+  $self: &;
+
+  &.container {
+    margin-bottom: 42px;
+    padding-top: 20px;
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+      padding-top: 23px
+    }
+  }
+
+  &__contents {}
+
+  &__headline {}
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+
+    @include media('<=lg') {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__inner {
+
+    @include media('<=lg') {
+      padding-bottom: 21px;
+    }
+  }
+
+  &__title {
+    display: none;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: "IR";
+    font-size: 30px;
+    line-height: 34px;
+    letter-spacing: 0.6px;
+    color: $text;
+
+    &.active {
+      display: block;
+    }
+
+    @include media('<=sm') {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__benefits {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    // padding: 19px 18px 27px;
+    padding: 19px 18px 0;
+    border: 3px solid $brown;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    width: 560px;
+    height: 272px;
+    padding: 21px 19px 26px;
+    // margin-bottom: 19px;
+    background: $brown;
+  }
+
+  &__subtitle {
+    margin-bottom: 22px;
+    font-family: "FR";
+    font-size: 30px;
+    line-height: 46px;
+    letter-spacing: 0.6px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__input {
+    width: 520px;
+    height: 66px;
+    padding: 12px 19px 12px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: $brown;
+    font-family: "FR";
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    color: $brown;
+
+    @include media('<=sm') {
+      padding: 11px 21px 12px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::placeholder {
+      font-family: "FR";
+      font-size: 30px;
+      letter-spacing: 0.6px;
+      color: $grey;
+    }
+  }
+
+  &__buttons {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__button {}
+
+  &__button-check.button {
+    display: none;
+    font-family: "IB";
+    width: 242px;
+    margin: 20px 0 26px;
+    padding: 9px 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__subject {
+    text-align: center;
+    font-family: "IR";
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__cards-profile {
+    display: none;
+    margin-top: 16px;
+    padding-bottom: 8px;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  &__item {
+    display: grid;
+    justify-items: center;
+  }
+
+  &__amount {
+    text-align: center;
+    font-family: "IR";
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: $text;
+  }
+
+  &__button-get.button {
+    width: 75px;
+    height: 30px;
+    // padding: 7px 15px 9px;
+    margin-right: 16px;
+    font-family: "IB";
+    letter-spacing: 1px;
+    border-radius: 2px;
+    font-size: 10px;
+    color: $background-black;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__get {
+    text-align: right;
+
+    @include media('<=lg') {
+      text-align: center;
+    }
+  }
+
+  &__caption {
+    display: none;
+    font-family: "FR";
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: 0.6px;
+    margin-bottom: 34px;
+    color: $text;
+
+    &.active {
+      display: block;
+    }
+
+    @include media('<=sm') {
+      margin-bottom: 41px;
+    }
+  }
+
+  &__text {
+    display: none;
+    width: 460px;
+    text-align: right;
+    margin-bottom: 36px;
+    font-family: "IR";
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 0.4px;
+    color: $text;
+
+    &.active {
+      display: block;
+    }
+
+    @include media('<=lg') {
+      width: 600px;
+      text-align: center;
+    }
+
+    @include media('<=sm') {
+      margin-bottom: 40px;
+    }
+  }
+
+}

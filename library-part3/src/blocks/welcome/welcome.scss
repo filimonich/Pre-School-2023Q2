@@ -1,0 +1,31 @@
+.welcome {
+  $self: &;
+  display: flex;
+  // position: relative;
+  min-height: 600px;
+  // max-width: 1440px;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+
+  &__contents {
+    width: 600px;
+    padding: 35px 40px;
+    margin-top: 60px;
+    background-color: $background-black;
+  }
+
+  &__title {}
+
+  &__headline {
+    text-align: center;
+    font-family: "FR", sans-serif;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $white;
+  }
+
+}

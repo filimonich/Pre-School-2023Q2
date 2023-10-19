@@ -1,0 +1,129 @@
+.about {
+  $self: &;
+
+  &.container {
+    margin-bottom: 40px;
+    padding-top: 20px
+  }
+
+  &__contents {}
+
+  &__headline {}
+
+  &__subtitle {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "IR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    color: $text;
+
+    @include media('<=lg') {
+      padding: 0 20px;
+    }
+  }
+
+  &__control {
+    display: none;
+
+    @include media('<=sm') {
+      display: block;
+      padding-top: 40px;
+    }
+  }
+
+  &__img-control {}
+
+  &__slider {
+    margin: 0 20px 36px;
+
+    @include media('<=sm') {
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  &__benefits {
+    display: flex;
+
+    @include media('<=sm') {
+      justify-content: center;
+    }
+  }
+
+  &__benefit {
+
+    &:nth-child(-n + 2) {
+      margin-right: 25px;
+
+      @include media('<=sm') {
+        margin-right: 0;
+      }
+    }
+
+    &:not(:first-child) {
+
+      @include media('<=sm') {
+        display: none;
+      }
+    }
+  }
+
+  &__img {}
+
+  &__item-dots {}
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__dot {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:nth-child(n+4) {
+
+      @include media('>sm') {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    display: block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    // margin-right: 10px;
+    border-radius: 50%;
+    background-color: $background-black;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &.active-dot {
+      background-color: $brown;
+    }
+  }
+
+  &__dot-img {}
+
+}

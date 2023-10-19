@@ -1,0 +1,12 @@
+.logo {
+  $self: &;
+
+  &__title {
+    font-family: "FR", sans-serif;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: 0.6px;
+    color: #FFF;
+  }
+
+}

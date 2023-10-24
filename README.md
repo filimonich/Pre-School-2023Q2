@@ -8,10 +8,6 @@ Website for the library:
 
 https://filimonich.github.io/Pre-School-2023Q2/library/
 
-Css slider:
-
-https://filimonich.github.io/cssMemeSlider/cssMemeSlider/index.html
-
 Audio player:
 
 https://filimonich.github.io/Pre-School-2023Q2/audio-player/
